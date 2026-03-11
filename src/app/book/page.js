@@ -1,19 +1,24 @@
-export const metadata = {
-    title: 'Book a Free Strategy Call | Sarvanu Banerjee Strategies',
-    description: 'Book your complimentary 10-15 minute strategy call with Sarvanu Banerjee. Discuss your business challenges and get actionable insights - no obligation.',
-    keywords: 'book business consultant, free strategy call, business consulting appointment, schedule consultation India',
-    alternates: {
-        canonical: 'https://sarvanu.com/book',
-    },
-    openGraph: {
-        title: 'Book a Free Strategy Call | Sarvanu Banerjee',
-        description: 'Get a complimentary 10-15 minute strategy call. No obligation.',
-        url: 'https://sarvanu.com/book',
-        type: 'website',
-    },
-};
+
+
+'use client';
 
 export default function BookACall() {
+    const handleWhatsAppSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const stage = formData.get('business_stage');
+        const goals = formData.get('goals');
+
+        const waNumber = "918240026380";
+        const waMessage = `*New Strategy Call Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Business Stage:* ${stage}\n*Challenge:* ${goals}`;
+        const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+        window.open(waLink, '_blank');
+    };
+
     return (
         <div className="booking-page" style={{ paddingTop: '80px', paddingBottom: '60px' }}>
             <div className="booking-container">
@@ -36,7 +41,7 @@ export default function BookACall() {
                         </ul>
                     </div>
 
-                    <form action="/api/contact" method="POST">
+                    <form onSubmit={handleWhatsAppSubmit}>
                         <input type="hidden" name="form_type" value="booking_call" />
 
                         <div className="form-group">
@@ -76,7 +81,7 @@ export default function BookACall() {
 
                     <div className="alternative-contact">
                         <p>Prefer to chat first?</p>
-                        <a href="https://wa.me/918700541657" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                        <a href="https://wa.me/918240026380" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
                             💬 Message on WhatsApp
                         </a>
                     </div>

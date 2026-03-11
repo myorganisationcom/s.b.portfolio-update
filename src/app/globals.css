@@ -3662,7 +3662,7 @@ body.single-blog-page {
 /* Logo Cloud */
 .saas-logo-cloud {
   background: #f8fafc;
-  padding: 50px 0;
+  padding: 80px 0;
   text-align: center;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -3688,7 +3688,7 @@ body.single-blog-page {
 
 /* Problem vs Solution */
 .saas-problem-solution {
-  padding: 80px 0;
+  padding: 100px 0;
   background: #fff;
 }
 
@@ -3858,7 +3858,7 @@ body.single-blog-page {
 
 /* How It Works */
 .saas-how-it-works {
-  padding: 80px 0;
+  padding: 100px 0;
   background: #fff;
 }
 
@@ -4183,15 +4183,73 @@ body.single-blog-page {
   background: #fff;
 }
 
+/* Testimonials Wrapper specifically for SaaS */
+.saas-testimonials-wrapper {
+  padding: 100px 0;
+  background: var(--clr-offwhite);
+}
+
 .faq-wrapper {
   max-width: 900px;
   margin: 0 auto;
 }
 
+.faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.faq-item.active {
+  border-color: var(--clr-blue-accent);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
+}
+
+.faq-question {
+  padding: 20px 25px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--clr-navy-dark);
+  transition: background var(--transition-fast);
+}
+
+.faq-question:hover {
+  background: #f1f5f9;
+}
+
+.faq-item.active .faq-question {
+  background: #eff6ff;
+  color: var(--clr-blue-dark);
+}
+
+.faq-question .icon {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--clr-blue-accent);
+  transition: transform var(--transition-fast);
+}
+
+.faq-answer {
+  padding: 20px 25px;
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+}
+
+.faq-answer p {
+  margin-bottom: 0;
+}
+
 /* Bottom CTA */
 .saas-bottom-cta {
-  padding: 0 0 80px;
-  background: #fff;
+  padding: 100px 0;
+  background: var(--clr-offwhite);
 }
 
 .saas-bottom-cta .container {

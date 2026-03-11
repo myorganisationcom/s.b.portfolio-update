@@ -1,19 +1,18 @@
-export const metadata = {
-    title: 'Free Resources | Business Templates & Guides | Sarvanu Banerjee',
-    description: 'Free business resources, templates, and guides for founders and entrepreneurs. Download free business health checklist, growth roadmap, and more.',
-    keywords: 'free business templates, startup resources, business checklist, growth roadmap PDF, free consulting resources',
-    alternates: {
-        canonical: 'https://sarvanu.com/resources',
-    },
-    openGraph: {
-        title: 'Free Business Resources | Sarvanu Banerjee',
-        description: 'Free templates and guides for founders. No email required for some resources!',
-        url: 'https://sarvanu.com/resources',
-        type: 'website',
-    },
-};
+'use client';
 
 export default function Resources() {
+    const handleWhatsAppSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const name = formData.get('name');
+        const email = formData.get('email');
+
+        const waNumber = "918240026380";
+        const waMessage = `*Free 90-Day Growth Roadmap Request*\n\n*Name:* ${name}\n*Email:* ${email}\n\nPlease send me the roadmap!`;
+        const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+        window.open(waLink, '_blank');
+    };
     return (
         <>
             <section className="resources-hero">
@@ -87,12 +86,12 @@ export default function Resources() {
                         <div className="lead-magnet-form">
                             <h3>Get Your Free Copy</h3>
                             {/* Note: the form itself is likely visual only or needs its own handler, we can post to our api/contact for now or leave it generic */}
-                            <form action="/api/contact" method="POST">
+                            <form onSubmit={handleWhatsAppSubmit}>
                                 <input type="hidden" name="form_type" value="lead_magnet" />
                                 <input type="text" name="name" placeholder="Your Name" required style={{ width: '100%', padding: '10px', marginBottom: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
                                 <input type="email" name="email" placeholder="Your Email" required style={{ width: '100%', padding: '10px', marginBottom: '10px', borderRadius: '4px', border: '1px solid #ccc' }} />
                                 <button type="submit" style={{ width: '100%', padding: '12px', background: 'var(--clr-gold)', color: 'var(--clr-navy-dark)', border: 'none', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
-                                    📧 Send Me The Roadmap
+                                    📧 Request via WhatsApp
                                 </button>
                             </form>
                             <p className="privacy">🔒 No spam. Unsubscribe anytime.</p>

@@ -1,3 +1,5 @@
+'use client';
+
 import HeroSlider from '@/components/HeroSlider';
 import PricingSlider from '@/components/PricingSlider';
 import ServiceSlider from '@/components/ServiceSlider';
@@ -6,6 +8,22 @@ import TestimonialSlider from '@/components/TestimonialSlider';
 import FadeIn from '@/components/FadeIn';
 
 export default function Home() {
+  const handleWhatsAppSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const stage = formData.get('business_stage');
+    const goals = formData.get('goals');
+
+    const waNumber = "918240026380";
+    const waMessage = `*New Strategy Call Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Business Stage:* ${stage}\n*Challenge:* ${goals}`;
+    const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+    window.open(waLink, '_blank');
+  };
+
   return (
     <>
       {/* HERO SECTION */}
@@ -567,7 +585,7 @@ export default function Home() {
 
             <div className="cta-form">
               <h3>Book Your Essential Strategy Call</h3>
-              <form action="/api/contact" method="POST">
+              <form onSubmit={handleWhatsAppSubmit}>
                 <div className="form-group">
                   <input type="text" name="name" placeholder="Full Name" required />
                 </div>
@@ -589,10 +607,10 @@ export default function Home() {
                 <div className="form-group">
                   <textarea name="goals" rows="3" placeholder="What’s your biggest business challenge?"></textarea>
                 </div>
-                <button type="submit" className="cta-btn">🚀 Book My Free Call</button>
+                <button type="submit" className="cta-btn">🚀 Request via WhatsApp</button>
               </form>
 
-              <a href="https://wa.me/918700541657" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/918240026380" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
                 💬 Chat on WhatsApp
               </a>
             </div>
@@ -623,7 +641,7 @@ export default function Home() {
             <div className="contact-card">
               <i className="fab fa-whatsapp"></i>
               <h3>WhatsApp</h3>
-              <p><a href="https://wa.me/918700541657" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
+              <p><a href="https://wa.me/918240026380" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
             </div>
           </div>
         </div>
