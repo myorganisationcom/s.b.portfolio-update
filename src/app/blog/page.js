@@ -2,12 +2,6 @@ import Link from 'next/link';
 import { blogPosts } from '@/data/blogPosts';
 
 export const metadata = {
-    title: 'Business Insights & Articles | Sarvanu Banerjee Strategies',
-    description: 'Expert insights on business strategy, scaling, and operations for Founders and MSMEs. Read our latest articles and case studies.',
-    keywords: 'business consulting blog, startup growth articles, MSME strategy insights, Sarvanu Banerjee blog',
-    alternates: {
-        canonical: 'https://sarvanu.com/blog',
-    },
     openGraph: {
         title: 'Business Insights | Sarvanu Banerjee',
         description: 'Expert insights on business strategy and scaling.',

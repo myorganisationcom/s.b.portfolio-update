@@ -3,11 +3,6 @@ import TestimonialSlider from '@/components/TestimonialSlider';
 import FaqAccordion from '@/components/FaqAccordion';
 import StickyCta from '@/components/StickyCta';
 
-export const metadata = {
-    title: "Custom SaaS & AI Solutions | Sarvanu Banerjee Strategies",
-    description: "Accelerate your business with our customized, high-performance Software as a Service (SaaS) and Artificial Intelligence (AI) integrations.",
-};
-
 export default function SaasPage() {
     return (
         <>

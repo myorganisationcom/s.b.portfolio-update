@@ -1,5 +1,3 @@
-
-
 'use client';
 
 export default function BookACall() {
@@ -20,75 +18,129 @@ export default function BookACall() {
     };
 
     return (
-        <div className="booking-page" style={{ paddingTop: '80px', paddingBottom: '60px' }}>
-            <div className="booking-container">
-                <a href="/" className="back-link">← Back to Home</a>
+        <div className="book-hero">
+            {/* Glowing background shapes for premium feel */}
+            <div className="book-glow-bg bg-1"></div>
+            <div className="book-glow-bg bg-2"></div>
 
-                <div className="booking-card">
-                    <div className="booking-header">
-                        <span className="emoji">📞</span>
-                        <h1>Book Your Free Strategy Call</h1>
-                        <p>10-15 minutes. No obligation. Just clarity.</p>
+            <div className="container book-container">
+                <div className="book-back-wrapper">
+                    <a href="/" className="book-back-link">
+                        <span className="arrow">←</span> Return to Homepage
+                    </a>
+                </div>
+
+                <div className="book-split-layout">
+                    {/* Left Column: Value Prop & Info */}
+                    <div className="book-info-column">
+                        <span className="book-tagline">10-Min Discovery Session</span>
+                        <h1>Unlock Your Core <span>Growth Strategy</span></h1>
+                        <p className="book-description">
+                            Schedule a high-impact, no-obligation strategy session. We'll diagnose your primary bottlenecks and outline an actionable roadmap to scale your business operations and revenue immediately.
+                        </p>
+
+                        <div className="book-benefits-card">
+                            <h3>What We'll Cover on the Call:</h3>
+                            <ul className="book-benefits-list">
+                                <li>
+                                    <div className="benefit-icon"><i className="fas fa-bullseye"></i></div>
+                                    <div>
+                                        <strong>Bottleneck Assessment</strong>
+                                        <p>Rapid identification of what's currently stalling your growth.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="benefit-icon"><i className="fas fa-bolt"></i></div>
+                                    <div>
+                                        <strong>Actionable Insights</strong>
+                                        <p>Immediate structural or marketing changes you can apply today.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className="benefit-icon"><i className="fas fa-handshake"></i></div>
+                                    <div>
+                                        <strong>Partnership Fit</strong>
+                                        <p>Clarity on whether our consulting or SaaS execution fits your roadmap.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className="book-trust-section">
+                            <div className="trust-item">
+                                <span className="icon"><i className="fas fa-lock"></i></span>
+                                <span>100% Confidential</span>
+                            </div>
+                            <div className="trust-item">
+                                <span className="icon"><i className="fas fa-stopwatch"></i></span>
+                                <span>Rapid Response</span>
+                            </div>
+                            <div className="trust-item">
+                                <span className="icon"><i className="fas fa-tag"></i></span>
+                                <span>No Sales Pressure</span>
+                            </div>
+                        </div>
+
+                        <div className="book-direct-chat">
+                            <p>Need a faster response? Reach out directly:</p>
+                            <a href="https://wa.me/918240026380" className="whatsapp-btn outline" target="_blank" rel="noopener noreferrer">
+                                <i className="fab fa-whatsapp"></i> Message on WhatsApp
+                            </a>
+                        </div>
                     </div>
 
-                    <div className="benefits-list">
-                        <h3>What You'll Get</h3>
-                        <ul>
-                            <li>Quick assessment of your main challenges</li>
-                            <li>Actionable next steps you can take today</li>
-                            <li>Clarity on whether we're a good fit</li>
-                            <li>No high-pressure sales tactics</li>
-                        </ul>
-                    </div>
+                    {/* Right Column: The Form */}
+                    <div className="book-form-column">
+                        <div className="book-glass-card">
+                            <div className="card-header">
+                                <h2>Request Your Strategy Call</h2>
+                                <p>Fill out the details below to help us prepare for our session.</p>
+                            </div>
 
-                    <form onSubmit={handleWhatsAppSubmit}>
-                        <input type="hidden" name="form_type" value="booking_call" />
+                            <form onSubmit={handleWhatsAppSubmit} className="premium-form">
+                                <input type="hidden" name="form_type" value="booking_call" />
 
-                        <div className="form-group">
-                            <label htmlFor="name">Your Name *</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+                                <div className="form-group-full">
+                                    <label htmlFor="name">Full Name <span className="req">*</span></label>
+                                    <input type="text" id="name" name="name" placeholder="E.g. Sarah Jenkins" required />
+                                </div>
+
+                                <div className="form-row">
+                                    <div className="form-group-half">
+                                        <label htmlFor="email">Email Address <span className="req">*</span></label>
+                                        <input type="email" id="email" name="email" placeholder="sarah@company.com" required />
+                                    </div>
+                                    <div className="form-group-half">
+                                        <label htmlFor="phone">Phone / WhatsApp <span className="req">*</span></label>
+                                        <input type="tel" id="phone" name="phone" placeholder="+91 99999 99999" required />
+                                    </div>
+                                </div>
+
+                                <div className="form-group-full">
+                                    <label htmlFor="business_stage">Current Business Stage <span className="req">*</span></label>
+                                    <div className="select-wrapper">
+                                        <select id="business_stage" name="business_stage" required defaultValue="">
+                                            <option value="" disabled>Select the stage that fits best...</option>
+                                            <option value="idea">Idea / Pre-Revenue</option>
+                                            <option value="early">Early Startup (0-1 year)</option>
+                                            <option value="growing">Growing MSME (1-3 years)</option>
+                                            <option value="scaling">Scaling / Multi-brand (3+ years)</option>
+                                            <option value="traditional">Traditional Business Going Digital</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="form-group-full">
+                                    <label htmlFor="goals">What is the biggest challenge holding you back?</label>
+                                    <textarea id="goals" name="goals" rows="4" placeholder="Briefly describe what you're trying to solve..."></textarea>
+                                </div>
+
+                                <button type="submit" className="submit-btn glow-btn book-submit-btn">
+                                    Connect on WhatsApp <span className="arrow">→</span>
+                                </button>
+                                <p className="form-disclaimer">By submitting, you'll be redirected to WhatsApp to send these details to Sarvanu directly.</p>
+                            </form>
                         </div>
-
-                        <div className="form-group">
-                            <label htmlFor="email">Email Address *</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="phone">Phone / WhatsApp *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="business_stage">Business Stage *</label>
-                            <select id="business_stage" name="business_stage" required>
-                                <option value="">Select your stage...</option>
-                                <option value="idea">Just an Idea</option>
-                                <option value="early">Early Stage (0-1 year)</option>
-                                <option value="growing">Growing (1-3 years)</option>
-                                <option value="scaling">Scaling (3+ years)</option>
-                                <option value="traditional">Traditional Business Going Digital</option>
-                            </select>
-                        </div>
-
-                        <div className="form-group">
-                            <label htmlFor="goals">What's Your Biggest Challenge Right Now?</label>
-                            <textarea id="goals" name="goals" placeholder="Tell me briefly what's keeping you stuck..."></textarea>
-                        </div>
-
-                        <button type="submit" className="submit-btn">🚀 Request My Free Call</button>
-                    </form>
-
-                    <div className="alternative-contact">
-                        <p>Prefer to chat first?</p>
-                        <a href="https://wa.me/918240026380" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-                            💬 Message on WhatsApp
-                        </a>
-                    </div>
-
-                    <div className="trust-badges">
-                        <span>🔒 100% Confidential</span>
-                        <span>⏱️ Quick Response</span>
                     </div>
                 </div>
             </div>
@@ -101,7 +153,7 @@ export default function BookACall() {
                         "@context": "https://schema.org",
                         "@type": "ContactPage",
                         "name": "Book a Strategy Call | Sarvanu Banerjee",
-                        "description": "Book a complimentary 10-15 minute strategy call.",
+                        "description": "Book a complimentary 10-15 minute strategy growth call.",
                         "url": "https://sarvanu.com/book"
                     })
                 }}

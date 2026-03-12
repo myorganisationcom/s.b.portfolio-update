@@ -1,18 +1,8 @@
 import FaqAccordion from '@/components/FaqAccordion';
 
 export const metadata = {
-    title: 'FAQ | Common Questions About Business Consulting | Sarvanu Banerjee',
-    description: 'Frequently asked questions about business consulting services, pricing, process, and what to expect when working with Sarvanu Banerjee Strategies.',
-    keywords: 'business consultant FAQ, consulting pricing India, how much does business consulting cost, what does a consultant do, MSME consulting questions',
-    alternates: {
-        canonical: 'https://sarvanu.com/faq',
-    },
-    openGraph: {
-        title: 'FAQ | Sarvanu Banerjee Strategies',
-        description: 'Common questions about business consulting services and pricing.',
-        url: 'https://sarvanu.com/faq',
-        type: 'website',
-    },
+    title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
+    description: "Find answers to common questions about our business consulting, SaaS execution, pricing, and how we work with clients.",
 };
 
 export default function FAQ() {

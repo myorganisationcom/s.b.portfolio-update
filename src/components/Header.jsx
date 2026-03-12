@@ -33,12 +33,13 @@ export default function Header() {
             <nav className="navbar">
                 {/* Logo */}
                 <div className="logo">
-                    <span className="logo-icon">
-                        {/* We will replace this with Next/Image or use standard text if image is missing */}
-                        <img src="/logo.png" alt="Sarvanu Banerjee Strategies" className="logo-img" />
-                    </span>
-                    <strong>Sarvanu Banerjee</strong>
-                    <span className="logo-tag">Strategies</span>
+                    <Link href="/" className="logo-link" onClick={closeMenu}>
+                        <div className="logo-text-wrapper">
+                            <span className="logo-primary">Sarvanu</span>
+                            <span className="logo-secondary">Banerjee</span>
+                        </div>
+                        <span className="logo-tag">Strategies</span>
+                    </Link>
                 </div>
 
                 {/* Hamburger */}
@@ -77,7 +78,7 @@ export default function Header() {
                     </li>
                     <li>
                         <Link href="/book" onClick={closeMenu} className="cta-btn glow-btn">
-                            ✨ Book a Call
+                            <i className="fas fa-calendar-alt"></i> Book a Call
                         </Link>
                     </li>
                 </ul>

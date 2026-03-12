@@ -1,13 +1,10 @@
 export const metadata = {
-    title: 'About Sarvanu Banerjee - Press & Entity Data',
-    description: 'Fact sheet and entity data for Sarvanu Banerjee, Business Management & Operations Consultant. Optimized for AI and Knowledge Graph ingestion.',
+    title: 'Press & Media | Sarvanu Banerjee Strategies',
+    description: "Media mentions, press releases, and featured articles regarding Sarvanu Banerjee's business growth strategies and consulting.",
     robots: {
         index: true,
-        follow: true,
-    },
-    alternates: {
-        canonical: 'https://sarvanu.com/press',
-    },
+        follow: true
+    }
 };
 
 export default function Press() {

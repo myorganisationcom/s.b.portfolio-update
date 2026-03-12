@@ -1,16 +1,6 @@
 export const metadata = {
-    title: 'Case Studies | Client Success Stories | Sarvanu Banerjee Strategies',
-    description: 'Real results from real businesses. See how Sarvanu Banerjee helped founders, startups, and MSMEs achieve growth through strategic consulting, operations, and marketing.',
-    keywords: 'business consulting case studies, client success stories, MSME growth results, startup consulting results, Sarvanu Banerjee clients',
-    alternates: {
-        canonical: 'https://sarvanu.com/case-studies',
-    },
-    openGraph: {
-        title: 'Case Studies | Sarvanu Banerjee Strategies',
-        description: 'Real results from real businesses. See how we helped founders achieve growth.',
-        url: 'https://sarvanu.com/case-studies',
-        type: 'website',
-    },
+    title: "Client Case Studies & Results | Sarvanu Banerjee Strategies",
+    description: "See how we've helped founders, startups, and MSMEs double their revenue and scale operations through proven execution strategies.",
 };
 
 export default function CaseStudies() {
@@ -68,124 +58,200 @@ export default function CaseStudies() {
                             <span>Co-Founder, Idealcore Solution LLP</span>
                         </div>
                     </div>
+                </div >
+
+                <div className="case-study-section">
+                    <h3>🟢 The Solution</h3>
+                    <ul>
+                        <li>Created a clear brand identity and messaging framework</li>
+                        <li>Built a professional website with SEO optimization</li>
+                        <li>Set up LinkedIn presence for B2B lead generation</li>
+                        <li>Implemented a CRM to track and nurture leads</li>
+                    </ul>
                 </div>
 
-                {/* Case Study 2 */}
-                <div className="case-study-card">
-                    <span className="case-label">Traditional Business Transformation</span>
-                    <h2>Taking a Traditional Business Online: Digital-First Strategy</h2>
-
-                    <div className="case-study-section">
-                        <h3>🔴 The Problem</h3>
-                        <p>A family-owned manufacturing business had zero online presence. All leads came from word-of-mouth, limiting growth to the local market. They didn't know where to start with digital.</p>
-                    </div>
-
-                    <div className="case-study-section">
-                        <h3>🟢 The Solution</h3>
-                        <ul>
-                            <li>Created a clear brand identity and messaging framework</li>
-                            <li>Built a professional website with SEO optimization</li>
-                            <li>Set up LinkedIn presence for B2B lead generation</li>
-                            <li>Implemented a CRM to track and nurture leads</li>
-                        </ul>
-                    </div>
-
-                    <div className="case-study-section">
-                        <h3>📈 The Results</h3>
-                        <div className="results-grid">
-                            <div className="result-item">
-                                <span className="number">150+</span>
-                                <span className="label">New Leads/Month</span>
-                            </div>
-                            <div className="result-item">
-                                <span className="number">2x</span>
-                                <span className="label">Market Reach</span>
-                            </div>
-                            <div className="result-item">
-                                <span className="number">₹40L+</span>
-                                <span className="label">New Contracts</span>
-                            </div>
+                <div className="case-study-section">
+                    <h3>📈 The Results</h3>
+                    <div className="results-grid">
+                        <div className="result-item">
+                            <span className="number">150+</span>
+                            <span className="label">New Leads/Month</span>
                         </div>
-                    </div>
-
-                    <div className="case-study-footer">
-                        <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #0a1833, #5a73ff)' }}></div>
-                        <div className="client-info">
-                            <h4>Manufacturing Client</h4>
-                            <span>West Bengal, India</span>
+                        <div className="result-item">
+                            <span className="number">2x</span>
+                            <span className="label">Market Reach</span>
+                        </div>
+                        <div className="result-item">
+                            <span className="number">₹40L+</span>
+                            <span className="label">New Contracts</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Case Study 3 */}
-                <div className="case-study-card">
-                    <span className="case-label">Startup Scale-Up</span>
-                    <h2>From Chaos to Clarity: Structuring a Fast-Growing Startup</h2>
-
-                    <div className="case-study-section">
-                        <h3>🔴 The Problem</h3>
-                        <p>A funded startup was growing fast but felt out of control. No clear roles, decisions were reactive, and the founders were burning out. They needed structure without losing agility.</p>
+                <div className="case-study-footer">
+                    <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #0a1833, #5a73ff)' }}></div>
+                    <div className="client-info">
+                        <h4>Manufacturing Client</h4>
+                        <span>West Bengal, India</span>
                     </div>
+                </div>
+            </div >
 
-                    <div className="case-study-section">
-                        <h3>🟢 The Solution</h3>
-                        <ul>
-                            <li>Defined clear OKRs and KPIs for each team</li>
-                            <li>Created a decision-making framework</li>
-                            <li>Built weekly rhythm meetings for alignment</li>
-                            <li>Established scalable processes for key workflows</li>
-                        </ul>
-                    </div>
+            {/* Case Study 3 */}
+            < div className="case-study-card" >
+                <span className="case-label">Startup Scale-Up</span>
+                <h2>From Chaos to Clarity: Structuring a Fast-Growing Startup</h2>
 
-                    <div className="case-study-section">
-                        <h3>📈 The Results</h3>
-                        <div className="results-grid">
-                            <div className="result-item">
-                                <span className="number">60%</span>
-                                <span className="label">Faster Decisions</span>
-                            </div>
-                            <div className="result-item">
-                                <span className="number">Team</span>
-                                <span className="label">Self-Managed</span>
-                            </div>
-                            <div className="result-item">
-                                <span className="number">Series A</span>
-                                <span className="label">Ready</span>
-                            </div>
+                <div className="case-study-section">
+                    <h3>🔴 The Problem</h3>
+                    <p>A funded startup was growing fast but felt out of control. No clear roles, decisions were reactive, and the founders were burning out. They needed structure without losing agility.</p>
+                </div>
+
+                <div className="case-study-section">
+                    <h3>🟢 The Solution</h3>
+                    <ul>
+                        <li>Defined clear OKRs and KPIs for each team</li>
+                        <li>Created a decision-making framework</li>
+                        <li>Built weekly rhythm meetings for alignment</li>
+                        <li>Established scalable processes for key workflows</li>
+                    </ul>
+                </div>
+
+                <div className="case-study-section">
+                    <h3>📈 The Results</h3>
+                    <div className="results-grid">
+                        <div className="result-item">
+                            <span className="number">60%</span>
+                            <span className="label">Faster Decisions</span>
                         </div>
-                    </div>
-
-                    <div className="case-study-footer">
-                        <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #f5c518, #ff9900)' }}></div>
-                        <div className="client-info">
-                            <h4>Tech Startup Founders</h4>
-                            <span>Bangalore, India</span>
+                        <div className="result-item">
+                            <span className="number">Team</span>
+                            <span className="label">Self-Managed</span>
+                        </div>
+                        <div className="result-item">
+                            <span className="number">Series A</span>
+                            <span className="label">Ready</span>
                         </div>
                     </div>
                 </div>
 
-            </div>
+                <div className="case-study-footer">
+                    {/* Case Study 2 */}
+                    <div className="case-study-card">
+                        <span className="case-label">B2B Lead Generation</span>
+                        <h2>Unlocking New Markets: B2B Lead Generation for a Manufacturing Giant</h2>
 
-            {/* CTA SECTION */}
-            <section className="cta-section">
-                <h2>Ready to Write Your Success Story?</h2>
-                <p>Let's discuss how we can help your business achieve similar results.</p>
-                <a href="/book" className="btn-primary">📞 Book Your Free Strategy Call</a>
-            </section>
+                        <div className="case-study-section">
+                            <h3>🔴 The Problem</h3>
+                            <p>A well-established manufacturing company relied solely on traditional word-of-mouth referrals. They had no digital presence, no structured lead generation, and were missing out on significant growth opportunities in new markets.</p>
+                        </div>
 
-            {/* JSON-LD Structured Data */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "WebPage",
-                        "name": "Case Studies | Sarvanu Banerjee Strategies",
-                        "description": "Real results from real businesses. See how Sarvanu Banerjee helped founders, startups, and MSMEs achieve growth.",
-                        "url": "https://sarvanu.com/case-studies"
-                    })
-                }}
-            />
-        </>
-    );
+                        <div className="case-study-section">
+                            <h3>🟢 The Solution</h3>
+                            <ul>
+                                <li>Created a clear brand identity and messaging framework</li>
+                                <li>Built a professional website with SEO optimization</li>
+                                <li>Set up LinkedIn presence for B2B lead generation</li>
+                                <li>Implemented a CRM to track and nurture leads</li>
+                            </ul>
+                        </div>
+
+                        <div className="case-study-section">
+                            <h3>📈 The Results</h3>
+                            <div className="results-grid">
+                                <div className="result-item">
+                                    <span className="number">150+</span>
+                                    <span className="label">New Leads/Month</span>
+                                </div>
+                                <div className="result-item">
+                                    <span className="number">2x</span>
+                                    <span className="label">Market Reach</span>
+                                </div>
+                                <div className="result-item">
+                                    <span className="number">₹40L+</span>
+                                    <span className="label">New Contracts</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="case-study-footer">
+                            <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #0a1833, #5a73ff)' }}></div>
+                            <div className="client-info">
+                                <h4>Manufacturing Client</h4>
+                                <span>West Bengal, India</span>
+                            </div>
+                        </div>
+                    </div >
+
+                    {/* Case Study 3 */}
+                    <div className="case-study-card" >
+                        <span className="case-label">Startup Scale-Up</span>
+                        <h2>From Chaos to Clarity: Structuring a Fast-Growing Startup</h2>
+
+                        <div className="case-study-section">
+                            <h3>🔴 The Problem</h3>
+                            <p>A funded startup was growing fast but felt out of control. No clear roles, decisions were reactive, and the founders were burning out. They needed structure without losing agility.</p>
+                        </div>
+
+                        <div className="case-study-section">
+                            <h3>🟢 The Solution</h3>
+                            <ul>
+                                <li>Defined clear OKRs and KPIs for each team</li>
+                                <li>Created a decision-making framework</li>
+                                <li>Built weekly rhythm meetings for alignment</li>
+                                <li>Established scalable processes for key workflows</li>
+                            </ul>
+                        </div>
+
+                        <div className="case-study-section">
+                            <h3>📈 The Results</h3>
+                            <div className="results-grid">
+                                <div className="result-item">
+                                    <span className="number">60%</span>
+                                    <span className="label">Faster Decisions</span>
+                                </div>
+                                <div className="result-item">
+                                    <span className="number">Team</span>
+                                    <span className="label">Self-Managed</span>
+                                </div>
+                                <div className="result-item">
+                                    <span className="number">Series A</span>
+                                    <span className="label">Ready</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="case-study-footer">
+                            <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #f5c518, #ff9900)' }}></div>
+                            <div className="client-info">
+                                <h4>Tech Startup Founders</h4>
+                                <span>Bangalore, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                {/* CTA SECTION */}
+                <section className="cta-section">
+                    <h2>Ready to Write Your Success Story?</h2>
+                    <p>Let's discuss how we can help your business achieve similar results.</p>
+                    <a href="/book" className="btn-primary">📞 Book Your Free Strategy Call</a>
+                </section>
+
+                {/* JSON-LD Structured Data */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "WebPage",
+                            "name": "Case Studies | Sarvanu Banerjee Strategies",
+                            "description": "Real results from real businesses. See how Sarvanu Banerjee helped founders, startups, and MSMEs achieve growth.",
+                            "url": "https://sarvanu.com/case-studies"
+                        })
+                    }}
+                />
+            </>
+            );
 }
