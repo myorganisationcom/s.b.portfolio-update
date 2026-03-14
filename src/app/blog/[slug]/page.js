@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { blogPosts } from '@/data/blogPosts';
 import { blogContent } from '@/data/blogContent';
 import StickyCta from '@/components/StickyCta';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
     return blogPosts.map((post) => ({
@@ -54,7 +55,7 @@ export default async function BlogPost({ params }) {
 
             {/* AUTHOR BOX */}
             <div className="article-author">
-                <img src="/your-photo.jpeg" alt="Sarvanu Banerjee" className="author-img" loading="lazy" />
+                <Image src="/your-photo.jpeg" alt="Sarvanu Banerjee" className="author-img" width={100} height={100} />
                 <div className="author-info">
                     <h3>Sarvanu Banerjee</h3>
                     <span className="author-role">Business Transformation Strategies</span>
@@ -88,10 +89,21 @@ export default async function BlogPost({ params }) {
                         "@type": "Article",
                         "headline": post.title,
                         "description": post.description,
+                        "image": "https://sarvanu.com/og-image.png",
+                        "datePublished": post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
                         "author": {
                             "@type": "Person",
                             "name": "Sarvanu Banerjee",
                             "url": "https://sarvanu.com"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Sarvanu Banerjee Strategies",
+                            "url": "https://sarvanu.com",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://sarvanu.com/logo.png"
+                            }
                         }
                     })
                 }}

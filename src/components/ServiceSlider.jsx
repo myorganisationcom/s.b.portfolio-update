@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 
 export default function ServiceSlider() {
     const sliderRef = useRef(null);
@@ -40,7 +41,7 @@ export default function ServiceSlider() {
                     <div className="price-tag">From ₹15,000</div>
                 </div>
                 <div className="service-card">
-                    <div className="service-icon"><img src="/logo.png" alt="Digital Authority" className="logo-img" /></div>
+                    <div className="service-icon"><Image src="/logo.png" alt="Digital Authority" className="logo-img" width={80} height={80} /></div>
                     <h3>Digital Authority</h3>
                     <p>LinkedIn growth, thought leadership content, and media strategy.</p>
                     <div className="price-tag">From ₹15,000/month</div>

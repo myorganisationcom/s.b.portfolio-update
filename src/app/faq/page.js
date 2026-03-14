@@ -3,6 +3,20 @@ import FaqAccordion from '@/components/FaqAccordion';
 export const metadata = {
     title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
     description: "Find answers to common questions about our business consulting, SaaS execution, pricing, and how we work with clients.",
+    openGraph: {
+        title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
+        description: "Find answers to common questions about our business consulting, SaaS execution, pricing, and how we work with clients.",
+        url: "https://sarvanu.com/faq",
+        images: ["/og-image.png"],
+    },
+    twitter: {
+        title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
+        description: "Find answers to common questions about our business consulting, SaaS execution, pricing.",
+        images: ["/og-image.png"],
+    },
+    alternates: {
+        canonical: "https://sarvanu.com/faq",
+    },
 };
 
 export default function FAQ() {

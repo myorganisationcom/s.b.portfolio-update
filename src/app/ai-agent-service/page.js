@@ -2,6 +2,7 @@ import FadeIn from '@/components/FadeIn';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import FaqAccordion from '@/components/FaqAccordion';
 import StickyCta from '@/components/StickyCta';
+import Image from 'next/image';
 
 export default function AiAgentService() {
     return (
@@ -37,7 +38,7 @@ export default function AiAgentService() {
                             <div className="ai-glow-bg" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0) 70%)', filter: 'blur(40px)', zIndex: 0, animation: 'glow-pulse 3s infinite alternate' }}></div>
 
                             {/* Main AI Image */}
-                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" alt="Artificial Intelligence Neural Network" style={{ width: '100%', borderRadius: '24px', zIndex: 1, position: 'relative', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }} />
+                            <Image src="/ai-hero.jpg" priority width={800} height={500} alt="Artificial Intelligence Neural Network" style={{ width: '100%', height: 'auto', borderRadius: '24px', zIndex: 1, position: 'relative', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }} />
 
                             {/* Floating Stats Badges */}
                             <div className="ai-floating-badge" style={{ position: 'absolute', bottom: '-20px', right: '-20px', background: 'rgba(5, 15, 34, 0.85)', padding: '15px 20px', borderRadius: '16px', border: '1px solid rgba(59,130,246,0.4)', zIndex: 2, backdropFilter: 'blur(12px)', color: 'white', display: 'flex', alignItems: 'center', gap: '15px', boxShadow: '0 15px 35px rgba(0,0,0,0.4)', animation: 'float 6s ease-in-out infinite' }}>
@@ -248,6 +249,35 @@ export default function AiAgentService() {
                     </div>
                 </div>
             </section>
+
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Service",
+                        "name": "Self-Hosted AI Agents Ecosystem",
+                        "description": "Build, deploy, and self-host custom AI agents to automate workflows with complete data sovereignty.",
+                        "provider": {
+                            "@type": "Organization",
+                            "name": "Sarvanu Banerjee Strategies",
+                            "url": "https://sarvanu.com"
+                        },
+                        "serviceType": "AI Operations & Development",
+                        "areaServed": "Worldwide",
+                        "offers": {
+                            "@type": "Offer",
+                            "priceSpecification": {
+                                "@type": "UnitPriceSpecification",
+                                "priceType": "https://schema.org/MinimumAdvertisedPrice"
+                            },
+                            "url": "https://sarvanu.com/ai-agent-service",
+                            "description": "Custom agent infrastructure built around organization security and intelligence goals."
+                        }
+                    })
+                }}
+            />
 
             <StickyCta />
         </>

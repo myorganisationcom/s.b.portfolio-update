@@ -26,7 +26,13 @@ export default function Footer() {
                             <Link href="/saas">SaaS & AI</Link>
                         </li>
                         <li>
+                            <Link href="/ai-agent-service">AI Agents</Link>
+                        </li>
+                        <li>
                             <Link href="/case-studies">Case Studies</Link>
+                        </li>
+                        <li>
+                            <Link href="/press">Press</Link>
                         </li>
                         <li>
                             <Link href="/faq">FAQ</Link>

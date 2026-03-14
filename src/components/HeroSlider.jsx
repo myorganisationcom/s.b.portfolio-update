@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function HeroSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,7 +22,7 @@ export default function HeroSlider() {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((img, i) => (
-          <img
+          <Image
             key={i}
             src={img}
             alt={
@@ -31,7 +32,10 @@ export default function HeroSlider() {
                 ? 'Growth Planning Session'
                 : 'Team Building Workshop'
             }
-            loading={i === 0 ? 'eager' : 'lazy'}
+            priority={i === 0}
+            width={1920}
+            height={1080}
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
         ))}
       </div>

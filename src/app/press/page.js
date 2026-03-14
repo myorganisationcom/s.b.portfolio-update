@@ -4,7 +4,21 @@ export const metadata = {
     robots: {
         index: true,
         follow: true
-    }
+    },
+    openGraph: {
+        title: 'Press & Media | Sarvanu Banerjee Strategies',
+        description: "Media mentions, press releases, and featured articles regarding Sarvanu Banerjee's business growth strategies and consulting.",
+        url: "https://sarvanu.com/press",
+        images: ["/og-image.png"],
+    },
+    twitter: {
+        title: 'Press & Media | Sarvanu Banerjee Strategies',
+        description: "Media mentions, press releases, and featured articles regarding Sarvanu Banerjee's business growth strategies.",
+        images: ["/og-image.png"],
+    },
+    alternates: {
+        canonical: "https://sarvanu.com/press",
+    },
 };
 
 export default function Press() {

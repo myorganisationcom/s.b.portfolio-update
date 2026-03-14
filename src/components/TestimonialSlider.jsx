@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function TestimonialSlider() {
     const sliderRef = useRef(null);
@@ -36,7 +37,7 @@ export default function TestimonialSlider() {
                                 gave us clarity and boosted our revenue within months.”</p>
                         </div>
                         <div className="testimonial-footer">
-                            <img src="/t1.webp" alt="Client Company Logo" className="client-logo" loading="lazy" />
+                            <Image src="/t1.webp" alt="Client Company Logo" className="client-logo" width={80} height={80} />
                             <div className="client-info">
                                 <h3>Pronel Mohanti</h3>
                                 <span>Co-Founder, Idealcore Solution LLP</span>
@@ -51,7 +52,7 @@ export default function TestimonialSlider() {
                                 results-driven. Highly recommend for scaling businesses.”</p>
                         </div>
                         <div className="testimonial-footer">
-                            <img src="/t2.png" alt="Client Company Logo" className="client-logo" loading="lazy" />
+                            <Image src="/t2.png" alt="Client Company Logo" className="client-logo" width={80} height={80} />
                             <div className="client-info">
                                 <h3>Dayan Saradel</h3>
                                 <span>CEO, Esoftware Solution LLC</span>
@@ -66,7 +67,7 @@ export default function TestimonialSlider() {
                                 approach helped us scale sustainably.”</p>
                         </div>
                         <div className="testimonial-footer">
-                            <img src="/t3.jpeg" alt="Client Company Logo" className="client-logo" loading="lazy" />
+                            <Image src="/t3.jpeg" alt="Client Company Logo" className="client-logo" width={80} height={80} />
                             <div className="client-info">
                                 <h3>Tarak Das</h3>
                                 <span>Founder, Tarak Agro Ventures</span>

@@ -2,11 +2,29 @@ import Link from 'next/link';
 import { blogPosts } from '@/data/blogPosts';
 
 export const metadata = {
+    title: "Business Growth Blog | Sarvanu Banerjee Strategies",
+    description: "Insights, articles, and strategies for founders and MSMEs on scaling operations, optimizing marketing, and driving revenue growth.",
     openGraph: {
-        title: 'Business Insights | Sarvanu Banerjee',
-        description: 'Expert insights on business strategy and scaling.',
+        title: 'Business Growth Blog | Sarvanu Banerjee Strategies',
+        description: 'Insights, articles, and strategies for founders and MSMEs on scaling operations, optimizing marketing, and driving revenue growth.',
         url: 'https://sarvanu.com/blog',
         type: 'website',
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Sarvanu Banerjee Strategies Blog",
+            },
+        ],
+    },
+    twitter: {
+        title: 'Business Growth Blog | Sarvanu Banerjee Strategies',
+        description: 'Insights, articles, and strategies for founders and MSMEs on scaling operations, optimizing marketing, and driving revenue growth.',
+        images: ["/og-image.png"],
+    },
+    alternates: {
+        canonical: "https://sarvanu.com/blog",
     },
 };
 
@@ -41,18 +59,13 @@ export default function BlogListing() {
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Person",
-                        "name": "Sarvanu Banerjee",
-                        "url": "https://sarvanu.com",
-                        "jobTitle": "Business Consultant",
-                        "sameAs": [
-                            "https://www.linkedin.com/in/sarvanu-banerjee",
-                            "https://www.instagram.com/sarvanu_banerjee/",
-                            "https://www.facebook.com/sarvanu.banerjee"
-                        ],
-                        "worksFor": {
+                        "@type": "Blog",
+                        "name": "Business Growth Blog | Sarvanu Banerjee Strategies",
+                        "description": "Insights, articles, and strategies for founders and MSMEs on scaling operations, optimizing marketing, and driving revenue growth.",
+                        "url": "https://sarvanu.com/blog",
+                        "publisher": {
                             "@type": "Organization",
-                            "name": "Sarvanu Consulting",
+                            "name": "Sarvanu Banerjee Strategies",
                             "url": "https://sarvanu.com"
                         }
                     })

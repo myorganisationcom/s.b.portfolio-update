@@ -13,15 +13,44 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Sarvanu Banerjee Strategies | Business Growth Consultant",
+  metadataBase: new URL("https://sarvanu.com"),
+  title: {
+    default: "Sarvanu Banerjee Strategies | Business Growth Consultant",
+    template: "%s | Sarvanu Banerjee Strategies",
+  },
   description:
     "Sarvanu Banerjee Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
   keywords:
     "business consultant India, startup growth consultant, MSME consulting, Sarvanu Banerjee, business strategy",
+  openGraph: {
+    title: "Sarvanu Banerjee Strategies | Business Growth Consultant",
+    description: "Sarvanu Banerjee Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    url: "https://sarvanu.com",
+    siteName: "Sarvanu Banerjee Strategies",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Sarvanu Banerjee Strategies",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sarvanu Banerjee Strategies | Business Growth Consultant",
+    description: "Sarvanu Banerjee Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: "/logo.png",
   },
   manifest: "/manifest.json",
+  alternates: {
+    canonical: "https://sarvanu.com",
+  },
 };
 
 export default function RootLayout({ children }) {

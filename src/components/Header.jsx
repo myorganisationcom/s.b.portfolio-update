@@ -65,10 +65,16 @@ export default function Header() {
                         <Link href="/saas" onClick={closeMenu} className={isCurrent('/saas') ? 'active' : ''}>SaaS & AI</Link>
                     </li>
                     <li>
+                        <Link href="/ai-agent-service" onClick={closeMenu} className={isCurrent('/ai-agent-service') ? 'active' : ''}>AI Agents</Link>
+                    </li>
+                    <li>
                         <Link href="/case-studies" onClick={closeMenu} className={isCurrent('/case-studies') ? 'active' : ''}>Case Studies</Link>
                     </li>
                     <li>
                         <Link href="/blog" onClick={closeMenu} className={isCurrent('/blog') ? 'active' : ''}>Blog</Link>
+                    </li>
+                    <li>
+                        <Link href="/press" onClick={closeMenu} className={isCurrent('/press') ? 'active' : ''}>Press</Link>
                     </li>
                     <li>
                         <Link href="/resources" onClick={closeMenu} className={isCurrent('/resources') ? 'active' : ''}>Resources</Link>
