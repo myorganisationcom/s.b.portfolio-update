@@ -100,24 +100,53 @@ export default function Home() {
       {/* WHO I WORK WITH SECTION */}
       <section id="work-expertise" className="work-expertise-section">
         <div className="container work-expertise-container">
-          <FadeIn className="card">
-            <h2>🧩 Who I Work With</h2>
-            <ul>
-              <li>Solopreneurs launching a new product or service</li>
-              <li>Founders scaling fast but lacking systems</li>
-              <li>Traditional businesses going digital or rebranding</li>
-              <li>Multi-brand owners needing structure and direction</li>
+          {/* Who I Work With Card - Light Gray */}
+          <FadeIn className="work-card gray-card">
+            <h2><i className="fas fa-users" style={{ marginRight: '12px' }}></i> Who I Work With</h2>
+            <ul className="custom-icon-list">
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-user-tie"></i></div>
+                <span>Solopreneurs launching a new product or service</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-rocket"></i></div>
+                <span>Founders scaling fast but lacking systems</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-building"></i></div>
+                <span>Traditional businesses going digital or rebranding</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-sitemap"></i></div>
+                <span>Multi-brand owners needing structure and direction</span>
+              </li>
             </ul>
           </FadeIn>
 
-          <FadeIn className="card">
-            <h2>📌 Areas of Expertise</h2>
-            <ul>
-              <li>Strategic Business Planning</li>
-              <li>Marketing + Funnels</li>
-              <li>Business Development & B2B Growth</li>
-              <li>Operations Design & SOPs</li>
-              <li>Brand Messaging & Positioning</li>
+          {/* Areas of Expertise Card - White */}
+          <FadeIn className="work-card white-card">
+            <h2><i className="fas fa-bullseye" style={{ marginRight: '12px' }}></i> Areas of Expertise</h2>
+            <ul className="custom-icon-list">
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-chess-knight"></i></div>
+                <span>Strategic Business Planning</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-filter"></i></div>
+                <span>Marketing + Funnels</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-chart-line"></i></div>
+                <span>Business Development & B2B Growth</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-cogs"></i></div>
+                <span>Operations Design & SOPs</span>
+              </li>
+              <li>
+                <div className="icon-wrapper"><i className="fas fa-bullhorn"></i></div>
+                <span>Brand Messaging & Positioning</span>
+              </li>
             </ul>
           </FadeIn>
         </div>
@@ -534,22 +563,22 @@ export default function Home() {
           <p className="subtitle">Trusted Growth Partner for Founders & MSMEs</p>
           <div className="features-grid">
             <div className="feature-card">
-              <div className="icon">⏳</div>
+              <div className="icon-wrapper"><i className="fas fa-hourglass-half"></i></div>
               <h3>7+ Years of Experience</h3>
               <p>In crafting strategies that drive real business growth and scale.</p>
             </div>
             <div className="feature-card">
-              <div className="icon">🎯</div>
+              <div className="icon-wrapper"><i className="fas fa-bullseye"></i></div>
               <h3>Multi-Disciplinary Expertise</h3>
               <p>Skills spanning operations, marketing, and founder coaching.</p>
             </div>
             <div className="feature-card">
-              <div className="icon">🤝</div>
+              <div className="icon-wrapper"><i className="fas fa-handshake"></i></div>
               <h3>Trusted by MSMEs & Founders</h3>
               <p>Collaborating closely with businesses across industries to deliver results.</p>
             </div>
             <div className="feature-card">
-              <div className="icon">🚀</div>
+              <div className="icon-wrapper"><i className="fas fa-rocket"></i></div>
               <h3>Long-Term Growth Focus</h3>
               <p>Strategic solutions designed for lasting success—not just quick wins.</p>
             </div>

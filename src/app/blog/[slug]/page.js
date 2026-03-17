@@ -4,6 +4,7 @@ import { blogPosts } from '@/data/blogPosts';
 import { blogContent } from '@/data/blogContent';
 import StickyCta from '@/components/StickyCta';
 import Image from 'next/image';
+import styles from '../blog.module.css';
 
 export async function generateStaticParams() {
     return blogPosts.map((post) => ({
@@ -33,9 +34,12 @@ export async function generateMetadata({ params }) {
             description: post.description,
             type: 'article',
             url: `https://sarvanu.com/blog/${post.slug}`,
+            images: [{ url: post.image }],
         },
     };
 }
+
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800';
 
 export default async function BlogPost({ params }) {
     const resolvedParams = await params;
@@ -46,36 +50,71 @@ export default async function BlogPost({ params }) {
         notFound();
     }
 
-    // Need to add single-blog-page class to body conceptually, 
-    // but since we can't easily modify body tag per page in App router without a template, 
-    // we'll wrap the content in a div that acts like the body class, or just use <main className="single-blog-page">
-    return (
-        <main className="single-blog-page container" style={{ padding: '80px 20px', maxWidth: '800px', margin: '0 auto' }}>
-            <article dangerouslySetInnerHTML={{ __html: contentHTML }} />
+    const featuredImage = post.image || FALLBACK_IMAGE;
 
-            {/* AUTHOR BOX */}
-            <div className="article-author">
-                <Image src="/your-photo.jpeg" alt="Sarvanu Banerjee" className="author-img" width={100} height={100} />
-                <div className="author-info">
-                    <h3>Sarvanu Banerjee</h3>
-                    <span className="author-role">Business Transformation Strategies</span>
-                    <p className="author-bio">Helping founders scale their agencies and service businesses through systems, leadership mindset, and strategic growth. 150+ clients across 6+ countries.</p>
-                    <div style={{ marginTop: '15px' }}>
-                        <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--clr-blue-accent)', marginRight: '15px' }}>
-                            <i className="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="mailto:sarvanubanerjee@gmail.com" style={{ color: 'var(--clr-blue-accent)' }}>
-                            <i className="fas fa-envelope"></i> Email
-                        </a>
-                    </div>
+    return (
+        <main className={styles.articleMain}>
+            {/* Header Section */}
+            <header className={styles.articleHeader}>
+                <div className={styles.articleHeaderInner}>
+                    <Link href="/blog" className={styles.backLink}>
+                        <i className="fas fa-arrow-left"></i> All Articles
+                    </Link>
+                    <span className={styles.articleCategory}>
+                        <i className="fas fa-folder" style={{ marginRight: '6px' }}></i>
+                        {post.category}
+                    </span>
+                    <h1 className={styles.articleTitle}>{post.title}</h1>
+                    <p className={styles.articleDescription}>{post.description}</p>
+                </div>
+            </header>
+
+            {/* Featured Image */}
+            <div className={styles.featuredImageWrapper}>
+                <div className={styles.featuredImageContainer}>
+                    <Image
+                        src={featuredImage}
+                        alt={post.title}
+                        width={1200}
+                        height={630}
+                        className={styles.featuredImg}
+                        priority
+                        sizes="(max-width: 768px) 100vw, 800px"
+                    />
                 </div>
             </div>
 
-            {/* BACK LINK */}
-            <div style={{ margin: '40px 0', textAlign: 'center' }}>
-                <Link href="/blog" style={{ fontWeight: '600', color: 'var(--clr-navy-mid)', textDecoration: 'none' }}>
-                    &larr; Back to Articles
-                </Link>
+            {/* Content Container */}
+            <div className={styles.articleContainer}>
+                <article
+                    className={styles.articleBody}
+                    dangerouslySetInnerHTML={{ __html: contentHTML }}
+                />
+
+                {/* AUTHOR BOX */}
+                <div className={styles.authorBox}>
+                    <Image src="/your-photo.jpeg" alt="Sarvanu Banerjee" className={styles.authorImg} width={80} height={80} />
+                    <div className={styles.authorInfo}>
+                        <h3>Sarvanu Banerjee</h3>
+                        <span className={styles.authorRole}>Business Transformation Strategist</span>
+                        <p>Helping founders scale their agencies and service businesses through systems, leadership mindset, and strategic growth. 150+ clients across 6+ countries.</p>
+                        <div className={styles.authorSocials}>
+                            <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer">
+                                <i className="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="mailto:sarvanubanerjee@gmail.com">
+                                <i className="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {/* BACK LINK */}
+                <div className={styles.bottomBackLink}>
+                    <Link href="/blog">
+                        &larr; Back to All Articles
+                    </Link>
+                </div>
             </div>
 
             <StickyCta />
@@ -89,7 +128,7 @@ export default async function BlogPost({ params }) {
                         "@type": "Article",
                         "headline": post.title,
                         "description": post.description,
-                        "image": "https://sarvanu.com/og-image.png",
+                        "image": featuredImage,
                         "datePublished": post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
                         "author": {
                             "@type": "Person",

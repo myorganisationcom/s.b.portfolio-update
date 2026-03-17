@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { blogPosts } from '@/data/blogPosts';
+import styles from './blog.module.css';
 
 export const metadata = {
     title: "Business Growth Blog | Sarvanu Banerjee Strategies",
@@ -31,24 +33,35 @@ export const metadata = {
 export default function BlogListing() {
     return (
         <>
-            <section className="blog-hero">
+            <section className={styles.blogHero}>
                 <h1>Insights & Articles</h1>
                 <p>Strategies, frameworks, and hard truths about scaling your business.</p>
             </section>
 
-            <div className="blog-container">
-                <div className="blog-grid">
+            <div className={styles.blogContainer}>
+                <div className={styles.blogGrid}>
                     {blogPosts.map((post) => (
-                        <article key={post.id} className="blog-card">
-                            <div className="blog-image">{post.icon}</div>
-                            <div className="blog-content">
-                                <div className="blog-meta">{post.category}</div>
-                                <h2>{post.title}</h2>
-                                <p>{post.description}</p>
-                                <Link href={`/blog/${post.slug}`} className="read-more">
-                                    Read Article →
-                                </Link>
-                            </div>
+                        <article key={post.id} className={styles.blogCard}>
+                            <Link href={`/blog/${post.slug}`} style={{textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%'}}>
+                                <div className={styles.imageContainer}>
+                                    <div className={styles.imageOverlay}></div>
+                                    <Image 
+                                        src={post.image} 
+                                        alt={post.title} 
+                                        fill 
+                                        className={styles.blogFeaturedImage} 
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
+                                    <div className={styles.categoryBadge}>{post.category}</div>
+                                </div>
+                                <div className={styles.blogContent}>
+                                    <h2>{post.title}</h2>
+                                    <p>{post.description}</p>
+                                    <span className={styles.readMore}>
+                                        Read Article &rarr;
+                                    </span>
+                                </div>
+                            </Link>
                         </article>
                     ))}
                 </div>
