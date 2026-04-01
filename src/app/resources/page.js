@@ -8,7 +8,7 @@ export default function Resources() {
         const name = formData.get('name');
         const email = formData.get('email');
 
-        const waNumber = "918240026380";
+        const waNumber = "918700541657";
         const waMessage = `*Free 90-Day Growth Roadmap Request*\n\n*Name:* ${name}\n*Email:* ${email}\n\nPlease send me the roadmap!`;
         const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
 

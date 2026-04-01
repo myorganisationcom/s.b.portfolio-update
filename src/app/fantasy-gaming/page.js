@@ -123,7 +123,7 @@ function ProductCard({ icon, title, tagline, description, features, image, index
                     ))}
                 </ul>
                 <a
-                    href={`https://wa.me/919876543210?text=Hi%2C%20I'm%20interested%20in%20${encodeURIComponent(title)}.%20Please%20share%20details.`}
+                    href={`https://wa.me/918700541657?text=Hi%2C%20I'm%20interested%20in%20${encodeURIComponent(title)}.%20Please%20share%20details.`}
                     className="fg-btn-outline" target="_blank" rel="noopener noreferrer"
                 >
                     Explore {title} <i className="fas fa-arrow-right"></i>
@@ -216,7 +216,7 @@ export default function FantasyGamingPage() {
                         </div>
 
                         <div className="fg-hero-actions">
-                            <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20build%20a%20Fantasy%20Gaming%20Platform.%20Let's%20discuss." className="fg-btn-primary fg-glow" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/918700541657?text=Hi%2C%20I%20want%20to%20build%20a%20Fantasy%20Gaming%20Platform.%20Let's%20discuss." className="fg-btn-primary fg-glow" target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-whatsapp" /> Book a Live Walkthrough
                             </a>
                             <a href="#products" className="fg-btn-secondary">
@@ -410,7 +410,7 @@ export default function FantasyGamingPage() {
                                             ))}
                                         </ul>
 
-                                        <a href={`https://wa.me/919876543210?text=Hi%2C%20I'm%20interested%20in%20a%20${encodeURIComponent(plan.title)}%20solution.%20Please%20share%20a%20custom%20quote.`} className="fg-game-card-btn" target="_blank" rel="noopener noreferrer">
+                                        <a href={`https://wa.me/918700541657?text=Hi%2C%20I'm%20interested%20in%20a%20${encodeURIComponent(plan.title)}%20solution.%20Please%20share%20a%20custom%20quote.`} className="fg-game-card-btn" target="_blank" rel="noopener noreferrer">
                                             <i className="fab fa-whatsapp" /> Get Custom Quote
                                         </a>
                                     </div>
@@ -432,7 +432,7 @@ export default function FantasyGamingPage() {
                             <br />We&apos;ll understand your vision and deliver a platform that turns it into revenue.
                         </p>
                         <div className="fg-cta-actions">
-                            <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20build%20a%20Fantasy%20Gaming%20Platform.%20Let's%20discuss." className="fg-btn-primary fg-glow fg-btn-lg" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/918700541657?text=Hi%2C%20I%20want%20to%20build%20a%20Fantasy%20Gaming%20Platform.%20Let's%20discuss." className="fg-btn-primary fg-glow fg-btn-lg" target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-whatsapp" /> Chat on WhatsApp
                             </a>
                             <a href="/book" className="fg-btn-secondary fg-btn-lg">

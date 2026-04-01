@@ -10,7 +10,7 @@ export default function BookACall() {
         const stage = formData.get('business_stage');
         const goals = formData.get('goals');
 
-        const waNumber = "918240026380";
+        const waNumber = "918700541657";
         const waMessage = `*New Strategy Call Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Business Stage:* ${stage}\n*Challenge:* ${goals}`;
         const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
 
@@ -83,7 +83,7 @@ export default function BookACall() {
 
                         <div className="book-direct-chat">
                             <p>Need a faster response? Reach out directly:</p>
-                            <a href="https://wa.me/918240026380" className="whatsapp-btn outline" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/918700541657" className="whatsapp-btn outline" target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-whatsapp"></i> Message on WhatsApp
                             </a>
                         </div>

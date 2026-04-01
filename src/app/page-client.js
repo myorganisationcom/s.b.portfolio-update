@@ -18,7 +18,7 @@ export default function Home() {
     const stage = formData.get('business_stage');
     const goals = formData.get('goals');
 
-    const waNumber = "918240026380";
+    const waNumber = "918700541657";
     const waMessage = `*New Strategy Call Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Business Stage:* ${stage}\n*Challenge:* ${goals}`;
     const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
 
@@ -670,7 +670,7 @@ export default function Home() {
                 <button type="submit" className="cta-btn">🚀 Request via WhatsApp</button>
               </form>
 
-              <a href="https://wa.me/918240026380" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/918700541657" className="whatsapp-btn" target="_blank" rel="noopener noreferrer">
                 💬 Chat on WhatsApp
               </a>
             </div>
@@ -688,7 +688,6 @@ export default function Home() {
             <div className="contact-card">
               <i className="fas fa-phone-alt"></i>
               <h3>Phone</h3>
-              <p><a href="tel:+919903513706">+91 99035 13706</a></p>
               <p><a href="tel:+918700541657">+91 87005 41657</a></p>
             </div>
 
@@ -701,7 +700,7 @@ export default function Home() {
             <div className="contact-card">
               <i className="fab fa-whatsapp"></i>
               <h3>WhatsApp</h3>
-              <p><a href="https://wa.me/918240026380" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
+              <p><a href="https://wa.me/918700541657" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></p>
             </div>
           </div>
         </div>

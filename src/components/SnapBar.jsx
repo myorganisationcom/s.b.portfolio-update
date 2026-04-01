@@ -7,8 +7,8 @@ export default function SnapBar() {
         <div className="snap-left">
           <span className="snap-badge">⚡ Available for Projects</span>
           <div className="snap-contact">
-            <a href="tel:+919903513706" className="snap-link">
-              <i className="fas fa-phone"></i> +91 99035 13706
+            <a href="tel:+918700541657" className="snap-link">
+              <i className="fas fa-phone"></i> +91 87005 41657
             </a>
             <span className="snap-divider">|</span>
             <a href="mailto:sarvanubanerjee10@gmail.com" className="snap-link">
