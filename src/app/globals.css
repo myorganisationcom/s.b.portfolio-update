@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "tailwindcss/utilities" layer(utilities);
 
 /* ==========================================================================
    Sarvanu Banerjee Strategies - Master Stylesheet
@@ -305,35 +305,7 @@ img {
 /* Snap Bar Mobile */
 @media (max-width: 768px) {
   .snap-bar {
-    padding: 12px 0;
-  }
-
-  .snap-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .snap-left {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .snap-contact {
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .snap-divider {
-    display: none;
-  }
-
-  .snap-badge {
-    font-size: 0.7rem;
-  }
-
-  .snap-link {
-    font-size: 0.8rem;
+    display: none !important;
   }
 }
 
@@ -5555,4 +5527,1961 @@ body.single-blog-page {
   color: var(--clr-gray-dark);
   margin-top: 15px;
   margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Fantasy Gaming Page - Premium Dynamic Design
+   ========================================================================== */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --fg-dark: #0a0e1a;
+  --fg-darker: #060912;
+  --fg-surface: #111827;
+  --fg-card: #1a1f35;
+  --fg-border: rgba(255, 255, 255, 0.08);
+  --fg-purple: #8b5cf6;
+  --fg-purple-glow: rgba(139, 92, 246, 0.4);
+  --fg-cyan: #06b6d4;
+  --fg-cyan-glow: rgba(6, 182, 212, 0.4);
+  --fg-green: #10b981;
+  --fg-amber: #f59e0b;
+  --fg-red: #ef4444;
+  --fg-pink: #ec4899;
+  --fg-gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+  --fg-gradient-hot: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --fg-gradient-cool: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  --fg-gradient-bg: linear-gradient(180deg, #0a0e1a 0%, #111827 40%, #0f172a 100%);
+  --fg-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Floating Particles ---------- */
+.fg-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.fg-particle {
+  position: absolute;
+  background: var(--fg-purple);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: fgParticleFloat 5s ease-in-out infinite;
+}
+
+.fg-particle:nth-child(even) {
+  background: var(--fg-cyan);
+}
+
+.fg-particle:nth-child(3n) {
+  background: var(--fg-amber);
+}
+
+@keyframes fgParticleFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+/* ---------- Gradient Text Utility ---------- */
+.fg-gradient-text {
+  background: var(--fg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---------- Section Container ---------- */
+.fg-section-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.fg-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.fg-section-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.fg-section-header p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.fg-section-tag {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: var(--fg-purple);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ================================================================
+   FANTASY HERO SECTION
+   ================================================================ */
+.fg-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--fg-dark);
+}
+
+.fg-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.fg-hero-bg img {
+  object-fit: cover;
+}
+
+.fg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 14, 26, 0.95) 0%,
+    rgba(10, 14, 26, 0.8) 40%,
+    rgba(10, 14, 26, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.fg-hero-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 140px 24px 80px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.fg-hero-content {
+  flex: 1;
+  max-width: 650px;
+}
+
+.fg-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #c4b5fd;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  animation: fgBadgePulse 3s ease-in-out infinite;
+}
+
+.fg-badge-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--fg-green);
+  border-radius: 50%;
+  display: inline-block;
+  animation: fgPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes fgPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+@keyframes fgBadgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 20px 5px rgba(139, 92, 246, 0.15); }
+}
+
+.fg-hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.fg-hero-desc {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+.fg-hero-desc strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Hero Stats Row */
+.fg-hero-stats-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.fg-hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 18px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 120px;
+  transition: all var(--fg-transition);
+}
+
+.fg-hero-stat:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-4px);
+}
+
+.fg-hero-stat-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--fg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.fg-hero-stat-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Hero Buttons */
+.fg-hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.fg-btn-primary {
+  background: var(--fg-gradient-primary);
+  color: #ffffff !important;
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all var(--fg-transition);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.fg-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--fg-transition);
+}
+
+.fg-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--fg-purple-glow);
+}
+
+.fg-btn-primary:hover::before {
+  opacity: 1;
+}
+
+.fg-btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  color: #c4b5fd !important;
+  padding: 16px 32px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all var(--fg-transition);
+  cursor: pointer;
+}
+
+.fg-btn-secondary:hover {
+  background: var(--fg-gradient-primary);
+  color: #ffffff !important;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--fg-purple-glow);
+}
+
+.fg-btn-lg {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+}
+
+.fg-glow {
+  box-shadow: 0 4px 20px var(--fg-purple-glow);
+}
+
+/* Mobile app mockup */
+.fg-hero-visual {
+  flex: 0 0 380px;
+}
+
+.fg-phone-mockup {
+  background: var(--fg-card);
+  border-radius: 32px;
+  padding: 12px;
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--fg-purple-glow);
+  animation: fgPhoneFloat 6s ease-in-out infinite;
+  position: relative;
+}
+
+.fg-phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+@keyframes fgPhoneFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.fg-phone-screen {
+  background: var(--fg-darker);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 24px 16px;
+}
+
+.fg-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--fg-border);
+}
+
+.fg-app-live {
+  color: var(--fg-green);
+  font-size: 0.8rem;
+  animation: fgPulse 1.5s ease-in-out infinite;
+}
+
+.fg-app-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 16px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.fg-app-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.fg-team-logo {
+  font-size: 2rem;
+}
+
+.fg-app-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.fg-app-score {
+  font-size: 1rem;
+  font-weight: 800;
+  background: var(--fg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fg-vs-text {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.fg-app-players {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.fg-app-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all var(--fg-transition);
+}
+
+.fg-app-player.selected {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #fff;
+}
+
+.fg-player-pts {
+  background: var(--fg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.fg-app-prize {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(239, 68, 68, 0.1));
+  border-radius: 14px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fg-prize-amount {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--fg-amber);
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+
+/* ================================================================
+   FANTASY LIVE TICKER
+   ================================================================ */
+.fg-ticker-wrap {
+  background: linear-gradient(90deg, var(--fg-darker), var(--fg-dark), var(--fg-darker));
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.fg-ticker-label {
+  background: var(--fg-purple);
+  color: #fff;
+  padding: 14px 24px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.fg-live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: fgPulse 1s ease-in-out infinite;
+}
+
+.fg-ticker-track {
+  overflow: hidden;
+  flex: 1;
+}
+
+.fg-ticker-content {
+  display: flex;
+  gap: 0;
+  animation: fgTickerScroll 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes fgTickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.fg-ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fg-ticker-status {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fg-status-live {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  animation: fgPulse 2s ease-in-out infinite;
+}
+
+.fg-status-upcoming {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--fg-cyan);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.fg-status-mega {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.15));
+  color: var(--fg-amber);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  animation: fgPulse 1.5s ease-in-out infinite;
+}
+
+.fg-ticker-teams {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.fg-ticker-sport {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+.fg-ticker-prize {
+  color: var(--fg-amber);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+
+/* ================================================================
+   FANTASY GAMES SECTION
+   ================================================================ */
+.fg-games-section {
+  background: var(--fg-gradient-bg);
+  padding: 100px 0;
+  position: relative;
+}
+
+.fg-games-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Filter Tabs */
+.fg-games-filter {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.fg-filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--fg-transition);
+  font-family: var(--font-primary);
+}
+
+.fg-filter-btn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #c4b5fd;
+}
+
+.fg-filter-btn.active {
+  background: var(--fg-gradient-primary);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 20px var(--fg-purple-glow);
+}
+
+/* Games Grid */
+.fg-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.fg-game-card {
+  background: var(--fg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--fg-border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.fg-game-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: var(--card-gradient, var(--fg-gradient-primary));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--fg-transition);
+  pointer-events: none;
+}
+
+.fg-game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.fg-game-card:hover::before {
+  opacity: 1;
+}
+
+.fg-game-card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.fg-game-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.fg-game-card:hover .fg-game-card-image img {
+  transform: scale(1.08);
+}
+
+.fg-game-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, var(--fg-card) 100%);
+}
+
+.fg-game-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fg-game-card-body {
+  padding: 24px;
+}
+
+.fg-game-card-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.fg-game-card-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.fg-game-stat {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fg-stat-value {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  background: var(--fg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fg-stat-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+.fg-game-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: var(--fg-gradient-primary);
+  color: #fff !important;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all var(--fg-transition);
+}
+
+.fg-game-card-btn:hover {
+  box-shadow: 0 4px 20px var(--fg-purple-glow);
+  transform: translateY(-2px);
+}
+
+
+/* ================================================================
+   FANTASY HOW TO PLAY
+   ================================================================ */
+.fg-how-section {
+  background: var(--fg-darker);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fg-how-section::before {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.fg-steps-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.fg-step-card {
+  background: var(--fg-card);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  border: 1px solid var(--fg-border);
+  max-width: 300px;
+  transition: all var(--fg-transition);
+  position: relative;
+}
+
+.fg-step-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.fg-step-number {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--fg-gradient-primary);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 15px var(--fg-purple-glow);
+}
+
+.fg-step-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.fg-step-card h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.fg-step-card p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.fg-step-arrow {
+  color: rgba(139, 92, 246, 0.4);
+  font-size: 1.5rem;
+  padding: 0 8px;
+  animation: fgArrowBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes fgArrowBounce {
+  0%, 100% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(8px); opacity: 1; }
+}
+
+
+/* ================================================================
+   FANTASY FEATURES SECTION
+   ================================================================ */
+.fg-features-section {
+  background: var(--fg-gradient-bg);
+  padding: 100px 0;
+  position: relative;
+}
+
+.fg-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.fg-feature-item {
+  background: var(--fg-card);
+  border-radius: 18px;
+  padding: 36px 28px;
+  border: 1px solid var(--fg-border);
+  transition: all var(--fg-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.fg-feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--fg-gradient-primary);
+  opacity: 0;
+  transition: opacity var(--fg-transition);
+}
+
+.fg-feature-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.fg-feature-item:hover::before {
+  opacity: 1;
+}
+
+.fg-feature-icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: rgba(139, 92, 246, 0.12);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  transition: all 0.3s ease;
+}
+
+.fg-feature-item:hover .fg-feature-icon-wrap {
+  background: var(--fg-gradient-primary);
+  border-color: transparent;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px var(--fg-purple-glow);
+}
+
+.fg-feature-icon {
+  font-size: 1.3rem;
+  color: var(--fg-purple);
+  transition: color 0.3s ease;
+}
+
+.fg-feature-item:hover .fg-feature-icon {
+  color: #ffffff;
+}
+
+.fg-feature-item h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.fg-feature-item p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+
+/* ================================================================
+   FANTASY LEADERBOARD SECTION
+   ================================================================ */
+.fg-leaderboard-section {
+  background: var(--fg-darker);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fg-leaderboard-section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.fg-leaderboard-layout {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.fg-leaderboard-info {
+  flex: 1;
+}
+
+.fg-leaderboard-info h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.fg-leaderboard-info p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.fg-lb-total-prize {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.05));
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 16px;
+  padding: 24px 28px;
+  display: inline-block;
+}
+
+.fg-lb-total-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.fg-lb-total-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: var(--fg-gradient-hot);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fg-leaderboard-table {
+  flex: 1;
+  max-width: 550px;
+}
+
+.fg-leaderboard {
+  background: var(--fg-card);
+  border-radius: 20px;
+  border: 1px solid var(--fg-border);
+  overflow: hidden;
+}
+
+.fg-leaderboard-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 100px;
+  padding: 16px 20px;
+  background: rgba(139, 92, 246, 0.1);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fg-lb-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 100px;
+  padding: 14px 20px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all var(--fg-transition);
+}
+
+.fg-lb-row:hover {
+  background: rgba(139, 92, 246, 0.08);
+}
+
+.fg-lb-top .fg-lb-player {
+  color: var(--fg-amber);
+  font-weight: 700;
+}
+
+.fg-rank-badge {
+  font-size: 1.3rem;
+}
+
+.fg-lb-player {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fg-lb-wins {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.fg-lb-earnings {
+  color: var(--fg-green);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+
+/* ================================================================
+   FANTASY TESTIMONIALS SECTION
+   ================================================================ */
+.fg-testimonials-section {
+  background: var(--fg-gradient-bg);
+  padding: 100px 0;
+}
+
+.fg-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.fg-testimonial-card {
+  background: var(--fg-card);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid var(--fg-border);
+  transition: all var(--fg-transition);
+}
+
+.fg-testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.fg-testimonial-stars {
+  color: var(--fg-amber);
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.fg-testimonial-quote {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.fg-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fg-testimonial-avatar {
+  font-size: 1.1rem;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.1));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-purple);
+}
+
+.fg-testimonial-author strong {
+  display: block;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.fg-testimonial-author span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+
+/* ================================================================
+   FANTASY CTA SECTION
+   ================================================================ */
+.fg-cta-section {
+  background: linear-gradient(180deg, var(--fg-dark) 0%, #0f0525 50%, var(--fg-dark) 100%);
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.fg-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.fg-cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fg-cta-content h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.fg-cta-content p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.fg-cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.fg-cta-trust {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.fg-cta-trust span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* ================================================================
+   FANTASY RESPONSIVE DESIGN
+   ================================================================ */
+@media (max-width: 900px) {
+  .fg-hero-container {
+    flex-direction: column;
+    padding: 120px 20px 60px;
+    gap: 40px;
+  }
+
+  .fg-hero-visual {
+    flex: none;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .fg-hero-stats-row {
+    gap: 12px;
+  }
+
+  .fg-hero-stat {
+    min-width: 90px;
+    padding: 14px 18px;
+  }
+
+  .fg-hero-stat-num {
+    font-size: 1.4rem;
+  }
+
+  .fg-leaderboard-layout {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .fg-leaderboard-table {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .fg-steps-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fg-step-arrow {
+    transform: rotate(90deg);
+    padding: 4px 0;
+  }
+
+  .fg-step-card {
+    max-width: 100%;
+  }
+
+  .fg-games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fg-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .fg-hero h1 {
+    font-size: 2rem;
+  }
+
+  .fg-hero-actions {
+    flex-direction: column;
+  }
+
+  .fg-btn-primary,
+  .fg-btn-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .fg-hero-stats-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .fg-hero-stat {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .fg-phone-mockup {
+    margin: 0 auto;
+  }
+
+  .fg-ticker-label {
+    display: none;
+  }
+
+  .fg-section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .fg-leaderboard-header,
+  .fg-lb-row {
+    grid-template-columns: 50px 1fr 60px 80px;
+    font-size: 0.75rem;
+    padding: 12px 14px;
+  }
+
+  .fg-cta-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .fg-cta-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fg-testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ================================================================
+   FANTASY SPORTS MARQUEE STRIP
+   ================================================================ */
+.fg-marquee-strip {
+  background: linear-gradient(90deg, var(--fg-purple), var(--fg-cyan), var(--fg-purple));
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.fg-marquee-track {
+  display: flex;
+  gap: 0;
+  animation: fgMarqueeScroll 25s linear infinite;
+  width: max-content;
+}
+
+@keyframes fgMarqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.fg-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 32px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+
+.fg-marquee-dot {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+
+/* ================================================================
+   FANTASY PRODUCT ROWS (Altenar-style alternating layout)
+   ================================================================ */
+.fg-products-section {
+  background: var(--fg-gradient-bg);
+  padding: 100px 0;
+}
+
+.fg-product-row {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.fg-product-row:last-child {
+  margin-bottom: 0;
+}
+
+.fg-product-row[data-even="false"] {
+  flex-direction: row-reverse;
+}
+
+.fg-product-visual {
+  flex: 1;
+  min-width: 0;
+}
+
+.fg-product-image-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.fg-product-image-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+  pointer-events: none;
+}
+
+.fg-product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.fg-product-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--fg-purple);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.fg-product-row:hover .fg-product-icon-badge {
+  background: var(--fg-gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px var(--fg-purple-glow);
+}
+
+.fg-section-tag i {
+  margin-right: 6px;
+}
+
+.fg-check {
+  color: var(--fg-green) !important;
+  font-size: 0.8rem !important;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.fg-product-tagline {
+  display: inline-block;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: #c4b5fd;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.fg-product-info h3 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: #ffffff;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.fg-product-info p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.fg-product-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+
+.fg-product-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.fg-check {
+  color: var(--fg-green);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fg-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  color: #c4b5fd;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.fg-btn-outline:hover {
+  background: var(--fg-gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--fg-purple-glow);
+}
+
+
+/* ================================================================
+   FANTASY TIMELINE (Process Steps)
+   ================================================================ */
+.fg-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.fg-timeline::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--fg-purple), var(--fg-cyan), var(--fg-purple));
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.fg-timeline-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fg-timeline-num {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--fg-gradient-primary);
+  color: #fff;
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px var(--fg-purple-glow);
+  position: relative;
+  z-index: 2;
+}
+
+.fg-timeline-connector {
+  display: none;
+}
+
+.fg-timeline-card {
+  background: var(--fg-card);
+  border: 1px solid var(--fg-border);
+  border-radius: 18px;
+  padding: 28px 22px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.fg-timeline-card:hover {
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.fg-timeline-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--fg-purple);
+  margin: 0 auto 14px;
+  transition: all 0.3s ease;
+}
+
+.fg-timeline-card:hover .fg-timeline-icon {
+  background: var(--fg-gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  transform: scale(1.1);
+}
+
+.fg-timeline-card h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.fg-timeline-card p {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+
+/* ================================================================
+   FANTASY STATS BANNER
+   ================================================================ */
+.fg-stats-banner {
+  background: linear-gradient(135deg, #0f0525 0%, #1a0a3e 50%, #0f0525 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fg-stats-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.fg-stat-block {
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+
+.fg-stat-num {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  background: var(--fg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.fg-stat-lbl {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+
+/* ================================================================
+   FANTASY PRICING CARDS EXTRAS
+   ================================================================ */
+.fg-card-featured {
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.1);
+}
+
+.fg-card-featured-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  border-radius: 20px 20px 0 0;
+  z-index: 2;
+}
+
+.fg-popular-badge {
+  display: inline-block;
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #06b6d4;
+  padding: 5px 16px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.fg-plan-name {
+  color: #fff !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px !important;
+  text-align: center;
+}
+
+.fg-plan-price {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.fg-plan-subtitle {
+  color: rgba(255, 255, 255, 0.45) !important;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.fg-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+
+.fg-plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+/* ================================================================
+   FANTASY RESPONSIVE: NEW COMPONENTS
+   ================================================================ */
+@media (max-width: 1024px) {
+  .fg-product-row,
+  .fg-product-row[data-even="false"] {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .fg-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .fg-timeline::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero Section */
+  .fg-hero {
+    padding: 100px 0 60px;
+    min-height: auto;
+  }
+  
+  .fg-hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .fg-hero-content {
+    align-items: center;
+  }
+
+  .fg-hero-content h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .fg-hero-desc {
+    font-size: 0.95rem;
+    padding: 0 10px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  /* Hero Stats */
+  .fg-hero-stats-row {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .fg-hero-stat {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .fg-hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .fg-hero-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Phone Mockup */
+  .fg-phone-mockup {
+    transform: scale(0.85);
+    transform-origin: top center;
+    margin: 0 auto;
+  }
+
+  /* Structural Padding */
+  .fg-products-section,
+  .fg-how-section,
+  .fg-features-section,
+  .fg-stats-banner,
+  .fg-testimonials-section,
+  .fg-games-section,
+  .fg-cta-section {
+    padding: 60px 0;
+  }
+
+  /* Grid Adjustments */
+  .fg-timeline,
+  .fg-features-grid,
+  .fg-games-grid,
+  .fg-testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Stats Block */
+  .fg-stats-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* CTA Block */
+  .fg-cta-actions {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .fg-cta-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .fg-cta-trust {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .fg-marquee-item {
+    padding: 0 20px;
+    font-size: 0.75rem;
+  }
 }
