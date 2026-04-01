@@ -62,26 +62,45 @@ export default function Header() {
                         <Link href="/#services" onClick={closeMenu}>Services</Link>
                     </li>
                     <li>
+                        <Link href="/fantasy-gaming" onClick={closeMenu} className={isCurrent('/fantasy-gaming') ? 'active' : ''}>Gaming Platform</Link>
+                    </li>
+                    <li>
                         <Link href="/saas" onClick={closeMenu} className={isCurrent('/saas') ? 'active' : ''}>SaaS & AI</Link>
                     </li>
                     <li>
                         <Link href="/ai-agent-service" onClick={closeMenu} className={isCurrent('/ai-agent-service') ? 'active' : ''}>AI Agents</Link>
                     </li>
-                    <li>
-                        <Link href="/case-studies" onClick={closeMenu} className={isCurrent('/case-studies') ? 'active' : ''}>Case Studies</Link>
+                    
+                    {/* Dropdown Menu */}
+                    <li className="nav-dropdown" onClick={(e) => {
+                        // Toggle dropdown on mobile only via CSS logic with class toggle
+                        // Let's use a simple inline state or just hover for desktop, tap for mobile.
+                        if (window.innerWidth <= 900) {
+                            e.currentTarget.classList.toggle('mobile-open');
+                        }
+                    }}>
+                        <div className="nav-dropdown-btn">
+                            Company <i className="fas fa-chevron-down" style={{fontSize: '0.8rem', marginLeft: '4px'}}></i>
+                        </div>
+                        <ul className="nav-dropdown-menu">
+                            <li>
+                                <Link href="/case-studies" onClick={closeMenu} className={isCurrent('/case-studies') ? 'active' : ''}>Case Studies</Link>
+                            </li>
+                            <li>
+                                <Link href="/blog" onClick={closeMenu} className={isCurrent('/blog') ? 'active' : ''}>Blog</Link>
+                            </li>
+                            <li>
+                                <Link href="/press" onClick={closeMenu} className={isCurrent('/press') ? 'active' : ''}>Press</Link>
+                            </li>
+                            <li>
+                                <Link href="/resources" onClick={closeMenu} className={isCurrent('/resources') ? 'active' : ''}>Resources</Link>
+                            </li>
+                            <li>
+                                <Link href="/faq" onClick={closeMenu} className={isCurrent('/faq') ? 'active' : ''}>FAQ</Link>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <Link href="/blog" onClick={closeMenu} className={isCurrent('/blog') ? 'active' : ''}>Blog</Link>
-                    </li>
-                    <li>
-                        <Link href="/press" onClick={closeMenu} className={isCurrent('/press') ? 'active' : ''}>Press</Link>
-                    </li>
-                    <li>
-                        <Link href="/resources" onClick={closeMenu} className={isCurrent('/resources') ? 'active' : ''}>Resources</Link>
-                    </li>
-                    <li>
-                        <Link href="/faq" onClick={closeMenu} className={isCurrent('/faq') ? 'active' : ''}>FAQ</Link>
-                    </li>
+
                     <li>
                         <Link href="/book" onClick={closeMenu} className="cta-btn glow-btn">
                             <i className="fas fa-calendar-alt"></i> Book a Call
