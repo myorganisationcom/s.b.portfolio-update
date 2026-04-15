@@ -5,6 +5,7 @@ import SnapBar from "@/components/SnapBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import OrganizationSchema from "@/components/OrganizationSchema";
 import Script from "next/script";
 
 const poppins = Poppins({
@@ -16,24 +17,24 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL("https://sarvanu.com"),
   title: {
-    default: "Sarvanu Banerjee Strategies | Business Growth Consultant",
-    template: "%s | Sarvanu Banerjee Strategies",
+    default: "Sarvanu Strategies | Business Growth Consultant",
+    template: "%s | Sarvanu Strategies",
   },
   description:
-    "Sarvanu Banerjee Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
+    "Sarvanu Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
   keywords:
-    "business consultant India, startup growth consultant, MSME consulting, Sarvanu Banerjee, business strategy",
+    "business consultant India, startup growth consultant, MSME consulting, Sarvanu, business strategy",
   openGraph: {
-    title: "Sarvanu Banerjee Strategies | Business Growth Consultant",
-    description: "Sarvanu Banerjee Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    title: "Sarvanu Strategies | Business Growth Consultant",
+    description: "Sarvanu Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
     url: "https://sarvanu.com",
-    siteName: "Sarvanu Banerjee Strategies",
+    siteName: "Sarvanu Strategies",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Sarvanu Banerjee Strategies",
+        alt: "Sarvanu Strategies",
       },
     ],
     locale: "en_IN",
@@ -41,8 +42,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sarvanu Banerjee Strategies | Business Growth Consultant",
-    description: "Sarvanu Banerjee Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    title: "Sarvanu Strategies | Business Growth Consultant",
+    description: "Sarvanu Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={poppins.className}>
+        <OrganizationSchema />
         <SnapBar />
         <Header />
         <main>{children}</main>

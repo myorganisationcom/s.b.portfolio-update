@@ -261,7 +261,7 @@ export default function AiAgentService() {
                         "description": "Build, deploy, and self-host custom AI agents to automate workflows with complete data sovereignty.",
                         "provider": {
                             "@type": "Organization",
-                            "name": "Sarvanu Banerjee Strategies",
+                            "name": "Sarvanu Strategies",
                             "url": "https://sarvanu.com"
                         },
                         "serviceType": "AI Operations & Development",

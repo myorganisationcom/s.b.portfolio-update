@@ -18,14 +18,14 @@ export async function generateMetadata({ params }) {
 
     if (!post) {
         return {
-            title: 'Post Not Found | Sarvanu Banerjee Strategies',
+            title: 'Post Not Found | Sarvanu Strategies',
         };
     }
 
     return {
-        title: `${post.title} | Sarvanu Banerjee Strategies`,
+        title: `${post.title} | Sarvanu Strategies`,
         description: post.description,
-        keywords: `business consulting, sarvanu banerjee, ${post.category.toLowerCase()}`,
+        keywords: `business consulting, sarvanu, ${post.category.toLowerCase()}`,
         alternates: {
             canonical: `https://sarvanu.com/blog/${post.slug}`,
         },
@@ -93,16 +93,16 @@ export default async function BlogPost({ params }) {
 
                 {/* AUTHOR BOX */}
                 <div className={styles.authorBox}>
-                    <Image src="/your-photo.jpeg" alt="Sarvanu Banerjee" className={styles.authorImg} width={80} height={80} />
+                    <Image src="/your-photo.jpeg" alt="Sarvanu" className={styles.authorImg} width={80} height={80} />
                     <div className={styles.authorInfo}>
-                        <h3>Sarvanu Banerjee</h3>
+                        <h3>Sarvanu</h3>
                         <span className={styles.authorRole}>Business Transformation Strategist</span>
                         <p>Helping founders scale their agencies and service businesses through systems, leadership mindset, and strategic growth. 150+ clients across 6+ countries.</p>
                         <div className={styles.authorSocials}>
                             <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-linkedin"></i> LinkedIn
                             </a>
-                            <a href="mailto:sarvanubanerjee@gmail.com">
+                            <a href="mailto:sarvanu@gmail.com">
                                 <i className="fas fa-envelope"></i> Email
                             </a>
                         </div>
@@ -132,12 +132,12 @@ export default async function BlogPost({ params }) {
                         "datePublished": post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
                         "author": {
                             "@type": "Person",
-                            "name": "Sarvanu Banerjee",
+                            "name": "Sarvanu",
                             "url": "https://sarvanu.com"
                         },
                         "publisher": {
                             "@type": "Organization",
-                            "name": "Sarvanu Banerjee Strategies",
+                            "name": "Sarvanu Strategies",
                             "url": "https://sarvanu.com",
                             "logo": {
                                 "@type": "ImageObject",

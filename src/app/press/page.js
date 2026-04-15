@@ -1,19 +1,19 @@
 export const metadata = {
-    title: 'Press & Media | Sarvanu Banerjee Strategies',
-    description: "Media mentions, press releases, and featured articles regarding Sarvanu Banerjee's business growth strategies and consulting.",
+    title: 'Press & Media | Sarvanu Strategies',
+    description: "Media mentions, press releases, and featured articles regarding Sarvanu's business growth strategies and consulting.",
     robots: {
         index: true,
         follow: true
     },
     openGraph: {
-        title: 'Press & Media | Sarvanu Banerjee Strategies',
-        description: "Media mentions, press releases, and featured articles regarding Sarvanu Banerjee's business growth strategies and consulting.",
+        title: 'Press & Media | Sarvanu Strategies',
+        description: "Media mentions, press releases, and featured articles regarding Sarvanu's business growth strategies and consulting.",
         url: "https://sarvanu.com/press",
         images: ["/og-image.png"],
     },
     twitter: {
-        title: 'Press & Media | Sarvanu Banerjee Strategies',
-        description: "Media mentions, press releases, and featured articles regarding Sarvanu Banerjee's business growth strategies.",
+        title: 'Press & Media | Sarvanu Strategies',
+        description: "Media mentions, press releases, and featured articles regarding Sarvanu's business growth strategies.",
         images: ["/og-image.png"],
     },
     alternates: {
@@ -24,7 +24,7 @@ export const metadata = {
 export default function Press() {
     return (
         <main style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 80px', fontFamily: 'sans-serif' }}>
-            <h1>About Sarvanu Banerjee</h1>
+            <h1>About Sarvanu</h1>
 
             <h2 style={{ marginTop: '30px' }}>Key Facts</h2>
 
@@ -32,7 +32,7 @@ export default function Press() {
                 <tbody>
                     <tr style={{ borderBottom: '1px solid #ddd' }}>
                         <th style={{ textAlign: 'left', padding: '10px' }}>Name</th>
-                        <td style={{ padding: '10px' }}>Sarvanu Banerjee</td>
+                        <td style={{ padding: '10px' }}>Sarvanu</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid #ddd' }}>
                         <th style={{ textAlign: 'left', padding: '10px' }}>Profession</th>
@@ -68,17 +68,17 @@ export default function Press() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Person",
-                        "name": "Sarvanu Banerjee",
+                        "name": "Sarvanu",
                         "url": "https://sarvanu.com",
                         "jobTitle": "Business Management & Operations Consultant",
                         "sameAs": [
-                            "https://www.linkedin.com/in/sarvanu-banerjee",
-                            "https://www.instagram.com/sarvanu_banerjee/",
-                            "https://www.facebook.com/sarvanu.banerjee"
+                            "https://www.linkedin.com/in/sarvanu",
+                            "https://www.instagram.com/sarvanu/",
+                            "https://www.facebook.com/sarvanu"
                         ],
                         "worksFor": {
                             "@type": "Organization",
-                            "name": "Sarvanu Consulting",
+                            "name": "Business Growth Blog | Sarvanu Strategies",
                             "url": "https://sarvanu.com",
                             "location": {
                                 "@type": "Place",

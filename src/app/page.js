@@ -12,7 +12,7 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Sarvanu Banerjee Strategies",
+        alt: "Sarvanu Strategies",
       },
     ],
   },

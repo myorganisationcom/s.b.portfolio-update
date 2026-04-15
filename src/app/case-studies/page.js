@@ -1,17 +1,17 @@
 import Image from 'next/image';
 
 export const metadata = {
-    title: "Client Case Studies & Results | Sarvanu Banerjee Strategies",
-    description: "See how we've helped founders, startups, and MSMEs double their revenue and scale operations through proven execution strategies.",
+    title: "Client Case Studies & Results | Sarvanu Strategies",
+    description: "Real results from real businesses. See how Sarvanu helped founders, startups, and MSMEs achieve growth.",
     openGraph: {
-        title: "Client Case Studies & Results | Sarvanu Banerjee Strategies",
-        description: "See how we've helped founders, startups, and MSMEs double their revenue and scale operations through proven execution strategies.",
+        title: "Client Case Studies & Results | Sarvanu Strategies",
+        description: "Real results from real businesses. See how Sarvanu helped founders, startups, and MSMEs achieve growth.",
         url: "https://sarvanu.com/case-studies",
         images: ["/og-image.png"],
     },
     twitter: {
-        title: "Client Case Studies & Results | Sarvanu Banerjee Strategies",
-        description: "See how we've helped founders, startups, and MSMEs double their revenue and scale operations.",
+        title: "Client Case Studies & Results | Sarvanu Strategies",
+        description: "Real results from real businesses. See how Sarvanu helped founders, startups, and MSMEs achieve growth.",
         images: ["/og-image.png"],
     },
     alternates: {
@@ -186,8 +186,8 @@ export default function CaseStudies() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "WebPage",
-                        "name": "Case Studies | Sarvanu Banerjee Strategies",
-                        "description": "Real results from real businesses. See how Sarvanu Banerjee helped founders, startups, and MSMEs achieve growth.",
+                        "name": "Case Studies | Sarvanu Strategies",
+                        "description": "Real results from real businesses. See how Sarvanu helped founders, startups, and MSMEs achieve growth.",
                         "url": "https://sarvanu.com/case-studies"
                     })
                 }}

@@ -152,7 +152,7 @@ export default function BookACall() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "ContactPage",
-                        "name": "Book a Strategy Call | Sarvanu Banerjee",
+                        "name": "Book a Strategy Call | Sarvanu",
                         "description": "Book a complimentary 10-15 minute strategy growth call.",
                         "url": "https://sarvanu.com/book"
                     })

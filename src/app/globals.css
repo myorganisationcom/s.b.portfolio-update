@@ -1,7 +1,7 @@
 @import "tailwindcss/utilities" layer(utilities);
 
 /* ==========================================================================
-   Sarvanu Banerjee Strategies - Master Stylesheet
+   Sarvanu Strategies - Master Stylesheet
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -496,7 +496,7 @@ a.cta-btn:hover {
   transform: translateY(10px);
   transition: all 0.3s ease;
   z-index: 1000;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   list-style: none;
 }
 
@@ -990,7 +990,8 @@ a.cta-btn:hover {
    Why Work With Me Section (Premium Dark 2x2 Layout)
    -------------------------------------------------------------------------- */
 .why-choose-me-section {
-  padding: 80px 15px; /* Reduced vertical & horizontal padding to give more space */
+  padding: 80px 15px;
+  /* Reduced vertical & horizontal padding to give more space */
   background: var(--clr-navy-dark);
   position: relative;
   overflow: hidden;
@@ -998,7 +999,8 @@ a.cta-btn:hover {
 }
 
 .why-choose-me-container {
-  max-width: 1400px; /* Allows the section to grow much wider */
+  max-width: 1400px;
+  /* Allows the section to grow much wider */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1042,15 +1044,18 @@ a.cta-btn:hover {
 .features-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px; /* Reduced gap from 30px for wider boxes */
-  max-width: 1400px; /* Increased dramatically from 1100px */
+  gap: 20px;
+  /* Reduced gap from 30px for wider boxes */
+  max-width: 1400px;
+  /* Increased dramatically from 1100px */
   width: 100%;
   margin: 0 auto;
 }
 
 .feature-card {
-  background: var(--clr-white); 
-  padding: 35px 30px; /* Reduced internal padding to allow more content width */
+  background: var(--clr-white);
+  padding: 35px 30px;
+  /* Reduced internal padding to allow more content width */
   border-radius: 20px;
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -1065,7 +1070,8 @@ a.cta-btn:hover {
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-  background: #f8fafc; /* Very light slate/grey background as requested */
+  background: #f8fafc;
+  /* Very light slate/grey background as requested */
   border-color: rgba(0, 0, 0, 0.06);
 }
 
@@ -1200,18 +1206,20 @@ a.cta-btn:hover {
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); /* Soft elegant shadow */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  /* Soft elegant shadow */
   z-index: 1;
 }
 
 .pricing-card {
-  border-top: 4px solid transparent; /* To match top accent */
+  border-top: 4px solid transparent;
+  /* To match top accent */
 }
 
 /* Subtle top borders for standard cards */
 .pricing-card:nth-child(1),
-.pricing-card:nth-child(3) { 
-  border-top-color: rgba(0, 0, 0, 0.05); 
+.pricing-card:nth-child(3) {
+  border-top-color: rgba(0, 0, 0, 0.05);
 }
 
 .pricing-card:hover {
@@ -1224,7 +1232,8 @@ a.cta-btn:hover {
 .pricing-card.featured {
   border: 1px solid rgba(245, 197, 24, 0.3);
   border-top: 4px solid var(--clr-gold);
-  transform: scale(1.04); /* Pop out naturally */
+  transform: scale(1.04);
+  /* Pop out naturally */
   box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.08);
   z-index: 2;
   background: #ffffff;
@@ -1348,7 +1357,7 @@ a.cta-btn:hover {
   width: 100%;
   padding: 16px;
   background: var(--clr-offwhite);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   color: var(--clr-navy-dark);
   text-align: center;
   border-radius: 12px;
@@ -1385,7 +1394,7 @@ a.cta-btn:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
-  
+
   .pricing-card {
     padding: 40px 25px;
   }
@@ -1402,18 +1411,19 @@ a.cta-btn:hover {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .pricing-card.featured {
     transform: scale(1);
     padding: 40px 25px;
   }
-  
+
   .pricing-card.featured:hover {
     transform: translateY(-8px);
   }
 }
 
 @media (max-width: 480px) {
+
   .pricing-card,
   .pricing-card.featured {
     padding: 40px 25px;
@@ -5664,10 +5674,13 @@ body.single-blog-page {
 }
 
 @keyframes fgParticleFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) scale(1);
     opacity: 0.3;
   }
+
   50% {
     transform: translateY(-30px) scale(1.5);
     opacity: 0.6;
@@ -5748,12 +5761,10 @@ body.single-blog-page {
 .fg-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 14, 26, 0.95) 0%,
-    rgba(10, 14, 26, 0.8) 40%,
-    rgba(10, 14, 26, 0.6) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(10, 14, 26, 0.95) 0%,
+      rgba(10, 14, 26, 0.8) 40%,
+      rgba(10, 14, 26, 0.6) 100%);
   z-index: 1;
 }
 
@@ -5798,13 +5809,29 @@ body.single-blog-page {
 }
 
 @keyframes fgPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.5); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.5);
+  }
 }
 
 @keyframes fgBadgePulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3); }
-  50% { box-shadow: 0 0 20px 5px rgba(139, 92, 246, 0.15); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px 5px rgba(139, 92, 246, 0.15);
+  }
 }
 
 .fg-hero h1 {
@@ -5905,7 +5932,7 @@ body.single-blog-page {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
   opacity: 0;
   transition: opacity var(--fg-transition);
 }
@@ -5981,8 +6008,15 @@ body.single-blog-page {
 }
 
 @keyframes fgPhoneFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 .fg-phone-screen {
@@ -6163,8 +6197,13 @@ body.single-blog-page {
 }
 
 @keyframes fgTickerScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .fg-ticker-item {
@@ -6517,8 +6556,17 @@ body.single-blog-page {
 }
 
 @keyframes fgArrowBounce {
-  0%, 100% { transform: translateX(0); opacity: 0.4; }
-  50% { transform: translateX(8px); opacity: 1; }
+
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateX(8px);
+    opacity: 1;
+  }
 }
 
 
@@ -7035,8 +7083,13 @@ body.single-blog-page {
 }
 
 @keyframes fgMarqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .fg-marquee-item {
@@ -7055,7 +7108,7 @@ body.single-blog-page {
 .fg-marquee-dot {
   width: 6px;
   height: 6px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -7444,6 +7497,7 @@ body.single-blog-page {
    FANTASY RESPONSIVE: NEW COMPONENTS
    ================================================================ */
 @media (max-width: 1024px) {
+
   .fg-product-row,
   .fg-product-row[data-even="false"] {
     flex-direction: column;
@@ -7461,12 +7515,13 @@ body.single-blog-page {
 }
 
 @media (max-width: 768px) {
+
   /* Hero Section */
   .fg-hero {
     padding: 100px 0 60px;
     min-height: auto;
   }
-  
+
   .fg-hero-container {
     flex-direction: column;
     text-align: center;
@@ -7552,7 +7607,7 @@ body.single-blog-page {
     gap: 16px;
     width: 100%;
   }
-  
+
   .fg-cta-actions a {
     width: 100%;
     justify-content: center;

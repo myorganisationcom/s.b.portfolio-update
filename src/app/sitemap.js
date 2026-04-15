@@ -9,7 +9,6 @@ export default function sitemap() {
         '',           // Homepage
         '/ai-agent-service',
         '/saas',
-        '/fantasy-gaming',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),

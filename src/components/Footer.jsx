@@ -7,7 +7,7 @@ export default function Footer() {
                 {/* Column 1: Brand & Authority */}
                 <div className="footer-brand">
                     <Link href="/" className="footer-logo">
-                        <h3>Sarvanu Banerjee <span>Strategies</span></h3>
+                        <h3>Sarvanu <span>Strategies</span></h3>
                     </Link>
                     <p className="footer-mission">
                         Empowering founders, entrepreneurs, and MSMEs with clarity, systems, and strategic growth. Stop grinding, start scaling.
@@ -67,7 +67,7 @@ export default function Footer() {
                 <div className="footer-col footer-social">
                     <h4>Connect</h4>
                     <p className="footer-email">
-                        <i className="fas fa-envelope"></i> sarvanubanerjee10@gmail.com
+                        <i className="fas fa-envelope"></i> sarvanu10@gmail.com
                     </p>
                     <div className="social-icons">
                         <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -91,7 +91,7 @@ export default function Footer() {
 
             <div className="footer-bottom">
                 <div className="footer-bottom-content">
-                    <p>&copy; {new Date().getFullYear()} Sarvanu Banerjee Strategies. All Rights Reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Sarvanu Strategies. All Rights Reserved.</p>
                     <div className="footer-legal">
                         <Link href="/privacy-policy">Privacy Policy</Link>
                         <span className="separator">|</span>

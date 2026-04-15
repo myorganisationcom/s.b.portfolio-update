@@ -70,13 +70,13 @@ export default function Home() {
       <section id="about" className="about-section">
         <div className="container about-container">
           <FadeIn direction="left" className="about-image">
-            <Image src="/your-photo.jpeg" alt="Sarvanu Banerjee" width={400} height={400} className="about-photo" />
+            <Image src="/your-photo.jpeg" alt="Sarvanu" width={400} height={400} className="about-photo" />
           </FadeIn>
 
           <FadeIn direction="right" className="about-text">
             <h2>📖 About Sarvanu</h2>
             <p>
-              I'm <strong>Sarvanu Banerjee</strong>, a business management, marketing, and growth consultant who
+              I'm <strong>Sarvanu</strong>, a business management, marketing, and growth consultant who
               works directly with founders, entrepreneurs, and business owners to build companies that last.
             </p>
             <p>
@@ -118,7 +118,7 @@ export default function Home() {
                 </div>
                 Target Audience
               </h3>
-              
+
               <ul className="expertise-list">
                 {[
                   { icon: 'fa-user-tie', text: 'Solopreneurs launching a new product or service' },
@@ -140,12 +140,12 @@ export default function Home() {
             <FadeIn className="expertise-card dark-card">
               <div className="expertise-card-glow blue-glow"></div>
               <h3>
-                 <div className="expertise-icon-box blue-box">
+                <div className="expertise-icon-box blue-box">
                   <i className="fas fa-bullseye"></i>
                 </div>
                 Core Expertise
               </h3>
-              
+
               <ul className="expertise-list">
                 {[
                   { icon: 'fa-chess-knight', text: 'Strategic Business Planning & Vision' },
@@ -155,7 +155,7 @@ export default function Home() {
                   { icon: 'fa-bullhorn', text: 'Brand Messaging & Positioning' }
                 ].map((item, i) => (
                   <li key={i}>
-                     <div className="list-icon-box">
+                    <div className="list-icon-box">
                       <i className={`fas ${item.icon}`}></i>
                     </div>
                     <span>{item.text}</span>
@@ -579,7 +579,7 @@ export default function Home() {
             <h2>Why <span className="text-gold">Work With Me?</span></h2>
             <p className="subtitle">Serving as your trusted growth partner to scale operations, optimize marketing, and build sustainable enterprise systems.</p>
           </div>
-          
+
           <div className="features-grid">
             <div className="feature-card">
               <div className="icon-wrapper"><i className="fas fa-hourglass-half"></i></div>
@@ -588,7 +588,7 @@ export default function Home() {
                 <p>Crafting strategic frameworks and operations that drive real, measurable business growth and successful scaling.</p>
               </div>
             </div>
-            
+
             <div className="feature-card">
               <div className="icon-wrapper"><i className="fas fa-bullseye"></i></div>
               <div className="feature-content">
@@ -596,7 +596,7 @@ export default function Home() {
                 <p>Combining advanced skills spanning daily operations, targeted marketing, sales funnels, and executive founder coaching.</p>
               </div>
             </div>
-            
+
             <div className="feature-card">
               <div className="icon-wrapper"><i className="fas fa-handshake"></i></div>
               <div className="feature-content">
@@ -604,7 +604,7 @@ export default function Home() {
                 <p>Deeply collaborating with diverse business models across multiple industries to deliver reliable, outstanding results.</p>
               </div>
             </div>
-            
+
             <div className="feature-card">
               <div className="icon-wrapper"><i className="fas fa-rocket"></i></div>
               <div className="feature-content">
@@ -694,7 +694,7 @@ export default function Home() {
             <div className="contact-card">
               <i className="fas fa-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:sarvanubanerjee@gmail.com">sarvanubanerjee@gmail.com</a></p>
+              <p><a href="mailto:sarvanu@gmail.com">sarvanu@gmail.com</a></p>
             </div>
 
             <div className="contact-card">
@@ -713,7 +713,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Sarvanu Banerjee",
+            "name": "Sarvanu",
             "url": "https://sarvanu.com",
             "jobTitle": "Business Consultant",
             "sameAs": [
@@ -736,7 +736,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "Sarvanu Banerjee Strategies",
+            "name": "Sarvanu Strategies",
             "url": "https://sarvanu.com/",
             "potentialAction": {
               "@type": "SearchAction",

@@ -1,17 +1,17 @@
 import FaqAccordion from '@/components/FaqAccordion';
 
 export const metadata = {
-    title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
-    description: "Find answers to common questions about our business consulting, SaaS execution, pricing, and how we work with clients.",
+    title: "Frequently Asked Questions | Sarvanu Strategies",
+    description: "Common questions about business growth consulting, strategic planning, systems, and SaaS development by Sarvanu.",
     openGraph: {
-        title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
-        description: "Find answers to common questions about our business consulting, SaaS execution, pricing, and how we work with clients.",
+        title: "Frequently Asked Questions | Sarvanu Strategies",
+        description: "Common questions about business growth consulting, strategic planning, systems, and SaaS development by Sarvanu.",
         url: "https://sarvanu.com/faq",
         images: ["/og-image.png"],
     },
     twitter: {
-        title: "Frequently Asked Questions | Sarvanu Banerjee Strategies",
-        description: "Find answers to common questions about our business consulting, SaaS execution, pricing.",
+        title: "Frequently Asked Questions | Sarvanu Strategies",
+        description: "Common questions about business growth consulting, strategic planning, systems, and SaaS development by Sarvanu.",
         images: ["/og-image.png"],
     },
     alternates: {
@@ -110,7 +110,7 @@ export default function FAQ() {
                                 "name": "How much does business consulting cost in India?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Business consulting costs vary based on the scope. Sarvanu Banerjee Strategies offers three packages: Basic at ₹15,000/month for solopreneurs, Growth at ₹30,000/month for MSMEs and agencies, and Premium at ₹55,000/month for multi-brand founders requiring comprehensive support."
+                                    "text": "Business consulting costs vary based on the scope. Sarvanu Strategies offers three packages: Basic at ₹15,000/month for solopreneurs, Growth at ₹30,000/month for MSMEs and agencies, and Premium at ₹55,000/month for multi-brand founders requiring comprehensive support."
                                 }
                             },
                             {
@@ -139,10 +139,10 @@ export default function FAQ() {
                             },
                             {
                                 "@type": "Question",
-                                "name": "What industries does Sarvanu Banerjee work with?",
+                                "name": "What industries does Sarvanu work with?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Sarvanu Banerjee works with diverse industries including digital agencies, tech startups, manufacturing, education, healthcare, e-commerce, professional services, and traditional family businesses looking to modernize."
+                                    "text": "Sarvanu works with diverse industries including digital agencies, tech startups, manufacturing, education, healthcare, e-commerce, professional services, and traditional family businesses looking to modernize."
                                 }
                             },
                             {

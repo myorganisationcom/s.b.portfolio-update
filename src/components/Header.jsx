@@ -36,7 +36,6 @@ export default function Header() {
                     <Link href="/" className="logo-link" onClick={closeMenu}>
                         <div className="logo-text-wrapper">
                             <span className="logo-primary">Sarvanu</span>
-                            <span className="logo-secondary">Banerjee</span>
                         </div>
                         <span className="logo-tag">Strategies</span>
                     </Link>
@@ -62,15 +61,12 @@ export default function Header() {
                         <Link href="/#services" onClick={closeMenu}>Services</Link>
                     </li>
                     <li>
-                        <Link href="/fantasy-gaming" onClick={closeMenu} className={isCurrent('/fantasy-gaming') ? 'active' : ''}>Gaming Platform</Link>
-                    </li>
-                    <li>
                         <Link href="/saas" onClick={closeMenu} className={isCurrent('/saas') ? 'active' : ''}>SaaS & AI</Link>
                     </li>
                     <li>
                         <Link href="/ai-agent-service" onClick={closeMenu} className={isCurrent('/ai-agent-service') ? 'active' : ''}>AI Agents</Link>
                     </li>
-                    
+
                     {/* Dropdown Menu */}
                     <li className="nav-dropdown" onClick={(e) => {
                         // Toggle dropdown on mobile only via CSS logic with class toggle
@@ -80,7 +76,7 @@ export default function Header() {
                         }
                     }}>
                         <div className="nav-dropdown-btn">
-                            Company <i className="fas fa-chevron-down" style={{fontSize: '0.8rem', marginLeft: '4px'}}></i>
+                            Company <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
                         </div>
                         <ul className="nav-dropdown-menu">
                             <li>
