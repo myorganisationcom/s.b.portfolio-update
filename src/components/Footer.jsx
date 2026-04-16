@@ -67,7 +67,7 @@ export default function Footer() {
                 <div className="footer-col footer-social">
                     <h4>Connect</h4>
                     <p className="footer-email">
-                        <i className="fas fa-envelope"></i> sarvanu10@gmail.com
+                        <i className="fas fa-envelope"></i> info@sarvanu.com
                     </p>
                     <div className="social-icons">
                         <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">

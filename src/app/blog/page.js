@@ -67,20 +67,61 @@ export default function BlogListing() {
                 </div>
             </div>
 
+            {/* Blog Schema */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Blog",
+                        "@type": "CollectionPage",
                         "name": "Business Growth Blog | Sarvanu Strategies",
                         "description": "Insights, articles, and strategies for founders and MSMEs on scaling operations, optimizing marketing, and driving revenue growth.",
                         "url": "https://sarvanu.com/blog",
                         "publisher": {
                             "@type": "Organization",
                             "name": "Sarvanu Strategies",
-                            "url": "https://sarvanu.com"
+                            "url": "https://sarvanu.com",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://sarvanu.com/logo.png"
+                            }
+                        },
+                        "mainEntity": {
+                            "@type": "ItemList",
+                            "itemListElement": blogPosts.map((post, index) => ({
+                                "@type": "ListItem",
+                                "position": index + 1,
+                                "url": `https://sarvanu.com/blog/${post.slug}`,
+                                "name": post.title,
+                                "image": post.image,
+                                "description": post.description
+                            }))
                         }
+                    })
+                }}
+            />
+
+            {/* BreadcrumbList Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://sarvanu.com"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Blog",
+                                "item": "https://sarvanu.com/blog"
+                            }
+                        ]
                     })
                 }}
             />

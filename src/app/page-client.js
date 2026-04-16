@@ -694,7 +694,7 @@ export default function Home() {
             <div className="contact-card">
               <i className="fas fa-envelope"></i>
               <h3>Email</h3>
-              <p><a href="mailto:sarvanu@gmail.com">sarvanu@gmail.com</a></p>
+              <p><a href="mailto:info@sarvanu.com">info@sarvanu.com</a></p>
             </div>
 
             <div className="contact-card">

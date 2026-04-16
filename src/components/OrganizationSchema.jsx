@@ -23,7 +23,7 @@ export default function OrganizationSchema() {
             "@type": "ContactPoint",
             "telephone": "+91-8700541657",
             "contactType": "customer support",
-            "email": "sarvanu@gmail.com",
+            "email": "info@sarvanu.com",
             "availableLanguage": ["English", "Hindi"]
         }
     };

@@ -1,4 +1,15 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
+    secure: true, // port 465 uses SSL
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
+});
 
 export async function POST(request) {
     try {
@@ -12,30 +23,35 @@ export async function POST(request) {
         const goals = formData.get('goals');
         const formType = formData.get('form_type') || 'contact';
 
-        // Log the data (in a real app, this would send an email via Nodemailer/Resend or save to a DB)
-        console.log(`\n--- New Form Submission (${formType}) ---`);
-        console.log(`Name: ${name}`);
-        console.log(`Email: ${email}`);
-        if (phone) console.log(`Phone: ${phone}`);
-        if (businessStage) console.log(`Business Stage: ${businessStage}`);
-        if (goals) console.log(`Goals/Challenges: ${goals}`);
-        console.log('-----------------------------------\n');
+        // Build the email HTML
+        const htmlBody = `
+            <h2>New ${formType === 'contact' ? 'Contact' : 'Strategy Call'} Request</h2>
+            <table style="border-collapse:collapse;width:100%;max-width:600px;">
+                <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Name</td><td style="padding:8px;border:1px solid #ddd;">${name}</td></tr>
+                <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Email</td><td style="padding:8px;border:1px solid #ddd;">${email}</td></tr>
+                ${phone ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Phone</td><td style="padding:8px;border:1px solid #ddd;">${phone}</td></tr>` : ''}
+                ${businessStage ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Business Stage</td><td style="padding:8px;border:1px solid #ddd;">${businessStage}</td></tr>` : ''}
+                ${goals ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold;">Goals / Challenges</td><td style="padding:8px;border:1px solid #ddd;">${goals}</td></tr>` : ''}
+            </table>
+        `;
 
-        // Return a success response, perhaps redirecting to a thank you page or returning JSON
-        // Since the original site used a simple PHP script, let's redirect back with a success parameter
+        // Send the email
+        await transporter.sendMail({
+            from: `"Sarvanu Website" <${process.env.CONTACT_FROM_EMAIL}>`,
+            to: process.env.CONTACT_TO_EMAIL,
+            replyTo: email,
+            subject: `New ${formType} submission from ${name}`,
+            html: htmlBody,
+        });
 
-        // We can get the origin to redirect back to the home page or a thank you page
         const url = new URL(request.url);
         const origin = url.origin;
-
         return NextResponse.redirect(`${origin}/?success=true`, 303);
 
     } catch (error) {
         console.error('Error handling form submission:', error);
-
         const url = new URL(request.url);
         const origin = url.origin;
-
         return NextResponse.redirect(`${origin}/?error=true`, 303);
     }
 }

@@ -11,8 +11,8 @@ export default function SnapBar() {
               <i className="fas fa-phone"></i> +91 87005 41657
             </a>
             <span className="snap-divider">|</span>
-            <a href="mailto:sarvanu10@gmail.com" className="snap-link">
-              <i className="fas fa-envelope"></i> sarvanu10@gmail.com
+            <a href="mailto:info@sarvanu.com" className="snap-link">
+              <i className="fas fa-envelope"></i> info@sarvanu.com
             </a>
           </div>
         </div>

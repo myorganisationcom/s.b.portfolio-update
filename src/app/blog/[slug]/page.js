@@ -102,7 +102,7 @@ export default async function BlogPost({ params }) {
                             <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer">
                                 <i className="fab fa-linkedin"></i> LinkedIn
                             </a>
-                            <a href="mailto:sarvanu@gmail.com">
+                            <a href="mailto:info@sarvanu.com">
                                 <i className="fas fa-envelope"></i> Email
                             </a>
                         </div>
@@ -119,21 +119,29 @@ export default async function BlogPost({ params }) {
 
             <StickyCta />
 
-            {/* JSON-LD Structured Data */}
+            {/* BlogPosting Schema */}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
-                        "@type": "Article",
+                        "@type": "BlogPosting",
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": `https://sarvanu.com/blog/${post.slug}`
+                        },
                         "headline": post.title,
                         "description": post.description,
                         "image": featuredImage,
-                        "datePublished": post.date ? new Date(post.date).toISOString() : new Date().toISOString(),
+                        "datePublished": post.date ? new Date(post.date).toISOString() : "2025-01-01T00:00:00+05:30",
+                        "dateModified": post.date ? new Date(post.date).toISOString() : "2025-01-01T00:00:00+05:30",
+                        "articleSection": post.category,
+                        "wordCount": contentHTML ? contentHTML.replace(/<[^>]+>/g, '').split(/\s+/).length : 0,
                         "author": {
                             "@type": "Person",
                             "name": "Sarvanu",
-                            "url": "https://sarvanu.com"
+                            "url": "https://sarvanu.com",
+                            "jobTitle": "Business Management & Operations Consultant"
                         },
                         "publisher": {
                             "@type": "Organization",
@@ -141,9 +149,47 @@ export default async function BlogPost({ params }) {
                             "url": "https://sarvanu.com",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "https://sarvanu.com/logo.png"
+                                "url": "https://sarvanu.com/logo.png",
+                                "width": 512,
+                                "height": 512
                             }
+                        },
+                        "isPartOf": {
+                            "@type": "Blog",
+                            "@id": "https://sarvanu.com/blog",
+                            "name": "Business Growth Blog | Sarvanu Strategies"
                         }
+                    })
+                }}
+            />
+
+            {/* BreadcrumbList Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://sarvanu.com"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Blog",
+                                "item": "https://sarvanu.com/blog"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": post.title,
+                                "item": `https://sarvanu.com/blog/${post.slug}`
+                            }
+                        ]
                     })
                 }}
             />
