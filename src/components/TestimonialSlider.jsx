@@ -1,96 +1,97 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function TestimonialSlider() {
-    const sliderRef = useRef(null);
-    const trackRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
-    const totalSlides = 3;
+    const [isAnimating, setIsAnimating] = useState(false);
 
-    const scrollToSlide = (index) => {
-        if (trackRef.current) {
-            trackRef.current.style.transform = `translateX(-${index * 100}%)`;
-            setActiveIndex(index);
+    const testimonials = [
+        {
+            text: "Working with Sarvanu transformed the way we structured our operations. His strategies gave us clarity and boosted our revenue within months.",
+            name: "Pronel Mohanti",
+            role: "Co-Founder, Idealcore Solution LLP",
+            img: "/t1.webp"
+        },
+        {
+            text: "From marketing funnels to business development, the insights were actionable and results-driven. Highly recommend for scaling businesses.",
+            name: "Dayan Saradel",
+            role: "CEO, Esoftware Solution LLC",
+            img: "/t2.png"
+        },
+        {
+            text: "A true partner in growth. Sarvanu doesn’t just consult—he collaborates. His structured approach helped us scale sustainably.",
+            name: "Tarak Das",
+            role: "Founder, Tarak Agro Ventures",
+            img: "/t3.jpeg"
+        },
+        {
+            text: "We were stuck in our growth phase for over a year. The strategic audit and subsequent roadmap completely shifted our trajectory. Unparalleled clarity.",
+            name: "Amit Sharma",
+            role: "Director, Innovate Tech Solutions",
+            img: "/t1.webp"
+        },
+        {
+            text: "The operational workflows introduced by Sarvanu saved us countless hours. We now have a predictable, scalable system in place.",
+            name: "Sarah Jenkins",
+            role: "Operations Head, Global Retail Inc.",
+            img: "/t2.png"
         }
+    ];
+
+    const changeSlide = (index) => {
+        if (isAnimating || index === activeIndex) return;
+        setIsAnimating(true);
+        setActiveIndex(index);
+        setTimeout(() => setIsAnimating(false), 500);
     };
 
-    const scrollPrev = () => {
-        const newIndex = activeIndex === 0 ? totalSlides - 1 : activeIndex - 1;
-        scrollToSlide(newIndex);
-    };
+    const nextSlide = () => changeSlide((activeIndex + 1) % testimonials.length);
+    const prevSlide = () => changeSlide((activeIndex - 1 + testimonials.length) % testimonials.length);
 
-    const scrollNext = () => {
-        const newIndex = (activeIndex + 1) % totalSlides;
-        scrollToSlide(newIndex);
-    };
+    // Auto-advance
+    useEffect(() => {
+        const timer = setInterval(nextSlide, 8000);
+        return () => clearInterval(timer);
+    }, [activeIndex]);
+
+    const current = testimonials[activeIndex];
 
     return (
-        <>
-            <div className="testimonial-slider" ref={sliderRef}>
-                <div className="testimonial-track" ref={trackRef}>
-                    {/* Testimonial 1 */}
-                    <div className="testimonial-card">
-                        <div className="testimonial-content">
-                            <p>“Working with Sarvanu transformed the way we structured our operations. His strategies
-                                gave us clarity and boosted our revenue within months.”</p>
+        <div className="premium-testimonial-container">
+            <div className="premium-testimonial-card">
+                <i className="fas fa-quote-left quote-icon-large"></i>
+                
+                <div className={`testimonial-fade ${isAnimating ? 'fading' : ''}`}>
+                    <p className="premium-quote-text">"{current.text}"</p>
+                    
+                    <div className="premium-client-info">
+                        <div className="client-avatar-wrapper">
+                            <Image src={current.img} alt={current.name} width={60} height={60} className="client-avatar" />
+                            <div className="avatar-glow"></div>
                         </div>
-                        <div className="testimonial-footer">
-                            <Image src="/t1.webp" alt="Client Company Logo" className="client-logo" width={80} height={80} />
-                            <div className="client-info">
-                                <h3>Pronel Mohanti</h3>
-                                <span>Co-Founder, Idealcore Solution LLP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Testimonial 2 */}
-                    <div className="testimonial-card">
-                        <div className="testimonial-content">
-                            <p>“From marketing funnels to business development, the insights were actionable and
-                                results-driven. Highly recommend for scaling businesses.”</p>
-                        </div>
-                        <div className="testimonial-footer">
-                            <Image src="/t2.png" alt="Client Company Logo" className="client-logo" width={80} height={80} />
-                            <div className="client-info">
-                                <h3>Dayan Saradel</h3>
-                                <span>CEO, Esoftware Solution LLC</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Testimonial 3 */}
-                    <div className="testimonial-card">
-                        <div className="testimonial-content">
-                            <p>“A true partner in growth. Sarvanu doesn’t just consult—he collaborates. His structured
-                                approach helped us scale sustainably.”</p>
-                        </div>
-                        <div className="testimonial-footer">
-                            <Image src="/t3.jpeg" alt="Client Company Logo" className="client-logo" width={80} height={80} />
-                            <div className="client-info">
-                                <h3>Tarak Das</h3>
-                                <span>Founder, Tarak Agro Ventures</span>
-                            </div>
+                        <div className="client-details">
+                            <h4>{current.name}</h4>
+                            <span>{current.role}</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Navigation Arrows */}
-                <button className="nav prev" onClick={scrollPrev}>‹</button>
-                <button className="nav next" onClick={scrollNext}>›</button>
+                <div className="testimonial-controls">
+                    <button className="ctrl-btn" onClick={prevSlide}><i className="fas fa-chevron-left"></i></button>
+                    <div className="testimonial-dots">
+                        {testimonials.map((_, i) => (
+                            <span 
+                                key={i} 
+                                className={`dot ${i === activeIndex ? 'active' : ''}`}
+                                onClick={() => changeSlide(i)}
+                            ></span>
+                        ))}
+                    </div>
+                    <button className="ctrl-btn" onClick={nextSlide}><i className="fas fa-chevron-right"></i></button>
+                </div>
             </div>
-
-            {/* Dots */}
-            <div className="dots">
-                {[0, 1, 2].map(i => (
-                    <button
-                        key={i}
-                        className={activeIndex === i ? 'active' : ''}
-                        onClick={() => scrollToSlide(i)}
-                    ></button>
-                ))}
-            </div>
-        </>
+        </div>
     );
 }

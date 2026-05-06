@@ -5,7 +5,7 @@ export default function SnapBar() {
     <div className="snap-bar">
       <div className="snap-container">
         <div className="snap-left">
-          <span className="snap-badge">⚡ Available for Projects</span>
+          <span className="snap-badge"><i className="fas fa-bolt" style={{ marginRight: '5px' }}></i> Available for Projects</span>
           <div className="snap-contact">
             <a href="tel:+918700541657" className="snap-link">
               <i className="fas fa-phone"></i> +91 87005 41657

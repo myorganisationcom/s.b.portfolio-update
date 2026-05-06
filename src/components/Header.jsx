@@ -28,6 +28,12 @@ export default function Header() {
 
     const isCurrent = (path) => pathname === path;
 
+    const toggleDropdown = (e) => {
+        if (window.innerWidth <= 900) {
+            e.currentTarget.classList.toggle('mobile-open');
+        }
+    };
+
     return (
         <header id="main-header" className={scrolled ? 'scrolled' : ''}>
             <nav className="navbar">
@@ -57,43 +63,57 @@ export default function Header() {
                     <li>
                         <Link href="/" onClick={closeMenu} className={isCurrent('/') ? 'active' : ''}>Home</Link>
                     </li>
-                    <li>
-                        <Link href="/#services" onClick={closeMenu}>Services</Link>
-                    </li>
-                    <li>
-                        <Link href="/saas" onClick={closeMenu} className={isCurrent('/saas') ? 'active' : ''}>SaaS & AI</Link>
-                    </li>
-                    <li>
-                        <Link href="/ai-agent-service" onClick={closeMenu} className={isCurrent('/ai-agent-service') ? 'active' : ''}>AI Agents</Link>
+                    
+                    {/* Services Dropdown */}
+                    <li className="nav-dropdown" onClick={toggleDropdown}>
+                        <div className="nav-dropdown-btn">
+                            Services <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
+                        </div>
+                        <ul className="nav-dropdown-menu">
+                            <li><Link href="/services/business-strategy" onClick={closeMenu}>Business Strategy</Link></li>
+                            <li><Link href="/services/operations" onClick={closeMenu}>Operations & Workflow</Link></li>
+                            <li><Link href="/services/marketing" onClick={closeMenu}>Marketing Strategy</Link></li>
+                            <li><Link href="/services/b2b-lead-gen" onClick={closeMenu}>B2B Lead Generation</Link></li>
+                            <li><Link href="/services/funnel-crm" onClick={closeMenu}>Funnel & CRM Setup</Link></li>
+                        </ul>
                     </li>
 
-                    {/* Dropdown Menu */}
-                    <li className="nav-dropdown" onClick={(e) => {
-                        // Toggle dropdown on mobile only via CSS logic with class toggle
-                        // Let's use a simple inline state or just hover for desktop, tap for mobile.
-                        if (window.innerWidth <= 900) {
-                            e.currentTarget.classList.toggle('mobile-open');
-                        }
-                    }}>
+                    {/* Who We Help Dropdown */}
+                    <li className="nav-dropdown" onClick={toggleDropdown}>
+                        <div className="nav-dropdown-btn">
+                            Who We Help <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
+                        </div>
+                        <ul className="nav-dropdown-menu">
+                            <li><Link href="/startups" onClick={closeMenu}>Startups</Link></li>
+                            <li><Link href="/small-business" onClick={closeMenu}>Small Businesses</Link></li>
+                            <li><Link href="/scaling" onClick={closeMenu}>Scaling Businesses</Link></li>
+                            <li><Link href="/who-its-for" onClick={closeMenu}>Is This For You?</Link></li>
+                        </ul>
+                    </li>
+
+                    {/* Authority Dropdown */}
+                    <li className="nav-dropdown" onClick={toggleDropdown}>
+                        <div className="nav-dropdown-btn">
+                            Authority <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
+                        </div>
+                        <ul className="nav-dropdown-menu">
+                            <li><Link href="/how-we-work" onClick={closeMenu}>How We Work</Link></li>
+                            <li><Link href="/business-systems" onClick={closeMenu}>Business Systems Explained</Link></li>
+                            <li><Link href="/problems-we-solve" onClick={closeMenu}>Problems We Solve</Link></li>
+                            <li><Link href="/why-choose-us" onClick={closeMenu}>Why Choose Us</Link></li>
+                        </ul>
+                    </li>
+
+                    {/* Resources Dropdown */}
+                    <li className="nav-dropdown" onClick={toggleDropdown}>
                         <div className="nav-dropdown-btn">
                             Company <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
                         </div>
                         <ul className="nav-dropdown-menu">
-                            <li>
-                                <Link href="/case-studies" onClick={closeMenu} className={isCurrent('/case-studies') ? 'active' : ''}>Case Studies</Link>
-                            </li>
-                            <li>
-                                <Link href="/blog" onClick={closeMenu} className={isCurrent('/blog') ? 'active' : ''}>Blog</Link>
-                            </li>
-                            <li>
-                                <Link href="/press" onClick={closeMenu} className={isCurrent('/press') ? 'active' : ''}>Press</Link>
-                            </li>
-                            <li>
-                                <Link href="/resources" onClick={closeMenu} className={isCurrent('/resources') ? 'active' : ''}>Resources</Link>
-                            </li>
-                            <li>
-                                <Link href="/faq" onClick={closeMenu} className={isCurrent('/faq') ? 'active' : ''}>FAQ</Link>
-                            </li>
+                            <li><Link href="/pricing" onClick={closeMenu}>Pricing</Link></li>
+                            <li><Link href="/case-studies" onClick={closeMenu}>Case Studies & Proof</Link></li>
+                            <li><Link href="/roi" onClick={closeMenu}>ROI Perspective</Link></li>
+                            <li><Link href="/faq" onClick={closeMenu}>FAQ</Link></li>
                         </ul>
                     </li>
 

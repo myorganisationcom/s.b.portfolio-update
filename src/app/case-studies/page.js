@@ -162,7 +162,7 @@ export default function CaseStudies() {
                     </div>
 
                     <div className="case-study-footer">
-                        <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #f5c518, #ff9900)' }}></div>
+                        <div className="client-avatar" style={{ background: 'linear-gradient(135deg, #10b981, #ff9900)' }}></div>
                         <div className="client-info">
                             <h4>Tech Startup Founders</h4>
                             <span>Bangalore, India</span>

@@ -51,9 +51,9 @@ export default function AiAgentService() {
                                 </div>
                             </div>
 
-                            <div className="ai-floating-badge outline" style={{ position: 'absolute', top: '-15px', left: '-15px', background: 'rgba(5, 15, 34, 0.85)', padding: '12px 18px', borderRadius: '14px', border: '1px solid rgba(245, 197, 24, 0.4)', zIndex: 2, backdropFilter: 'blur(12px)', color: 'white', display: 'flex', alignItems: 'center', gap: '12px', boxShadow: '0 15px 35px rgba(0,0,0,0.4)', animation: 'float 8s ease-in-out infinite reverse' }}>
+                            <div className="ai-floating-badge outline" style={{ position: 'absolute', top: '-15px', left: '-15px', background: 'rgba(5, 15, 34, 0.85)', padding: '12px 18px', borderRadius: '14px', border: '1px solid rgba(16, 185, 129, 0.4)', zIndex: 2, backdropFilter: 'blur(12px)', color: 'white', display: 'flex', alignItems: 'center', gap: '12px', boxShadow: '0 15px 35px rgba(0,0,0,0.4)', animation: 'float 8s ease-in-out infinite reverse' }}>
                                 <span style={{ fontSize: '20px' }}>⚡</span>
-                                <div style={{ fontWeight: '700', fontSize: '14px', color: '#f5c518' }}>Local LLM Hosted</div>
+                                <div style={{ fontWeight: '700', fontSize: '14px', color: '#10b981' }}>Local LLM Hosted</div>
                             </div>
                         </div>
                     </FadeIn>
