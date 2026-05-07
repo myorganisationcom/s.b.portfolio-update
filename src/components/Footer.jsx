@@ -69,6 +69,9 @@ export default function Footer() {
                     <p className="footer-email">
                         <i className="fas fa-envelope"></i> info@sarvanu.com
                     </p>
+                    <p className="footer-email" style={{marginTop: '6px'}}>
+                        <i className="fas fa-phone"></i> +91 98765 43210
+                    </p>
                     <div className="social-icons">
                         <a href="https://www.linkedin.com/in/sarvanu-banerjee/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <i className="fab fa-linkedin-in"></i>
@@ -84,6 +87,9 @@ export default function Footer() {
                         </a>
                         <a href="https://sarvanubanerjee.blogspot.com/" target="_blank" rel="noopener noreferrer" aria-label="Blog">
                             <i className="fas fa-blog"></i>
+                        </a>
+                        <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <i className="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
