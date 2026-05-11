@@ -1,5 +1,7 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import ServiceSlider from '@/components/ServiceSlider';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import FadeIn from '@/components/FadeIn';
@@ -10,8 +12,39 @@ import FaqSection from '@/components/FaqSection';
 import HeroLiveDashboard from '@/components/HeroLiveDashboard';
 import DetailedServiceBreakdown from '@/components/DetailedServiceBreakdown';
 import CtaSection from '@/components/CtaSection';
+import BusinessDiagnosisQuiz from '@/components/BusinessDiagnosisQuiz';
+import FreeAuditForm from '@/components/FreeAuditForm';
 
 export default function Home() {
+  const [showDiagnosis, setShowDiagnosis] = useState(false);
+  const [showAudit, setShowAudit] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if the URL has ?analyze=true or ?audit=true
+    const hasAnalyzeParam = searchParams?.get('analyze') === 'true';
+    const hasAuditParam = searchParams?.get('audit') === 'true';
+    
+    if (hasAnalyzeParam) {
+      setShowDiagnosis(true);
+      router.replace('/', { scroll: false });
+    } else if (hasAuditParam) {
+      setShowAudit(true);
+      router.replace('/', { scroll: false });
+    } else {
+      const hasSeenPopups = sessionStorage.getItem('hasSeenPopups');
+      if (!hasSeenPopups) {
+        // Show pop-up automatically after 2 seconds on initial load
+        const timer = setTimeout(() => {
+          setShowDiagnosis(true);
+          sessionStorage.setItem('hasSeenPopups', 'true');
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [searchParams, router]);
+
   const handleWhatsAppSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -212,6 +245,25 @@ export default function Home() {
             }
           })
         }}
+      />
+      
+      {/* FULL PAGE DIAGNOSIS QUIZ POP-UP */}
+      <BusinessDiagnosisQuiz 
+        isOpen={showDiagnosis} 
+        onClose={() => {
+          setShowDiagnosis(false);
+          // Only show Audit automatically if triggered from initial sequence
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get('analyze') !== 'true') {
+            setShowAudit(true); // Proceed to Step 2
+          }
+        }} 
+      />
+
+      {/* FULL PAGE FREE AUDIT POP-UP (STEP 2) */}
+      <FreeAuditForm
+        isOpen={showAudit}
+        onClose={() => setShowAudit(false)}
       />
     </>
   );

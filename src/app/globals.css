@@ -281,27 +281,27 @@ img {
    -------------------------------------------------------------------------- */
 #main-header {
   position: sticky;
-  top: 15px;
+  top: 0;
   width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   z-index: 1000;
   transition: all var(--transition-med);
-  background: rgba(255, 255, 255, 0.03); /* Pure frosted glass, no black */
+  background: rgba(10, 22, 40, 0.85); /* Darker glass background */
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 #main-header.scrolled {
-  top: 10px;
-  background: rgba(15, 30, 55, 0.85); /* Rich, vibrant Navy, NOT black */
+  top: 0;
+  background: rgba(10, 22, 40, 0.95); /* More solid when scrolled */
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-  border-color: rgba(245, 197, 24, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(245, 197, 24, 0.2);
 }
 
 .navbar {
@@ -588,7 +588,7 @@ a.cta-btn:hover {
   position: relative;
   overflow: hidden;
   min-height: 75vh;
-  padding: 80px 0 40px; /* Top padding pushed down to clear floating nav */
+  padding: 100px 0 40px; /* Top padding pushed down to clear full-width fixed nav */
 }
 
 .hero-container {
@@ -8143,3 +8143,342 @@ body.single-blog-page {
     font-size: 0.75rem;
   }
 }
+
+/* ==========================================================================
+   Business Diagnosis Quiz Modal Styles
+   ========================================================================== */
+
+.quiz-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn var(--transition-fast) ease-out forwards;
+}
+
+.quiz-modal-container {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(15, 29, 50, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 450px;
+}
+
+.quiz-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--clr-text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.quiz-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--clr-white);
+  transform: rotate(90deg);
+}
+
+.quiz-content-wrapper {
+  padding: 50px 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.quiz-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.quiz-header p {
+  color: var(--clr-text-muted);
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.quiz-hero-visual {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.quiz-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(245, 197, 24, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulse-glow 3s ease-in-out infinite alternate;
+}
+
+.quiz-hero-icon {
+  font-size: 2.5rem;
+  color: var(--clr-gold);
+  z-index: 1;
+}
+
+/* Quiz Options Layout */
+.quiz-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--clr-gold-gradient);
+  border-radius: 3px;
+  transition: width 0.4s ease-out;
+}
+
+.quiz-step-indicator {
+  font-size: 0.85rem;
+  color: var(--clr-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.quiz-question-text {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.quiz-option-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  color: var(--clr-white);
+}
+
+.quiz-option-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 197, 24, 0.3);
+  transform: translateY(-2px);
+}
+
+.quiz-option-card.selected {
+  background: rgba(245, 197, 24, 0.1);
+  border-color: var(--clr-gold);
+}
+
+.quiz-option-icon {
+  font-size: 1.5rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.quiz-option-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Analyzing Screen */
+.analyzing-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.spinner-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--clr-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Result Screen */
+.result-screen {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.result-title {
+  font-size: 1.8rem;
+  margin: 15px 0;
+  line-height: 1.2;
+}
+
+.result-description {
+  color: var(--clr-text-muted);
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.insights-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.result-cta-box {
+  background: linear-gradient(145deg, rgba(30, 168, 81, 0.1), rgba(30, 168, 81, 0.02));
+  border: 1px solid rgba(30, 168, 81, 0.2);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .quiz-content-wrapper {
+    padding: 30px 20px;
+  }
+  
+  .quiz-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .quiz-question-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* ==========================================================================
+   Free Audit Form Specific Styles
+   ========================================================================== */
+
+.premium-input {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--clr-white);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.premium-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.premium-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+textarea.premium-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.radio-circle.active {
+  border-color: #3b82f6;
+}
+
+.radio-circle.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #3b82f6;
+  border-radius: 50%;
+}
+

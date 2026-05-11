@@ -61,9 +61,26 @@ export default function Header() {
                 {/* Nav Links */}
                 <ul className={`nav-links ${menuActive ? 'active' : ''}`} id="nav-links">
                     <li>
-                        <Link href="/" onClick={closeMenu} className={isCurrent('/') ? 'active' : ''}>Home</Link>
+                        <Link href="/" onClick={closeMenu} className={isCurrent('/') && !pathname.includes('analyze') ? 'active' : ''}>Home</Link>
                     </li>
-                    
+                    {/* Free Tools Dropdown */}
+                    <li className="nav-dropdown" onClick={toggleDropdown}>
+                        <div className="nav-dropdown-btn text-gold" style={{ fontWeight: 600, color: 'var(--clr-gold)' }}>
+                            <i className="fas fa-bolt" style={{ marginRight: '6px' }}></i> Free Tools <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
+                        </div>
+                        <ul className="nav-dropdown-menu">
+                            <li>
+                                <Link href="/?analyze=true" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <i className="fas fa-chart-pie" style={{ color: 'var(--clr-gold)' }}></i> Business Diagnosis
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/?audit=true" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <i className="fas fa-search-dollar" style={{ color: 'var(--clr-gold)' }}></i> Growth Audit
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
                     {/* Services Dropdown */}
                     <li className="nav-dropdown" onClick={toggleDropdown}>
                         <div className="nav-dropdown-btn">
@@ -118,7 +135,7 @@ export default function Header() {
                     </li>
 
                     <li>
-                        <Link href="/book" onClick={closeMenu} className="cta-btn glow-btn">
+                        <Link href="/book" onClick={closeMenu} className="cta-btn glow-btn" style={{ whiteSpace: 'nowrap' }}>
                             <i className="fas fa-calendar-alt"></i> Book a Call
                         </Link>
                     </li>
