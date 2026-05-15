@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SQLite local database (use data/leads.db locally; PostgreSQL in production)
+/data/*.db
+/data/*.db-shm
+/data/*.db-wal
+
+# keep .env.local.example (template), ignore all real env files
+.env.local

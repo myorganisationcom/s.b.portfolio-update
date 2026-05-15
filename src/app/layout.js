@@ -7,6 +7,9 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import OrganizationSchema from "@/components/OrganizationSchema";
 import Script from "next/script";
+import { LeadModalProvider } from "@/components/LeadModalContext";
+import ContactModal from "@/components/ContactModal";
+import DiagnosisModal from "@/components/DiagnosisModal";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -65,12 +68,15 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={poppins.className}>
-        <OrganizationSchema />
-        <SnapBar />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <BackToTop />
+        <LeadModalProvider>
+          <OrganizationSchema />
+          <SnapBar />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <BackToTop />
+          <ContactModal />
+          <DiagnosisModal />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-B442V7QVGB"
           strategy="afterInteractive"
@@ -83,6 +89,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-B442V7QVGB');
           `}
         </Script>
+        </LeadModalProvider>
       </body>
     </html>
   );

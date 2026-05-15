@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useLeadModal } from './LeadModalContext';
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [menuActive, setMenuActive] = useState(false);
     const pathname = usePathname();
+    const { openModal, openDiagnosis } = useLeadModal();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -63,23 +65,19 @@ export default function Header() {
                     <li>
                         <Link href="/" onClick={closeMenu} className={isCurrent('/') && !pathname.includes('analyze') ? 'active' : ''}>Home</Link>
                     </li>
-                    {/* Free Tools Dropdown */}
-                    <li className="nav-dropdown" onClick={toggleDropdown}>
-                        <div className="nav-dropdown-btn text-gold" style={{ fontWeight: 600, color: 'var(--clr-gold)' }}>
-                            <i className="fas fa-bolt" style={{ marginRight: '6px' }}></i> Free Tools <i className="fas fa-chevron-down" style={{ fontSize: '0.8rem', marginLeft: '4px' }}></i>
-                        </div>
-                        <ul className="nav-dropdown-menu">
-                            <li>
-                                <Link href="/?analyze=true" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <i className="fas fa-chart-pie" style={{ color: 'var(--clr-gold)' }}></i> Business Diagnosis
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/?audit=true" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                    <i className="fas fa-search-dollar" style={{ color: 'var(--clr-gold)' }}></i> Growth Audit
-                                </Link>
-                            </li>
-                        </ul>
+                    {/* Business Diagnosis — direct popup trigger */}
+                    <li>
+                        <button
+                            onClick={() => { openDiagnosis(); closeMenu(); }}
+                            style={{
+                                background: 'none', border: 'none', cursor: 'pointer',
+                                font: 'inherit', color: 'var(--clr-gold)', fontWeight: 600,
+                                display: 'flex', alignItems: 'center', gap: '6px', padding: 0,
+                            }}
+                        >
+                            <i className="fas fa-stethoscope" style={{ fontSize: '0.85rem' }} />
+                            Business Diagnosis
+                        </button>
                     </li>
                     {/* Services Dropdown */}
                     <li className="nav-dropdown" onClick={toggleDropdown}>
@@ -135,9 +133,35 @@ export default function Header() {
                     </li>
 
                     <li>
-                        <Link href="/book" onClick={closeMenu} className="cta-btn glow-btn" style={{ whiteSpace: 'nowrap' }}>
+                        <button
+                            onClick={() => { openModal(); closeMenu(); }}
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                background: 'var(--clr-gold)',
+                                color: '#000',
+                                border: 'none',
+                                padding: '10px 22px',
+                                borderRadius: '30px',
+                                fontSize: '0.92rem',
+                                fontWeight: 700,
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                whiteSpace: 'nowrap',
+                                boxShadow: '0 4px 14px rgba(245, 197, 24, 0.25)'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                                e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 197, 24, 0.4)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'none';
+                                e.currentTarget.style.boxShadow = '0 4px 14px rgba(245, 197, 24, 0.25)';
+                            }}
+                        >
                             <i className="fas fa-calendar-alt"></i> Book a Call
-                        </Link>
+                        </button>
                     </li>
                 </ul>
             </nav>

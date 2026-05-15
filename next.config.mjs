@@ -10,6 +10,8 @@ const nextConfig = {
       },
     ],
   },
+  // Required for native/server-only packages — never bundled by Turbopack
+  serverExternalPackages: ['better-sqlite3', 'pg'],
 };
 
 export default nextConfig;

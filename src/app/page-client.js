@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import React, { useEffect, useRef } from 'react';
 import ServiceSlider from '@/components/ServiceSlider';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import FadeIn from '@/components/FadeIn';
@@ -12,54 +11,20 @@ import FaqSection from '@/components/FaqSection';
 import HeroLiveDashboard from '@/components/HeroLiveDashboard';
 import DetailedServiceBreakdown from '@/components/DetailedServiceBreakdown';
 import CtaSection from '@/components/CtaSection';
-import BusinessDiagnosisQuiz from '@/components/BusinessDiagnosisQuiz';
-import FreeAuditForm from '@/components/FreeAuditForm';
+import { useLeadModal } from '@/components/LeadModalContext';
 
 export default function Home() {
-  const [showDiagnosis, setShowDiagnosis] = useState(false);
-  const [showAudit, setShowAudit] = useState(false);
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const { openModal, openDiagnosis } = useLeadModal();
 
+  // Auto-open Business Diagnosis popup after page fully mounts
+  // useRef prevents double-fire in React StrictMode
+  const opened = useRef(false);
   useEffect(() => {
-    // Check if the URL has ?analyze=true or ?audit=true
-    const hasAnalyzeParam = searchParams?.get('analyze') === 'true';
-    const hasAuditParam = searchParams?.get('audit') === 'true';
-    
-    if (hasAnalyzeParam) {
-      setShowDiagnosis(true);
-      router.replace('/', { scroll: false });
-    } else if (hasAuditParam) {
-      setShowAudit(true);
-      router.replace('/', { scroll: false });
-    } else {
-      const hasSeenPopups = sessionStorage.getItem('hasSeenPopups');
-      if (!hasSeenPopups) {
-        // Show pop-up automatically after 2 seconds on initial load
-        const timer = setTimeout(() => {
-          setShowDiagnosis(true);
-          sessionStorage.setItem('hasSeenPopups', 'true');
-        }, 2000);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [searchParams, router]);
-
-  const handleWhatsAppSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const stage = formData.get('business_stage');
-    const goals = formData.get('goals');
-
-    const waNumber = "918700541657";
-    const waMessage = `*New Strategy Call Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Business Stage:* ${stage}\n*Challenge:* ${goals}`;
-    const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
-
-    window.open(waLink, '_blank');
-  };
+    if (opened.current) return;
+    opened.current = true;
+    const timer = setTimeout(() => openDiagnosis(), 1800);
+    return () => clearTimeout(timer);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -79,9 +44,9 @@ export default function Home() {
               <a href="#services" className="btn-primary">
                 <i className="fas fa-layer-group"></i> View Packages & Pricing
               </a>
-              <a href="#cta" className="btn-secondary">
+              <button onClick={openModal} className="btn-secondary" style={{ background:'none', border:'none', cursor:'pointer', font:'inherit', padding:0 }}>
                 <i className="fas fa-calendar-alt"></i> Book Free Strategy Call
-              </a>
+              </button>
             </div>
           </div>
           
@@ -222,49 +187,6 @@ export default function Home() {
 
       {/* CTA SECTION */}
       <CtaSection />
-
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Sarvanu Banerjee",
-            "url": "https://sarvanu.com",
-            "jobTitle": "Business Consultant & Growth Strategist",
-            "sameAs": [
-              "https://www.linkedin.com/in/sarvanu-banerjee",
-              "https://www.instagram.com/sarvanu_banerjee/",
-              "https://www.facebook.com/sarvanu.banerjee"
-            ],
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Sarvanu.com",
-              "url": "https://sarvanu.com"
-            }
-          })
-        }}
-      />
-      
-      {/* FULL PAGE DIAGNOSIS QUIZ POP-UP */}
-      <BusinessDiagnosisQuiz 
-        isOpen={showDiagnosis} 
-        onClose={() => {
-          setShowDiagnosis(false);
-          // Only show Audit automatically if triggered from initial sequence
-          const urlParams = new URLSearchParams(window.location.search);
-          if (urlParams.get('analyze') !== 'true') {
-            setShowAudit(true); // Proceed to Step 2
-          }
-        }} 
-      />
-
-      {/* FULL PAGE FREE AUDIT POP-UP (STEP 2) */}
-      <FreeAuditForm
-        isOpen={showAudit}
-        onClose={() => setShowAudit(false)}
-      />
     </>
   );
 }
