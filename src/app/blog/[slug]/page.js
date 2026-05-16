@@ -1,20 +1,20 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { blogPosts } from '@/data/blogPosts';
-import { blogContent } from '@/data/blogContent';
+import { getPostBySlug, getAllSlugs } from '@/server/repositories/blogs';
 import StickyCta from '@/components/StickyCta';
 import Image from 'next/image';
 import styles from '../blog.module.css';
 
+export const dynamic = 'force-dynamic';   // always SSR — read latest from DB
+
 export async function generateStaticParams() {
-    return blogPosts.map((post) => ({
-        slug: post.slug,
-    }));
+    const slugs = await getAllSlugs();
+    return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }) {
     const resolvedParams = await params;
-    const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
+    const post = await getPostBySlug(resolvedParams.slug);
 
     if (!post) {
         return {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
     return {
         title: `${post.title} | Sarvanu Strategies`,
         description: post.description,
-        keywords: `business consulting, sarvanu, ${post.category.toLowerCase()}`,
+        keywords: `business consulting, sarvanu, ${(post.category || '').toLowerCase()}`,
         alternates: {
             canonical: `https://sarvanu.com/blog/${post.slug}`,
         },
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
             description: post.description,
             type: 'article',
             url: `https://sarvanu.com/blog/${post.slug}`,
-            images: [{ url: post.image }],
+            images: post.image ? [{ url: post.image }] : [],
         },
     };
 }
@@ -43,14 +43,14 @@ const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1454165804606-c3d57bc8
 
 export default async function BlogPost({ params }) {
     const resolvedParams = await params;
-    const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
-    const contentHTML = blogContent[resolvedParams.slug];
+    const post = await getPostBySlug(resolvedParams.slug);
 
-    if (!post || !contentHTML) {
+    if (!post) {
         notFound();
     }
 
-    const featuredImage = post.image || FALLBACK_IMAGE;
+    const contentHTML = post.content;
+    const featuredImage = post.image || post.featuredImage || FALLBACK_IMAGE;
 
     return (
         <main className={styles.articleMain}>
@@ -95,7 +95,7 @@ export default async function BlogPost({ params }) {
                 <div className={styles.authorBox}>
                     <Image src="/your-photo.jpeg" alt="Sarvanu" className={styles.authorImg} width={80} height={80} />
                     <div className={styles.authorInfo}>
-                        <h3>Sarvanu</h3>
+                        <h3>{post.author || 'Sarvanu'}</h3>
                         <span className={styles.authorRole}>Business Transformation Strategist</span>
                         <p>Helping founders scale their agencies and service businesses through systems, leadership mindset, and strategic growth. 150+ clients across 6+ countries.</p>
                         <div className={styles.authorSocials}>
@@ -133,13 +133,13 @@ export default async function BlogPost({ params }) {
                         "headline": post.title,
                         "description": post.description,
                         "image": featuredImage,
-                        "datePublished": post.date ? new Date(post.date).toISOString() : "2025-01-01T00:00:00+05:30",
-                        "dateModified": post.date ? new Date(post.date).toISOString() : "2025-01-01T00:00:00+05:30",
+                        "datePublished": post.createdAt ? new Date(post.createdAt).toISOString() : "2025-01-01T00:00:00+05:30",
+                        "dateModified": post.updatedAt ? new Date(post.updatedAt).toISOString() : "2025-01-01T00:00:00+05:30",
                         "articleSection": post.category,
                         "wordCount": contentHTML ? contentHTML.replace(/<[^>]+>/g, '').split(/\s+/).length : 0,
                         "author": {
                             "@type": "Person",
-                            "name": "Sarvanu",
+                            "name": post.author || "Sarvanu",
                             "url": "https://sarvanu.com",
                             "jobTitle": "Business Management & Operations Consultant"
                         },

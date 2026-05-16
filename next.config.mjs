@@ -8,6 +8,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        // Allow any HTTPS image — blog featured images can come from anywhere
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
   // Required for native/server-only packages — never bundled by Turbopack

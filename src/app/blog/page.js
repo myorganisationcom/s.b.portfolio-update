@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { blogPosts } from '@/data/blogPosts';
+import { getAllPublishedPosts } from '@/server/repositories/blogs';
 import styles from './blog.module.css';
+
+export const dynamic = 'force-dynamic';   // always SSR — read latest posts from DB
 
 export const metadata = {
     title: "Business Growth Blog | Sarvanu Strategies",
@@ -30,11 +32,13 @@ export const metadata = {
     },
 };
 
-export default function BlogListing() {
+export default async function BlogListing() {
+    const blogPosts = await getAllPublishedPosts();
+
     return (
         <>
             <section className={styles.blogHero}>
-                <h1>Insights & Articles</h1>
+                <h1>Insights &amp; Articles</h1>
                 <p>Strategies, frameworks, and hard truths about scaling your business.</p>
             </section>
 
@@ -45,13 +49,19 @@ export default function BlogListing() {
                             <Link href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}>
                                 <div className={styles.imageContainer}>
                                     <div className={styles.imageOverlay}></div>
-                                    <Image
-                                        src={post.image}
-                                        alt={post.title}
-                                        fill
-                                        className={styles.blogFeaturedImage}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    />
+                                    {post.image ? (
+                                        <Image
+                                            src={post.image}
+                                            alt={post.title}
+                                            fill
+                                            className={styles.blogFeaturedImage}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                    ) : (
+                                        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #1a1a2e, #16213e)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem' }}>
+                                            {post.icon || '📝'}
+                                        </div>
+                                    )}
                                     <div className={styles.categoryBadge}>{post.category}</div>
                                 </div>
                                 <div className={styles.blogContent}>
