@@ -3,12 +3,12 @@
 import FadeIn from './FadeIn';
 
 export default function PremiumPricing() {
-  const cardBase = { padding: '40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column' };
+  const cardBase = { padding: '40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', height: '100%' };
   const checkStyle = { color: 'var(--clr-gold)', marginRight: '8px' };
   const arrowStyle = { color: '#3b82f6', marginRight: '8px' };
 
   return (
-    <section className="premium-pricing-section" style={{ padding: '100px 20px', background: 'var(--grad-surface)' }}>
+    <section className="premium-pricing-section" style={{ padding: '100px 20px', background: 'var(--grad-surface)', overflowX: 'hidden' }}>
       <div className="container" style={{ maxWidth: '1240px', margin: 'auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
           <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.5rem)', color: '#ffffff', marginBottom: '15px', fontWeight: '800' }}>Business Consulting Packages</h2>
@@ -17,9 +17,9 @@ export default function PremiumPricing() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', marginBottom: '60px' }}>
+        <div className="pricing-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '30px', marginBottom: '60px', alignItems: 'stretch' }}>
           {/* Basic Plan */}
-          <FadeIn>
+          <FadeIn style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <div style={{ ...cardBase, background: 'rgba(255,255,255,0.03)', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
               <h3 style={{ fontSize: '1.5rem', color: '#ffffff' }}>Basic Plan</h3>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>Foundation & Clarity</p>
@@ -47,8 +47,8 @@ export default function PremiumPricing() {
           </FadeIn>
 
           {/* Growth Plan */}
-          <FadeIn delay={0.1}>
-            <div style={{ ...cardBase, background: 'rgba(245, 197, 24, 0.04)', boxShadow: '0 15px 50px rgba(0,0,0,0.4), 0 0 30px rgba(245, 197, 24, 0.06)', borderColor: 'rgba(245, 197, 24, 0.2)', transform: 'scale(1.03)', position: 'relative', zIndex: 1 }}>
+          <FadeIn delay={0.1} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <div className="growth-card" style={{ ...cardBase, background: 'rgba(245, 197, 24, 0.04)', boxShadow: '0 15px 50px rgba(0,0,0,0.4), 0 0 30px rgba(245, 197, 24, 0.06)', borderColor: 'rgba(245, 197, 24, 0.2)', position: 'relative', zIndex: 1 }}>
               <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: 'var(--clr-gold)', color: '#000000', padding: '6px 18px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>Most Popular</div>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--clr-gold)' }}>Growth Plan</h3>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>Systems & Consistency</p>
@@ -77,7 +77,7 @@ export default function PremiumPricing() {
           </FadeIn>
 
           {/* Premium Plan */}
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <div style={{ ...cardBase, background: 'rgba(255,255,255,0.03)', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
               <h3 style={{ fontSize: '1.5rem', color: '#ffffff' }}>Premium Plan</h3>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>Scale, Automation & Control</p>

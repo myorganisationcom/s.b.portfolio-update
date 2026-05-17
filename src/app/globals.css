@@ -120,6 +120,33 @@ img {
   padding-right: 30px !important;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .service-cards-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .premium-service-grid {
+    padding: 0 !important;
+  }
+
+  .premium-pricing-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+
 /* --------------------------------------------------------------------------
    Snap Bar - Gen-Z Professional Design
    -------------------------------------------------------------------------- */
@@ -1877,12 +1904,32 @@ a.cta-btn:hover {
 
 .service-nav.next {
   right: 0;
-}/* --------------------------------------------------------------------------
+}
+
+/* --------------------------------------------------------------------------
+   Specialized Solutions Section Wrapper
+   -------------------------------------------------------------------------- */
+.service-cards-section {
+  overflow-x: hidden;
+  padding: 80px 20px;
+  background: var(--grad-primary);
+  text-align: center;
+}
+
+.service-cards-section h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+
+/* --------------------------------------------------------------------------
    Premium Service Grid (Specialized Solutions)
    -------------------------------------------------------------------------- */
+
 .premium-service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 25px;
   max-width: var(--container-max);
   margin: 0 auto;
@@ -2001,6 +2048,18 @@ a.cta-btn:hover {
 
   .pricing-card.featured {
     transform: scale(1);
+  }
+
+  .premium-service-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 16px !important;
+    gap: 16px !important;
+  }
+
+  .service-cards-section {
+    overflow-x: hidden !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }
 
@@ -9478,3 +9537,31 @@ textarea.premium-input {
   color: #fff;
   font-weight: 600;
 }
+
+/* --------------------------------------------------------------------------
+   Pricing Section - Mobile Responsive Fix
+   -------------------------------------------------------------------------- */
+
+/* Desktop: Growth card gets slight scale for visual hierarchy */
+@media (min-width: 769px) {
+  .growth-card {
+    transform: scale(1.03);
+  }
+}
+
+/* Mobile: All cards full width, no overflow */
+@media (max-width: 768px) {
+  .premium-pricing-section {
+    padding: 70px 16px !important;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .growth-card {
+    transform: none !important;
+  }
+}
+

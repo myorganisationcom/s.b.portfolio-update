@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export default function FadeIn({ children, direction = 'up', className = '' }) {
+export default function FadeIn({ children, direction = 'up', className = '', style = {}, delay = 0 }) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef();
 
@@ -36,6 +36,7 @@ export default function FadeIn({ children, direction = 'up', className = '' }) {
     <div
       ref={domRef}
       className={`${animationClass} ${isVisible ? 'show' : ''} ${className}`}
+      style={{ transitionDelay: delay ? `${delay}s` : undefined, ...style }}
     >
       {children}
     </div>

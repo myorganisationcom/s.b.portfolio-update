@@ -4,12 +4,12 @@ import React, { useEffect, useRef } from 'react';
 import ServiceSlider from '@/components/ServiceSlider';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import FadeIn from '@/components/FadeIn';
-import Image from 'next/image';
 import MissionVision from '@/components/MissionVision';
 import PremiumPricing from '@/components/PremiumPricing';
 import FaqSection from '@/components/FaqSection';
 import HeroLiveDashboard from '@/components/HeroLiveDashboard';
 import DetailedServiceBreakdown from '@/components/DetailedServiceBreakdown';
+import AboutCompany from '@/components/AboutCompany';
 import CtaSection from '@/components/CtaSection';
 import { useLeadModal } from '@/components/LeadModalContext';
 
@@ -35,7 +35,7 @@ export default function Home() {
             <p className="hero-tagline">Business Consultant & Growth Strategist</p>
             <h1>Build, Systemize & Scale <span>Your Business</span></h1>
             <p className="hero-description" style={{ fontSize: '0.95rem', lineHeight: '1.5', marginBottom: '25px', opacity: 0.9 }}>
-              Sarvanu.com is a results-driven business consulting organization led by <strong>Sarvanu Banerjee</strong>. We help founders and entrepreneurs transform ideas into scalable systems. By combining traditional business principles with modern execution strategies, we ensure that businesses don't just grow fast—but grow right.
+              <strong>Sarvanu.com</strong> is a results-driven business consulting organization. We partner with founders, startups, and growing enterprises to build scalable systems, streamline operations, and execute strategies that create compounding, long-term growth.
               <br/><br/>
               If you are struggling with direction, operations, or scaling—this is where structure meets strategy.
             </p>
@@ -57,32 +57,8 @@ export default function Home() {
       {/* MISSION & VISION */}
       <MissionVision />
 
-      {/* ABOUT SECTION - WHO IS SARVANU */}
-      <section id="about" className="about-section">
-        <div className="container about-container">
-          <FadeIn direction="left" className="about-image">
-            <Image src="/your-photo.jpeg" alt="Sarvanu" width={400} height={400} className="about-photo" />
-          </FadeIn>
-
-          <FadeIn direction="right" className="about-text">
-            <h2>Who is Sarvanu Banerjee?</h2>
-            <p>
-              <strong>Sarvanu Banerjee</strong> is a business management, marketing, and growth consultant who works directly with founders and entrepreneurs to build scalable and sustainable businesses.
-            </p>
-            <p>
-              Unlike traditional consultants, Sarvanu works as a hands-on partner—helping implement real systems and strategies instead of just giving advice. He is recognized for turning complex problems into simple systems, blending traditional business discipline with modern strategies, and focusing on execution, not just planning.
-            </p>
-            <h3>What Does He Do?</h3>
-            <ul style={{ listStyle: 'none', padding: 0, marginTop: '15px' }}>
-              <li style={{ marginBottom: '10px' }}><i className="fas fa-check text-gold" style={{ color: 'var(--clr-gold)', marginRight: '10px' }}></i>Build clear business strategies</li>
-              <li style={{ marginBottom: '10px' }}><i className="fas fa-check text-gold" style={{ color: 'var(--clr-gold)', marginRight: '10px' }}></i>Improve operations and workflow systems</li>
-              <li style={{ marginBottom: '10px' }}><i className="fas fa-check text-gold" style={{ color: 'var(--clr-gold)', marginRight: '10px' }}></i>Create high-converting marketing strategies</li>
-              <li style={{ marginBottom: '10px' }}><i className="fas fa-check text-gold" style={{ color: 'var(--clr-gold)', marginRight: '10px' }}></i>Solve scaling challenges</li>
-              <li style={{ marginBottom: '10px' }}><i className="fas fa-check text-gold" style={{ color: 'var(--clr-gold)', marginRight: '10px' }}></i>Develop long-term, sustainable growth plans</li>
-            </ul>
-          </FadeIn>
-        </div>
-      </section>
+      {/* ABOUT COMPANY SECTION */}
+      <AboutCompany />
 
       {/* WHO SHOULD WORK WITH SARVANU.COM */}
       <section id="work-expertise" className="expertise-section">
@@ -133,15 +109,15 @@ export default function Home() {
                 <div className="expertise-icon-box blue-box">
                   <i className="fas fa-star"></i>
                 </div>
-                Why Choose Sarvanu Banerjee?
+                Why Choose Sarvanu.com?
               </h3>
 
               <ul className="expertise-list">
                 {[
-                  { icon: 'fa-puzzle-piece', text: 'Turning complex problems into simple systems' },
-                  { icon: 'fa-balance-scale', text: 'Blending traditional discipline with modern strategies' },
-                  { icon: 'fa-handshake', text: 'Working directly with founders (no layers of teams)' },
-                  { icon: 'fa-hammer', text: 'Focusing on execution, not just planning' }
+                  { icon: 'fa-puzzle-piece', text: 'Turning complex business problems into elegant systems' },
+                  { icon: 'fa-balance-scale', text: 'Blending traditional discipline with modern execution' },
+                  { icon: 'fa-handshake', text: 'Direct partnership model—no middlemen, no delays' },
+                  { icon: 'fa-hammer', text: 'Built for execution, not just strategy decks' }
                 ].map((item, i) => (
                   <li key={i}>
                     <div className="list-icon-box">
@@ -152,7 +128,7 @@ export default function Home() {
                 ))}
               </ul>
               <p style={{ marginTop: '20px', fontSize: '0.9rem', fontStyle: 'italic', color: 'rgba(255,255,255,0.7)' }}>
-                His approach is practical, structured, and built for real-world business challenges—not theory.
+                Our approach is practical, structured, and built for real-world business challenges—not theory.
               </p>
             </FadeIn>
           </div>
