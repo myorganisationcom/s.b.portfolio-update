@@ -1,7 +1,7 @@
 'use client';
 
 export default function BookACall() {
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const fd = new FormData(e.target);
         const name  = fd.get('name');
@@ -18,6 +18,23 @@ export default function BookACall() {
             `*Stage:*    ${stage}`,
             `*Challenge:* ${challenge || 'Not specified'}`,
         ].join('\n');
+
+        try {
+            await fetch('/api/forms', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formType: 'book_strategy_call',
+                    name,
+                    email,
+                    phone,
+                    businessStage: stage,
+                    challenge,
+                }),
+            });
+        } catch (err) {
+            console.error('Failed to save book form submission', err);
+        }
 
         window.open(`https://wa.me/918700541657?text=${encodeURIComponent(msg)}`, '_blank');
     };

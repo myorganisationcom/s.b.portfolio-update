@@ -1,7 +1,7 @@
 /**
  * Blog Repository — Unified data layer
  *
- * When BLOG_DATABASE_URL is set  → queries the external PostgreSQL "blogs" table.
+ * When DATABASE_URL is set  → queries the PostgreSQL "blogs" table through Prisma.
  * When it is NOT set             → falls back to static data files for dev/preview.
  *
  * External DB schema (Prisma @@map("blogs")):
@@ -10,7 +10,7 @@
  *   download_link, updated_at
  */
 
-import { hasBlogDb, queryAll, queryOne } from '../services/blogDb.js';
+import { getPrisma, hasDatabase } from '../services/prisma.js';
 
 // Static fallbacks (used when no external DB is configured)
 import { blogPosts as staticPosts } from '@/data/blogPosts';
@@ -25,21 +25,21 @@ import { blogContent as staticContent } from '@/data/blogContent';
 function normaliseRow(row) {
   return {
     id:            Number(row.id),
-    slug:          row.seo_slug,
+    slug:          row.seoSlug,
     title:         row.title,
     description:   extractDescription(row.content),
     content:       row.content,
     author:        row.author,
-    image:         row.featured_image || '',
-    featuredImage: row.featured_image || '',
+    image:         row.featuredImage || '',
+    featuredImage: row.featuredImage || '',
     tags:          parseTags(row.tags),
-    category:      String(row.category_id ?? ''),
-    categoryId:    Number(row.category_id ?? 0),
+    category:      String(row.categoryId ?? ''),
+    categoryId:    Number(row.categoryId ?? 0),
     status:        row.status,
     views:         Number(row.views ?? 0),
-    createdAt:     row.created_at,
-    updatedAt:     row.updated_at,
-    downloadLink:  row.download_link || null,
+    createdAt:     row.createdAt,
+    updatedAt:     row.updatedAt,
+    downloadLink:  row.downloadLink || null,
     // keep icon/originalFile for compat with static data
     icon:          '📝',
     originalFile:  null,
@@ -74,19 +74,23 @@ function parseTags(tags) {
  * Get all published blog posts (listing data — no full content).
  */
 export async function getAllPublishedPosts() {
-  if (!hasBlogDb()) {
+  if (!hasDatabase()) {
     // Static fallback
     return staticPosts;
   }
 
-  const rows = await queryAll(
-    `SELECT id, title, seo_slug, status, views, created_at,
-            author, featured_image, tags, category_id,
-            download_link, updated_at, content
-     FROM blogs
-     WHERE LOWER(status) = 'published'
-     ORDER BY created_at DESC`
-  );
+  const prisma = getPrisma();
+  const rows = await prisma.blog.findMany({
+    where: {
+      status: {
+        equals: 'published',
+        mode: 'insensitive',
+      },
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
   return rows.map(normaliseRow);
 }
@@ -95,7 +99,7 @@ export async function getAllPublishedPosts() {
  * Get a single post by slug (with full content).
  */
 export async function getPostBySlug(slug) {
-  if (!hasBlogDb()) {
+  if (!hasDatabase()) {
     // Static fallback
     const meta = staticPosts.find(p => p.slug === slug);
     const content = staticContent[slug];
@@ -103,12 +107,16 @@ export async function getPostBySlug(slug) {
     return { ...meta, content };
   }
 
-  const row = await queryOne(
-    `SELECT * FROM blogs
-     WHERE seo_slug = $1 AND LOWER(status) = 'published'
-     LIMIT 1`,
-    [slug]
-  );
+  const prisma = getPrisma();
+  const row = await prisma.blog.findFirst({
+    where: {
+      seoSlug: slug,
+      status: {
+        equals: 'published',
+        mode: 'insensitive',
+      },
+    },
+  });
 
   if (!row) return null;
   return normaliseRow(row);
@@ -118,13 +126,22 @@ export async function getPostBySlug(slug) {
  * Get all slugs (for generateStaticParams in dynamic mode).
  */
 export async function getAllSlugs() {
-  if (!hasBlogDb()) {
+  if (!hasDatabase()) {
     return staticPosts.map(p => p.slug);
   }
 
-  const rows = await queryAll(
-    `SELECT seo_slug FROM blogs WHERE LOWER(status) = 'published'`
-  );
+  const prisma = getPrisma();
+  const rows = await prisma.blog.findMany({
+    where: {
+      status: {
+        equals: 'published',
+        mode: 'insensitive',
+      },
+    },
+    select: {
+      seoSlug: true,
+    },
+  });
 
-  return rows.map(r => r.seo_slug);
+  return rows.map(r => r.seoSlug);
 }

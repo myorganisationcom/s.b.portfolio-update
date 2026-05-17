@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { saveFormSubmission } from '@/server/services/forms';
 
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -22,6 +23,15 @@ export async function POST(request) {
         const businessStage = formData.get('business_stage');
         const goals = formData.get('goals');
         const formType = formData.get('form_type') || 'contact';
+
+        await saveFormSubmission({
+            formType: String(formType),
+            name: String(name || ''),
+            email: email ? String(email) : null,
+            phone: phone ? String(phone) : null,
+            businessStage: businessStage ? String(businessStage) : null,
+            goals: goals ? String(goals) : null,
+        });
 
         // Build the email HTML
         const htmlBody = `

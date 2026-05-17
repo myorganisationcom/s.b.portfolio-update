@@ -1,8 +1,9 @@
-import { blogPosts } from '@/data/blogPosts';
+import { getAllPublishedPosts } from '@/server/repositories/blogs';
 
 /** @type {import('next').MetadataRoute.Sitemap} */
-export default function sitemap() {
+export default async function sitemap() {
     const baseUrl = 'https://sarvanu.com';
+    const blogPosts = await getAllPublishedPosts();
 
     // High-priority service/landing pages
     const highPriorityRoutes = [
@@ -43,7 +44,7 @@ export default function sitemap() {
     // Dynamic blog post routes
     const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: post.date ? new Date(post.date) : new Date(),
+        lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
         changeFrequency: 'monthly',
         priority: 0.6,
     }));

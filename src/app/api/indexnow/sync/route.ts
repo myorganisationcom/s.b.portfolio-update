@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     try {
         // 2. Fetch all dynamic and static URLs from our internal registry
-        const allUrls = getSitemapUrls();
+        const allUrls = await getSitemapUrls();
 
         if (!allUrls || allUrls.length === 0) {
             return NextResponse.json({ error: 'No URLs found to submit.' }, { status: 400 });

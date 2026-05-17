@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 export default function Resources() {
-    const handleWhatsAppSubmit = (e) => {
+    const handleWhatsAppSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const name = formData.get('name');
@@ -11,6 +11,20 @@ export default function Resources() {
         const waNumber = "918700541657";
         const waMessage = `*Free 90-Day Growth Roadmap Request*\n\n*Name:* ${name}\n*Email:* ${email}\n\nPlease send me the roadmap!`;
         const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+        try {
+            await fetch('/api/forms', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    formType: 'lead_magnet',
+                    name,
+                    email,
+                }),
+            });
+        } catch (err) {
+            console.error('Failed to save resource form submission', err);
+        }
 
         window.open(waLink, '_blank');
     };

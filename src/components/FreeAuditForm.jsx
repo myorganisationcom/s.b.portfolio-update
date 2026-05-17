@@ -62,7 +62,7 @@ export default function FreeAuditForm({ isOpen, onClose }) {
     }
   };
 
-  const submitForm = () => {
+  const submitForm = async () => {
     setIsAnimating(true);
 
     // Construct internal tag logic
@@ -74,6 +74,26 @@ export default function FreeAuditForm({ isOpen, onClose }) {
 
     const waNumber = "918700541657";
     const waMessage = `*New Free Business Growth Audit*\n\n*Name:* ${formData.name}\n*WhatsApp:* ${formData.whatsapp}\n*Business Type:* ${formData.businessType}\n*Revenue:* ${formData.revenue}\n*Challenge:* ${formData.challenge === 'Something else' ? formData.otherChallenge : formData.challenge}\n*Investment Readiness:* ${formData.investment}\n\n_Internal Tag:_ ${leadQuality}`;
+
+    try {
+      await fetch('/api/forms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'free_business_growth_audit',
+          name: formData.name,
+          phone: formData.whatsapp,
+          businessType: formData.businessType,
+          revenue: formData.revenue,
+          challenge: formData.challenge,
+          otherChallenge: formData.otherChallenge,
+          investment: formData.investment,
+          metadata: { leadQuality },
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to save free audit submission', err);
+    }
 
     setTimeout(() => {
       setCurrentStep(7); // Show success

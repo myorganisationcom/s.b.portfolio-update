@@ -3,7 +3,7 @@
 import FadeIn from './FadeIn';
 
 export default function CtaSection() {
-  const handleWhatsAppSubmit = (e) => {
+  const handleWhatsAppSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const name = formData.get('name');
@@ -15,6 +15,23 @@ export default function CtaSection() {
     const waNumber = "918700541657";
     const waMessage = `*New Strategy Call Request*\n\n*Name:* ${name}\n*Email:* ${email}\n*Phone:* ${phone}\n*Business Stage:* ${stage}\n*Challenge:* ${goals}`;
     const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+
+    try {
+      await fetch('/api/forms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          formType: 'cta_strategy_call',
+          name,
+          email,
+          phone,
+          businessStage: stage,
+          goals,
+        }),
+      });
+    } catch (err) {
+      console.error('Failed to save CTA form submission', err);
+    }
 
     window.open(waLink, '_blank');
   };

@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog {
+  id            BigInt   @id @default(autoincrement())
+  title         String
+  seoSlug       String   @unique @map("seo_slug")
+  status        String
+  views         BigInt   @default(0)
+  createdAt     DateTime @default(now()) @map("created_at")
+  content       String
+  author        String
+  featuredImage String   @map("featured_image")
+  tags          String
+  categoryId    BigInt   @map("category_id")
+  downloadLink  String?  @map("download_link")
+  updatedAt     DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("blogs")
+}
+
+model Lead {
+  id           BigInt   @id @default(autoincrement())
+  name         String
+  organisation String   @default("")
+  designation  String   @default("")
+  email        String
+  phone        String
+  quizAnswers  String   @default("{}") @map("quiz_answers")
+  leadQuality  String   @default("Nurture") @map("lead_quality")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("leads")
+}
+
+model FormSubmission {
+  id             BigInt   @id @default(autoincrement())
+  formType       String   @map("form_type")
+  name           String
+  email          String?
+  phone          String?
+  organisation   String?
+  designation    String?
+  businessStage  String?  @map("business_stage")
+  goals          String?
+  businessType   String?  @map("business_type")
+  revenue        String?
+  challenge      String?
+  otherChallenge String?  @map("other_challenge")
+  investment     String?
+  metadata       Json?
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("form_submissions")
+}

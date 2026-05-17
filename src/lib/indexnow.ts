@@ -1,4 +1,4 @@
-import { blogPosts } from '@/data/blogPosts';
+import { getAllPublishedPosts } from '@/server/repositories/blogs';
 import fs from 'fs';
 import path from 'path';
 
@@ -21,9 +21,10 @@ function getConfig() {
  * Generates the full list of static and dynamic URLs for the site.
  * This decoupled function acts as our internal sitemap registry.
  */
-export function getSitemapUrls(): string[] {
+export async function getSitemapUrls(): Promise<string[]> {
     const { host } = getConfig();
     const baseUrl = `https://${host}`;
+    const blogPosts = await getAllPublishedPosts();
 
     // 1. Static Routes
     const staticRoutes = [

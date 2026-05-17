@@ -10,7 +10,7 @@
 import { NextResponse } from 'next/server';
 import { saveLead, fetchAllLeads, validateLeadPayload } from '@/server/services/leads';
 
-export const runtime = 'nodejs'; // required for better-sqlite3 / pg
+export const runtime = 'nodejs'; // Prisma runs on the Node.js runtime
 
 // ─── POST /api/leads ─────────────────────────────────────────────────────────
 
