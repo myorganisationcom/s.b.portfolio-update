@@ -157,16 +157,16 @@ export default function DiagnosisModal() {
       const data = await res.json();
       if (data.success) {
         const waNum = '918700541657';
-        const msg = [
+        const msgLines = [
           '*New Business Enquiry — Sarvanu Strategies*', '',
-          `*Name:*         ${contact?.name || ''}`,
-          `*Organisation:* ${contact?.organisation || 'N/A'}`,
-          `*Designation:*  ${contact?.designation  || 'N/A'}`,
-          `*Email:*        ${contact?.email}`,
-          `*Phone:*        ${contact?.phone}`, '',
+          `*Name:*   ${contact?.name || ''}`,
+          contact?.organisation?.trim() ? `*Organisation:* ${contact.organisation.trim()}` : null,
+          contact?.designation?.trim()  ? `*Designation:*  ${contact.designation.trim()}`  : null,
+          `*Email:*  ${contact?.email}`,
+          `*Phone:*  ${contact?.phone}`, '',
           `_Lead Quality: ${data.leadQuality}_`,
-        ].join('\n');
-        window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`, '_blank');
+        ].filter(Boolean).join('\n');
+        window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(msgLines)}`, '_blank');
         setPhase('success');
       }
     } catch (err) { console.error(err); }

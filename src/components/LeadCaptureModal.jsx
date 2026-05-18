@@ -85,8 +85,18 @@ export default function LeadCaptureModal() {
       const data = await res.json();
       if (data.success) {
         const waNumber = '918700541657';
-        const msg = `*New Business Enquiry — Sarvanu Strategies*\n\n*Name:* ${contact.name}\n*Organisation:* ${contact.organisation || 'N/A'}\n*Designation:* ${contact.designation || 'N/A'}\n*Email:* ${contact.email}\n*Phone:* ${contact.phone}\n\n_Lead Quality: ${data.leadQuality}_`;
-        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        const msgLines = [
+          '*New Business Enquiry — Sarvanu Strategies*',
+          '',
+          `*Name:*   ${contact.name}`,
+          contact.organisation?.trim() ? `*Organisation:* ${contact.organisation.trim()}` : null,
+          contact.designation?.trim()  ? `*Designation:*  ${contact.designation.trim()}`  : null,
+          `*Email:*  ${contact.email}`,
+          `*Phone:*  ${contact.phone}`,
+          '',
+          `_Lead Quality: ${data.leadQuality}_`,
+        ].filter(Boolean).join('\n');
+        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msgLines)}`, '_blank');
         setSubmitted(true);
       }
     } catch (err) { console.error(err); }

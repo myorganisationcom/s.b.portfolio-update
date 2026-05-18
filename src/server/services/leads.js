@@ -67,19 +67,19 @@ export function validateLeadPayload({ name, email, phone }) {
 export function buildWhatsAppUrl({ name, organisation, designation, email, phone }, leadQuality) {
   const WA_NUMBER = '918700541657';
 
-  const message = [
+  const lines = [
     `*New Business Enquiry — Sarvanu Strategies*`,
     ``,
-    `*Name:*         ${name}`,
-    `*Organisation:* ${organisation || 'N/A'}`,
-    `*Designation:*  ${designation  || 'N/A'}`,
-    `*Email:*        ${email}`,
-    `*Phone:*        ${phone}`,
+    `*Name:*   ${name}`,
+    organisation?.trim() ? `*Organisation:* ${organisation.trim()}` : null,
+    designation?.trim()  ? `*Designation:*  ${designation.trim()}`  : null,
+    `*Email:*  ${email}`,
+    `*Phone:*  ${phone}`,
     ``,
     `_Lead Quality: ${leadQuality}_`,
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines)}`;
 }
 
 // ─── Public Service Methods ──────────────────────────────────────────────────
