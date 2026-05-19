@@ -40,11 +40,72 @@ export default function SuccessScreen({ result, stage1 }) {
   const quality = result?.leadQuality ?? 'Nurture';
   const bottle  = result?.bottleneck  ?? '';
   const pdfUrl  = result?.pdfUrl      ?? '';
+  const userEmail = stage1?.email ?? '';
+  const [seconds, setSeconds] = useState(30);
+  const [ready, setReady] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   const org     = stage1?.organisation ?? 'Your Business';
   const name    = stage1?.name ?? '';
 
   const qualLabel = score >= 70 ? 'Strong Growth Potential' : score >= 50 ? 'Needs Structural Improvements' : 'Critical Attention Required';
   const qColor    = QC[quality] || '#6b7280';
+
+  // Poll for PDF availability and manage countdown + email
+  useEffect(() => {
+    if (!pdfUrl) return;
+    let mounted = true;
+
+    const checkPdf = async () => {
+      try {
+        const resp = await fetch(pdfUrl, { method: 'HEAD' });
+        if (!mounted) return;
+        if (resp.ok) {
+          setReady(true);
+        }
+      } catch (err) {
+        // ignore
+      }
+    };
+
+    // initial check
+    checkPdf();
+
+    const poll = setInterval(() => {
+      if (!mounted) return;
+      checkPdf();
+    }, 2000);
+
+    return () => { mounted = false; clearInterval(poll); };
+  }, [pdfUrl]);
+
+  useEffect(() => {
+    if (!pdfUrl) return;
+    if (ready && !emailSent) {
+      // send email once ready
+      (async () => {
+        try {
+          if (!userEmail) return;
+          await fetch('/api/reports/email', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail, pdfUrl }),
+          });
+          setEmailSent(true);
+        } catch (err) {
+          console.error('Failed to send report email', err);
+        }
+      })();
+    }
+  }, [ready, pdfUrl, userEmail, emailSent]);
+
+  useEffect(() => {
+    if (!pdfUrl) return;
+    if (seconds <= 0) {
+      setReady(true);
+      return;
+    }
+    const t = setInterval(() => setSeconds(s => s - 1), 1000);
+    return () => clearInterval(t);
+  }, [seconds, pdfUrl]);
 
   return (
     <div style={{
@@ -85,20 +146,32 @@ export default function SuccessScreen({ result, stage1 }) {
           )}
         </div>
 
-        {/* PDF Download */}
+        {/* PDF Download with 30s timer + email step */}
         {pdfUrl ? (
-          <a href={pdfUrl} download target="_blank" rel="noreferrer" style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-            padding: '14px 28px', borderRadius: 12, background: '#F5C518', color: '#000',
-            fontWeight: 700, fontSize: '1rem', textDecoration: 'none',
-            transition: 'all 0.2s', marginBottom: 14,
-          }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#f0bb00'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#F5C518'; e.currentTarget.style.transform = 'translateY(0)'; }}
-          >
-            <i className="fas fa-file-pdf" style={{ fontSize: '1.1rem', color: '#7a1500' }} />
-            Download Your Audit Report (PDF)
-          </a>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+            {!ready ? (
+              <div style={{ padding: '12px 18px', borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)' }}>
+                <i className="fas fa-hourglass-half" style={{ marginRight: 8 }} /> Preparing your report — available in <strong style={{ marginLeft: 6 }}>{seconds}s</strong>
+              </div>
+            ) : (
+              <a href={pdfUrl} download target="_blank" rel="noreferrer" style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                padding: '14px 28px', borderRadius: 12, background: '#F5C518', color: '#000',
+                fontWeight: 700, fontSize: '1rem', textDecoration: 'none',
+                transition: 'all 0.2s'
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#f0bb00'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#F5C518'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              >
+                <i className="fas fa-file-pdf" style={{ fontSize: '1.1rem', color: '#7a1500' }} />
+                Download Your Audit Report (PDF)
+              </a>
+            )}
+
+            <div style={{ fontSize: '0.86rem', color: 'rgba(255,255,255,0.7)' }}>
+              {ready ? (emailSent ? 'Report emailed to you.' : 'We will also email this report to your inbox.') : 'You can download after the timer finishes.'}
+            </div>
+          </div>
         ) : (
           <div style={{ padding: '14px 28px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem', marginBottom: 14 }}>
             <i className="fas fa-spinner" style={{ marginRight: 8 }} /> Report is being prepared — check your email shortly.
