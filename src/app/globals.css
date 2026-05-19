@@ -915,6 +915,30 @@ a.cta-btn:hover {
   50% { transform: rotateX(5deg) rotateY(-10deg) translateY(-15px); }
 }
 
+/* Mobile: center the dashboard and simplify transforms for small viewports */
+@media (max-width: 640px) {
+  .live-dash-container {
+    transform-origin: center center;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .live-dash-window {
+    transform: none;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* Reduce floating elements overlap on small screens */
+  .dash-float-element { display: none; }
+}
+
 /* Dashboard Header */
 .live-dash-header {
   background: rgba(0, 0, 0, 0.4);
