@@ -6,10 +6,10 @@ import styles from './blog.module.css';
 export const dynamic = 'force-dynamic';   // always SSR — read latest posts from DB
 
 export const metadata = {
-    title: "Business Growth Blog | Sarvanu Strategies",
+    title: "Business Growth Blog | Sarvanu",
     description: "Actionable strategies for founders and MSMEs to scale their businesses.",
     openGraph: {
-        title: 'Business Growth Blog | Sarvanu Strategies',
+        title: 'Business Growth Blog | Sarvanu',
         description: 'Actionable strategies for founders and MSMEs to scale their businesses.',
         url: 'https://sarvanu.com/blog',
         type: 'website',
@@ -18,12 +18,12 @@ export const metadata = {
                 url: "/og-image.png",
                 width: 1200,
                 height: 630,
-                alt: "Sarvanu Strategies Blog",
+                alt: "Sarvanu Blog",
             },
         ],
     },
     twitter: {
-        title: 'Business Growth Blog | Sarvanu Strategies',
+        title: 'Business Growth Blog | Sarvanu',
         description: 'Actionable strategies for founders and MSMEs to scale their businesses.',
         images: ["/og-image.png"],
     },
@@ -84,12 +84,12 @@ export default async function BlogListing() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "CollectionPage",
-                        "name": "Business Growth Blog | Sarvanu Strategies",
+                        "name": "Business Growth Blog | Sarvanu",
                         "description": "Insights, articles, and strategies for founders and MSMEs on scaling operations, optimizing marketing, and driving revenue growth.",
                         "url": "https://sarvanu.com/blog",
                         "publisher": {
                             "@type": "Organization",
-                            "name": "Sarvanu Strategies",
+                            "name": "Sarvanu",
                             "url": "https://sarvanu.com",
                             "logo": {
                                 "@type": "ImageObject",

@@ -42,6 +42,7 @@ export default function DiagnosisModal() {
   const [animating, setAnimating]   = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [animIn, setAnimIn]         = useState(false);
+  const [reportData, setReportData] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -156,17 +157,14 @@ export default function DiagnosisModal() {
       });
       const data = await res.json();
       if (data.success) {
-        const waNum = '918700541657';
-        const msgLines = [
-          '*New Business Enquiry — Sarvanu Strategies*', '',
-          `*Name:*   ${contact?.name || ''}`,
-          contact?.organisation?.trim() ? `*Organisation:* ${contact.organisation.trim()}` : null,
-          contact?.designation?.trim()  ? `*Designation:*  ${contact.designation.trim()}`  : null,
-          `*Email:*  ${contact?.email}`,
-          `*Phone:*  ${contact?.phone}`, '',
-          `_Lead Quality: ${data.leadQuality}_`,
-        ].filter(Boolean).join('\n');
-        window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(msgLines)}`, '_blank');
+        setReportData({
+          healthScore: data.healthScore ?? 0,
+          bottleneck:  data.bottleneck  ?? 'Growth Strategy',
+          pdfUrl:      data.pdfUrl      ?? null,
+          leadQuality: data.leadQuality ?? 'Nurture',
+          email:       contact?.email   ?? '',
+          name:        contact?.name    ?? '',
+        });
         setPhase('success');
       }
     } catch (err) { console.error(err); }
@@ -328,18 +326,35 @@ export default function DiagnosisModal() {
         })()}
 
         {/* ── SUCCESS PHASE ── */}
-        {phase === 'success' && (
+        {phase === 'success' && reportData && (
           <div className="lcm-fade-in" style={{ textAlign:'center', padding:'20px 0' }}>
-            <div style={{ width:80, height:80, borderRadius:'50%', background:'rgba(16,185,129,0.12)', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 20px' }}>
-              <i className="fas fa-check-circle" style={{ color:'#10b981', fontSize:'2.5rem' }} />
+            <div style={{ width:72, height:72, borderRadius:'50%', background:'rgba(16,185,129,0.12)', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 16px' }}>
+              <i className="fas fa-check-circle" style={{ color:'#10b981', fontSize:'2rem' }} />
             </div>
-            <h2 style={{ color:'#fff', fontSize:'1.8rem', fontWeight:800, marginBottom:12 }}>You're All Set!</h2>
-            <p style={{ color:'rgba(255,255,255,0.6)', maxWidth:400, margin:'0 auto 28px', lineHeight:1.7 }}>
-              Your diagnosis is complete. Sarvanu will personally reach out on WhatsApp within 24 hours with your personalised growth recommendations.
+            <h2 style={{ color:'#fff', fontSize:'1.8rem', fontWeight:800, marginBottom:10 }}>Report is Being Generated!</h2>
+            <p style={{ color:'rgba(255,255,255,0.55)', maxWidth:400, margin:'0 auto 24px', lineHeight:1.7, fontSize:'0.92rem' }}>
+              Thank you, <strong style={{color:'#fff'}}>{reportData.name}</strong>. Your AI business audit report will be emailed to <strong style={{color:'var(--clr-gold)'}}>{reportData.email}</strong> shortly.
             </p>
-            <button className="btn-primary" onClick={closeModal} style={{ padding:'12px 36px' }}>
-              Close
-            </button>
+
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, maxWidth:360, margin:'0 auto 24px', width:'100%' }}>
+              <div style={{ background:'rgba(245,197,24,0.06)', border:'1px solid rgba(245,197,24,0.2)', borderRadius:12, padding:'16px 12px', textAlign:'center' }}>
+                <div style={{ fontSize:'0.7rem', color:'rgba(255,255,255,0.5)', textTransform:'uppercase', letterSpacing:1, marginBottom:6 }}>Health Score</div>
+                <div style={{ fontSize:'2.2rem', fontWeight:800, color:'var(--clr-gold)', lineHeight:1 }}>{reportData.healthScore}<span style={{fontSize:'0.9rem',color:'rgba(255,255,255,0.3)'}}>/100</span></div>
+              </div>
+              <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:12, padding:'16px 12px', textAlign:'center', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                <div style={{ fontSize:'0.7rem', color:'rgba(255,255,255,0.5)', textTransform:'uppercase', letterSpacing:1, marginBottom:6 }}>Bottleneck</div>
+                <div style={{ fontSize:'0.82rem', fontWeight:700, color:'#fff', lineHeight:1.3 }}>{reportData.bottleneck}</div>
+              </div>
+            </div>
+
+            {reportData.pdfUrl && (
+              <a href={reportData.pdfUrl} download target="_blank" rel="noreferrer"
+                style={{ display:'inline-flex', alignItems:'center', gap:8, background:'var(--clr-gold)', color:'#000', fontWeight:700, padding:'12px 28px', borderRadius:10, fontSize:'0.92rem', textDecoration:'none', marginBottom:12 }}>
+                <i className="fas fa-download" /> Download PDF Report
+              </a>
+            )}
+            <p style={{ color:'rgba(255,255,255,0.3)', fontSize:'0.77rem', marginTop:8 }}>Our team will reach out within 24 hours.</p>
+            <button onClick={closeModal} style={{ marginTop:16, background:'transparent', border:'1px solid rgba(255,255,255,0.12)', color:'rgba(255,255,255,0.4)', padding:'8px 20px', borderRadius:8, cursor:'pointer', fontSize:'0.85rem' }}>Close</button>
           </div>
         )}
       </div>

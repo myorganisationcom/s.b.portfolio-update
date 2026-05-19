@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Funnel & CRM Setup | Sarvanu Strategies",
+    title: "Funnel & CRM Setup | Sarvanu",
     description: "Build high-converting funnels and implement CRM systems that automate lead nurturing and close more clients systematically.",
     alternates: { canonical: "https://sarvanu.com/services/funnel-crm" },
-    openGraph: { title: "Funnel & CRM Setup | Sarvanu Strategies", description: "High-converting funnels and CRM systems for growing businesses.", url: "https://sarvanu.com/services/funnel-crm", images: ["/og-image.png"] },
+    openGraph: { title: "Funnel & CRM Setup | Sarvanu", description: "High-converting funnels and CRM systems for growing businesses.", url: "https://sarvanu.com/services/funnel-crm", images: ["/og-image.png"] },
 };
 
 const steps = [

@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "How We Work | Sarvanu Strategies",
+    title: "How We Work | Sarvanu",
     description: "A transparent look at Sarvanu's consulting process — from first call to ongoing advisory. Know exactly what to expect.",
     alternates: { canonical: "https://sarvanu.com/how-we-work" },
-    openGraph: { title: "How We Work | Sarvanu Strategies", description: "Our consulting process — transparent, proven, results-focused.", url: "https://sarvanu.com/how-we-work", images: ["/og-image.png"] },
+    openGraph: { title: "How We Work | Sarvanu", description: "Our consulting process — transparent, proven, results-focused.", url: "https://sarvanu.com/how-we-work", images: ["/og-image.png"] },
 };
 
 const phases = [

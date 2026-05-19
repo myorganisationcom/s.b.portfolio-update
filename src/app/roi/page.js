@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "ROI of Business Consulting | Sarvanu Strategies",
+    title: "ROI of Business Consulting | Sarvanu",
     description: "Understand the real return on investment from strategic consulting. Why ₹15K–₹55K/month is one of the highest-ROI decisions a growing business can make.",
     alternates: { canonical: "https://sarvanu.com/roi" },
-    openGraph: { title: "ROI of Business Consulting | Sarvanu Strategies", description: "The real return on investment from strategic consulting.", url: "https://sarvanu.com/roi", images: ["/og-image.png"] },
+    openGraph: { title: "ROI of Business Consulting | Sarvanu", description: "The real return on investment from strategic consulting.", url: "https://sarvanu.com/roi", images: ["/og-image.png"] },
 };
 
 const roiPoints = [

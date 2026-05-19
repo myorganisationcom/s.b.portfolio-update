@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Consulting for Small Businesses & MSMEs | Sarvanu Strategies",
+    title: "Consulting for Small Businesses & MSMEs | Sarvanu",
     description: "Strategic consulting for small businesses and MSMEs in India. Break through plateaus, build systems, and grow sustainably.",
     alternates: { canonical: "https://sarvanu.com/small-business" },
-    openGraph: { title: "Consulting for Small Businesses | Sarvanu Strategies", description: "Break plateaus and grow your small business sustainably.", url: "https://sarvanu.com/small-business", images: ["/og-image.png"] },
+    openGraph: { title: "Consulting for Small Businesses | Sarvanu", description: "Break plateaus and grow your small business sustainably.", url: "https://sarvanu.com/small-business", images: ["/og-image.png"] },
 };
 
 const signs = [

@@ -135,7 +135,7 @@ export default function FreeAuditForm({ isOpen, onClose }) {
         {currentStep === 0 && (
           <FadeIn className="quiz-content-wrapper">
             <div className="quiz-header">
-              <span className="expertise-badge" style={{ margin: '0 auto 15px auto', display: 'inline-block' }}>SARVANU STRATEGIES</span>
+              <span className="expertise-badge" style={{ margin: '0 auto 15px auto', display: 'inline-block' }}>Sarvanu</span>
               <h2>Free Business <span className="text-gold">Growth Audit</span></h2>
               <p>This form takes 2 minutes to complete. Based on your answers, Sarvanu will personally connect with you and give tailored advice for your business — absolutely free, no obligation.</p>
             </div>

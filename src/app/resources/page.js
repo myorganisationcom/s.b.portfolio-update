@@ -123,7 +123,7 @@ export default function Resources() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "WebPage",
-                        "name": "Free Business Resources | Sarvanu Strategies",
+                        "name": "Free Business Resources | Sarvanu",
                         "description": "Free business resources, templates, and guides for founders and entrepreneurs.",
                         "url": "https://sarvanu.com/resources"
                     })

@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Consulting for Scaling Businesses | Sarvanu Strategies",
+    title: "Consulting for Scaling Businesses | Sarvanu",
     description: "Scale without chaos. Strategic consulting for businesses growing 2x–10x — systems, team architecture, and multi-channel revenue.",
     alternates: { canonical: "https://sarvanu.com/scaling" },
-    openGraph: { title: "Consulting for Scaling Businesses | Sarvanu Strategies", description: "Scale without chaos. Systems and strategy for high-growth businesses.", url: "https://sarvanu.com/scaling", images: ["/og-image.png"] },
+    openGraph: { title: "Consulting for Scaling Businesses | Sarvanu", description: "Scale without chaos. Systems and strategy for high-growth businesses.", url: "https://sarvanu.com/scaling", images: ["/og-image.png"] },
 };
 
 const scalingProblems = [

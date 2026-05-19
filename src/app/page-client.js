@@ -14,7 +14,7 @@ import CtaSection from '@/components/CtaSection';
 import { useLeadModal } from '@/components/LeadModalContext';
 
 export default function Home() {
-  const { openModal, openDiagnosis } = useLeadModal();
+  const { openModal, openDiagnosis, openAudit, openBook } = useLeadModal();
 
   // Auto-open Business Diagnosis popup after page fully mounts
   // useRef prevents double-fire in React StrictMode
@@ -22,7 +22,7 @@ export default function Home() {
   useEffect(() => {
     if (opened.current) return;
     opened.current = true;
-    const timer = setTimeout(() => openDiagnosis(), 1800);
+    const timer = setTimeout(() => openAudit(), 1800);
     return () => clearTimeout(timer);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -44,7 +44,7 @@ export default function Home() {
               <a href="#services" className="btn-primary">
                 <i className="fas fa-layer-group"></i> View Packages & Pricing
               </a>
-              <button onClick={openModal} className="btn-secondary" style={{ background:'none', border:'none', cursor:'pointer', font:'inherit', padding:0 }}>
+              <button onClick={openAudit} className="btn-secondary" style={{ background:'none', border:'none', cursor:'pointer', font:'inherit', padding:0 }}>
                 <i className="fas fa-calendar-alt"></i> Book Free Strategy Call
               </button>
             </div>

@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Why Choose Sarvanu Strategies | Sarvanu Strategies",
+    title: "Why Choose Sarvanu | Sarvanu",
     description: "What makes Sarvanu different from other consultants. Real implementation, honest advice, and a track record of measurable results.",
     alternates: { canonical: "https://sarvanu.com/why-choose-us" },
-    openGraph: { title: "Why Choose Sarvanu Strategies", description: "What makes Sarvanu different. Real results, real implementation.", url: "https://sarvanu.com/why-choose-us", images: ["/og-image.png"] },
+    openGraph: { title: "Why Choose Sarvanu", description: "What makes Sarvanu different. Real results, real implementation.", url: "https://sarvanu.com/why-choose-us", images: ["/og-image.png"] },
 };
 
 const differentiators = [
@@ -26,7 +26,7 @@ export default function WhyChooseUsPage() {
             <section style={{ padding: "120px 20px 80px", background: "var(--grad-surface)", textAlign: "center" }}>
                 <div style={{ maxWidth: 720, margin: "0 auto" }}>
                     <span style={{ display: "inline-block", background: "rgba(245,197,24,0.1)", color: "var(--clr-gold)", border: "1px solid rgba(245,197,24,0.2)", padding: "6px 18px", borderRadius: 20, fontSize: "0.85rem", fontWeight: 600, marginBottom: 20, letterSpacing: "0.5px", textTransform: "uppercase" }}>Authority — Why Choose Us</span>
-                    <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", color: "#fff", fontWeight: 800, marginBottom: 20, lineHeight: 1.2 }}>Why Founders Choose <span style={{ color: "var(--clr-gold)" }}>Sarvanu Strategies</span></h1>
+                    <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", color: "#fff", fontWeight: 800, marginBottom: 20, lineHeight: 1.2 }}>Why Founders Choose <span style={{ color: "var(--clr-gold)" }}>Sarvanu</span></h1>
                     <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>There are hundreds of consultants. Here's what's genuinely different about how we work — and why our clients stay.</p>
                 </div>
             </section>

@@ -11,7 +11,7 @@ export default function BookACall() {
         const challenge = fd.get('challenge');
 
         const msg = [
-            '*New Strategy Call Request — Sarvanu Strategies*', '',
+            '*New Strategy Call Request — Sarvanu*', '',
             `*Name:*      ${name}`,
             `*Email:*     ${email}`,
             `*Phone:*     ${phone}`,
@@ -386,7 +386,7 @@ export default function BookACall() {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "ContactPage",
-                    "name": "Book a Strategy Call | Sarvanu Strategies",
+                    "name": "Book a Strategy Call | Sarvanu",
                     "description": "Book a free 15-minute strategy call with Sarvanu Banerjee.",
                     "url": "https://sarvanu.com/book"
                 })

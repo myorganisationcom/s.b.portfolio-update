@@ -9,7 +9,7 @@ export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [menuActive, setMenuActive] = useState(false);
     const pathname = usePathname();
-    const { openModal, openDiagnosis } = useLeadModal();
+    const { openModal, openDiagnosis, openAudit, openBook } = useLeadModal();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -134,7 +134,7 @@ export default function Header() {
 
                     <li>
                         <button
-                            onClick={() => { openModal(); closeMenu(); }}
+                            onClick={() => { openAudit(); closeMenu(); }}
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',

@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Marketing Strategy Consulting | Sarvanu Strategies",
+    title: "Marketing Strategy Consulting | Sarvanu",
     description: "Stop guessing at marketing. Get a clear, channel-specific strategy that generates consistent leads and revenue for your business.",
     alternates: { canonical: "https://sarvanu.com/services/marketing" },
-    openGraph: { title: "Marketing Strategy Consulting | Sarvanu Strategies", description: "Clear marketing strategy for consistent leads and revenue.", url: "https://sarvanu.com/services/marketing", images: ["/og-image.png"] },
+    openGraph: { title: "Marketing Strategy Consulting | Sarvanu", description: "Clear marketing strategy for consistent leads and revenue.", url: "https://sarvanu.com/services/marketing", images: ["/og-image.png"] },
 };
 
 const deliverables = [

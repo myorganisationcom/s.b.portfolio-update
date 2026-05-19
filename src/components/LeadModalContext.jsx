@@ -5,11 +5,13 @@ import { createContext, useContext, useState, useCallback } from 'react';
 const LeadModalContext = createContext(null);
 
 /**
- * activeModal: null | 'contact' | 'diagnosis'
+ * activeModal: null | 'contact' | 'diagnosis' | 'audit' | 'book'
  *
- * Two entry points:
- *   openModal()      → ContactModal first (Book a Call flow)
- *   openDiagnosis()  → DiagnosisModal directly (Free Tools / Business Diagnosis flow)
+ * Entry points:
+ *   openModal()      → ContactModal first (legacy Book a Call flow)
+ *   openDiagnosis()  → DiagnosisModal directly (Business Diagnosis flow)
+ *   openAudit()      → Full Business Growth Audit funnel popup
+ *   openBook()       → Book a Strategy Call popup
  *   proceedToDiagnosis(data) → called internally from ContactModal
  */
 export function LeadModalProvider({ children }) {
@@ -21,9 +23,15 @@ export function LeadModalProvider({ children }) {
 
   // "Business Diagnosis" nav flow — opens diagnosis directly
   const openDiagnosis = useCallback(() => {
-    setContactData(null);        // clear any old data — DiagnosisModal will collect inline
+    setContactData(null);
     setActiveModal('diagnosis');
   }, []);
+
+  // Full Business Growth Audit funnel popup
+  const openAudit = useCallback(() => setActiveModal('audit'), []);
+
+  // Book a Strategy Call popup
+  const openBook = useCallback(() => setActiveModal('book'), []);
 
   const proceedToDiagnosis = useCallback((data) => {
     setContactData(data);
@@ -33,7 +41,7 @@ export function LeadModalProvider({ children }) {
   const closeModal = useCallback(() => setActiveModal(null), []);
 
   return (
-    <LeadModalContext.Provider value={{ activeModal, contactData, openModal, openDiagnosis, proceedToDiagnosis, closeModal }}>
+    <LeadModalContext.Provider value={{ activeModal, contactData, openModal, openDiagnosis, openAudit, openBook, proceedToDiagnosis, closeModal }}>
       {children}
     </LeadModalContext.Provider>
   );

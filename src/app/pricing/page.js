@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Pricing & Consulting Packages | Sarvanu Strategies",
+    title: "Pricing & Consulting Packages | Sarvanu",
     description: "Transparent pricing for business consulting. Basic ₹15K/month, Growth ₹30K/month, Premium ₹55K/month. No hidden fees.",
     alternates: { canonical: "https://sarvanu.com/pricing" },
-    openGraph: { title: "Consulting Pricing | Sarvanu Strategies", description: "Transparent business consulting pricing for Indian founders and MSMEs.", url: "https://sarvanu.com/pricing", images: ["/og-image.png"] },
+    openGraph: { title: "Consulting Pricing | Sarvanu", description: "Transparent business consulting pricing for Indian founders and MSMEs.", url: "https://sarvanu.com/pricing", images: ["/og-image.png"] },
 };
 
 const plans = [

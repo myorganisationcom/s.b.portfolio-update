@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Business Systems Explained | Sarvanu Strategies",
+    title: "Business Systems Explained | Sarvanu",
     description: "Understand what business systems are, why they matter, and how the right systems transform a chaotic business into a scalable one.",
     alternates: { canonical: "https://sarvanu.com/business-systems" },
-    openGraph: { title: "Business Systems Explained | Sarvanu Strategies", description: "What business systems are and why they're the foundation of scale.", url: "https://sarvanu.com/business-systems", images: ["/og-image.png"] },
+    openGraph: { title: "Business Systems Explained | Sarvanu", description: "What business systems are and why they're the foundation of scale.", url: "https://sarvanu.com/business-systems", images: ["/og-image.png"] },
 };
 
 const systemTypes = [

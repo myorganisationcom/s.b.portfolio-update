@@ -27,6 +27,7 @@ export default function LeadCaptureModal() {
   const [animating, setAnimating] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [reportData, setReportData] = useState(null); // { healthScore, bottleneck, pdfUrl }
 
   useEffect(() => {
     if (!isOpen) { setStep(1); setQuizQ(1); setContact({ name:'', organisation:'', designation:'', email:'', phone:'' }); setErrors({}); setQuizAnswers({}); setSubmitted(false); }
@@ -84,19 +85,12 @@ export default function LeadCaptureModal() {
       });
       const data = await res.json();
       if (data.success) {
-        const waNumber = '918700541657';
-        const msgLines = [
-          '*New Business Enquiry — Sarvanu Strategies*',
-          '',
-          `*Name:*   ${contact.name}`,
-          contact.organisation?.trim() ? `*Organisation:* ${contact.organisation.trim()}` : null,
-          contact.designation?.trim()  ? `*Designation:*  ${contact.designation.trim()}`  : null,
-          `*Email:*  ${contact.email}`,
-          `*Phone:*  ${contact.phone}`,
-          '',
-          `_Lead Quality: ${data.leadQuality}_`,
-        ].filter(Boolean).join('\n');
-        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msgLines)}`, '_blank');
+        setReportData({
+          healthScore: data.healthScore ?? 0,
+          bottleneck:  data.bottleneck  ?? 'Growth Strategy',
+          pdfUrl:      data.pdfUrl      ?? null,
+          leadQuality: data.leadQuality ?? 'Nurture',
+        });
         setSubmitted(true);
       }
     } catch (err) { console.error(err); }
@@ -258,29 +252,45 @@ export default function LeadCaptureModal() {
                   <i className="fas fa-arrow-left" /> Back
                 </button>
                 <button className="btn-primary" onClick={handleSubmit} disabled={submitting} style={{ padding:'12px 35px', background:'var(--clr-gold)', color:'#000', fontWeight:'700' }}>
-                  {submitting ? <><i className="fas fa-spinner fa-spin" /> Submitting...</> : <><i className="fab fa-whatsapp" /> Submit & Connect on WhatsApp</>}
+                  {submitting ? <><i className="fas fa-spinner fa-spin" /> Submitting...</> : <><i className="fas fa-paper-plane" /> Submit & Get My Report</>}
                 </button>
               </div>
               <p style={{ color:'var(--clr-text-muted)', fontSize:'0.8rem', textAlign:'center', marginTop:'12px' }}>
-                After submitting, Sarvanu will personally message you on WhatsApp within 24 hours. No spam.
+                🔒 Your data is secure. A personalised report will be emailed to you within minutes.
               </p>
             </div>
           )}
 
           {/* ── SUCCESS SCREEN ── */}
-          {submitted && (
+          {submitted && reportData && (
             <div className="lcm-section" style={{ textAlign:'center', alignItems:'center' }}>
-              <div className="quiz-hero-visual" style={{ background:'rgba(16,185,129,0.1)', marginBottom:'20px' }}>
-                <div className="quiz-glow" style={{ background:'radial-gradient(circle, rgba(16,185,129,0.3) 0%, transparent 70%)' }} />
-                <i className="fas fa-check-circle quiz-hero-icon" style={{ color:'#10b981' }} />
+              <div style={{ width:72, height:72, borderRadius:'50%', background:'rgba(16,185,129,0.12)', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 16px' }}>
+                <i className="fas fa-check-circle" style={{ color:'#10b981', fontSize:'2rem' }} />
               </div>
-              <h2 className="result-title">Submitted Successfully!</h2>
-              <p className="result-description" style={{ textAlign:'center' }}>
-                Thank you, <strong>{contact.name}</strong>! Your details have been saved and you've been redirected to WhatsApp. Sarvanu will connect with you within 24 hours.
+              <h2 style={{ color:'#fff', fontSize:'clamp(1.4rem,3vw,1.9rem)', fontWeight:800, marginBottom:8 }}>Report is Being Generated!</h2>
+              <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.92rem', maxWidth:400, margin:'0 auto 24px', lineHeight:1.6 }}>
+                Thank you, <strong style={{color:'#fff'}}>{contact.name}</strong>. Your AI business audit report will be ready shortly and emailed to <strong style={{color:'var(--clr-gold)'}}>{contact.email}</strong>.
               </p>
-              <button className="btn-primary" onClick={closeModal} style={{ marginTop:'20px' }}>
-                Close Window
-              </button>
+
+              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, maxWidth:380, margin:'0 auto 24px', width:'100%' }}>
+                <div style={{ background:'rgba(245,197,24,0.06)', border:'1px solid rgba(245,197,24,0.2)', borderRadius:12, padding:'16px 12px', textAlign:'center' }}>
+                  <div style={{ fontSize:'0.72rem', color:'rgba(255,255,255,0.5)', textTransform:'uppercase', letterSpacing:1, marginBottom:6 }}>Health Score</div>
+                  <div style={{ fontSize:'2.2rem', fontWeight:800, color:'var(--clr-gold)', lineHeight:1 }}>{reportData.healthScore}<span style={{fontSize:'1rem',color:'rgba(255,255,255,0.3)'}}>/100</span></div>
+                </div>
+                <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.07)', borderRadius:12, padding:'16px 12px', textAlign:'center', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+                  <div style={{ fontSize:'0.72rem', color:'rgba(255,255,255,0.5)', textTransform:'uppercase', letterSpacing:1, marginBottom:6 }}>Bottleneck</div>
+                  <div style={{ fontSize:'0.85rem', fontWeight:700, color:'#fff', lineHeight:1.3 }}>{reportData.bottleneck}</div>
+                </div>
+              </div>
+
+              {reportData.pdfUrl && (
+                <a href={reportData.pdfUrl} download target="_blank" rel="noreferrer"
+                  style={{ display:'inline-flex', alignItems:'center', gap:8, background:'var(--clr-gold)', color:'#000', fontWeight:700, padding:'12px 28px', borderRadius:10, fontSize:'0.95rem', textDecoration:'none', marginBottom:12 }}>
+                  <i className="fas fa-download" /> Download PDF Report
+                </a>
+              )}
+              <p style={{ color:'rgba(255,255,255,0.35)', fontSize:'0.78rem', marginTop:8 }}>Our team will also reach out within 24 hours.</p>
+              <button onClick={closeModal} style={{ marginTop:16, background:'transparent', border:'1px solid rgba(255,255,255,0.15)', color:'rgba(255,255,255,0.5)', padding:'8px 20px', borderRadius:8, cursor:'pointer', fontSize:'0.85rem' }}>Close</button>
             </div>
           )}
         </div>

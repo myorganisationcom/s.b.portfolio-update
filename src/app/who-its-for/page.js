@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Is This Consulting Right For You? | Sarvanu Strategies",
+    title: "Is This Consulting Right For You? | Sarvanu",
     description: "Find out if strategic consulting from Sarvanu is right for your business stage, goals, and readiness.",
     alternates: { canonical: "https://sarvanu.com/who-its-for" },
-    openGraph: { title: "Is This For You? | Sarvanu Strategies", description: "Find out if strategic consulting is right for you.", url: "https://sarvanu.com/who-its-for", images: ["/og-image.png"] },
+    openGraph: { title: "Is This For You? | Sarvanu", description: "Find out if strategic consulting is right for you.", url: "https://sarvanu.com/who-its-for", images: ["/og-image.png"] },
 };
 
 const goodFit = ["You're a founder, director, or decision-maker with real authority to implement change", "You're serious about growth and willing to invest in the right help", "You can commit at least 2-3 hours per week to the process", "You're open to honest feedback — even when it's uncomfortable", "You want a long-term strategic partner, not a one-time project vendor", "You believe in building right, not just building fast"];

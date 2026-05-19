@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Business Strategy Consulting | Sarvanu Strategies",
+    title: "Business Strategy Consulting | Sarvanu",
     description: "Build a clear, executable business strategy with Sarvanu. Direction, positioning, and roadmaps for founders and MSMEs in India.",
     alternates: { canonical: "https://sarvanu.com/services/business-strategy" },
-    openGraph: { title: "Business Strategy Consulting | Sarvanu Strategies", description: "Build a clear, executable business strategy.", url: "https://sarvanu.com/services/business-strategy", images: ["/og-image.png"] },
+    openGraph: { title: "Business Strategy Consulting | Sarvanu", description: "Build a clear, executable business strategy.", url: "https://sarvanu.com/services/business-strategy", images: ["/og-image.png"] },
 };
 
 const pillars = [

@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Client Results & Proof | Sarvanu Strategies",
+    title: "Client Results & Proof | Sarvanu",
     description: "Documented outcomes from founders and businesses who worked with Sarvanu Banerjee. Real engagements, real numbers, real stories.",
     openGraph: {
-        title: "Client Results & Proof | Sarvanu Strategies",
+        title: "Client Results & Proof | Sarvanu",
         description: "Documented outcomes from founders and businesses who worked with Sarvanu Banerjee.",
         url: "https://sarvanu.com/case-studies",
         images: ["/og-image.png"],
@@ -284,7 +284,7 @@ export default function CaseStudies() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "WebPage",
-                        "name": "Client Results & Proof | Sarvanu Strategies",
+                        "name": "Client Results & Proof | Sarvanu",
                         "description": "Documented outcomes from founders and businesses who worked with Sarvanu Banerjee.",
                         "url": "https://sarvanu.com/case-studies"
                     })

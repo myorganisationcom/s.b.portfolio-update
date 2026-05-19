@@ -34,9 +34,61 @@ model Lead {
   phone        String
   quizAnswers  String   @default("{}") @map("quiz_answers")
   leadQuality  String   @default("Nurture") @map("lead_quality")
+  healthScore  Int      @default(0) @map("health_score")
+  bottleneck   String   @default("") @map("bottleneck")
+  aiAnalysis   String   @default("") @map("ai_analysis")
+  pdfPath      String   @default("") @map("pdf_path")
+  callStatus   String   @default("New") @map("call_status")
+  notes        String?
+  source       String   @default("modal")
   createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("leads")
+}
+
+model AuditSubmission {
+  id             BigInt   @id @default(autoincrement())
+
+  // Stage 1 — Contact
+  name           String
+  designation    String   @default("")
+  organisation   String   @default("")
+  email          String
+  phone          String
+  whatsapp       String   @default("")
+  city           String   @default("")
+  website        String   @default("")
+
+  // Stage 2 — Business Audit (JSON)
+  auditData      String   @default("{}") @map("audit_data")
+
+  // Stage 3 — Diagnosis (JSON)
+  diagnosisData  String   @default("{}") @map("diagnosis_data")
+
+  // Scoring & AI
+  leadScore      Int      @default(0) @map("lead_score")
+  leadQuality    String   @default("Nurture") @map("lead_quality")
+  bottleneck     String   @default("")
+  aiAnalysis     String   @default("") @map("ai_analysis")
+  pdfPath        String   @default("") @map("pdf_path")
+
+  // CRM
+  callStatus     String   @default("New") @map("call_status")
+  notes          String?
+
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("audit_submissions")
+}
+
+model AdminUser {
+  id        BigInt   @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String   @default("Admin")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("admin_users")
 }
 
 model FormSubmission {

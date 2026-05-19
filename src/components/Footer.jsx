@@ -97,7 +97,7 @@ export default function Footer() {
 
             <div className="footer-bottom">
                 <div className="footer-bottom-content">
-                    <p>&copy; {new Date().getFullYear()} Sarvanu Strategies. All Rights Reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Sarvanu. All Rights Reserved.</p>
                     <div className="footer-legal">
                         <Link href="/privacy-policy">Privacy Policy</Link>
                         <span className="separator">|</span>

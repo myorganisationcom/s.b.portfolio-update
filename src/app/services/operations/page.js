@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Operations & Workflow Consulting | Sarvanu Strategies",
+    title: "Operations & Workflow Consulting | Sarvanu",
     description: "Build systems that run without you. SOPs, team structures, and workflow automation for growing businesses.",
     alternates: { canonical: "https://sarvanu.com/services/operations" },
-    openGraph: { title: "Operations & Workflow Consulting | Sarvanu Strategies", description: "Build systems that run without you.", url: "https://sarvanu.com/services/operations", images: ["/og-image.png"] },
+    openGraph: { title: "Operations & Workflow Consulting | Sarvanu", description: "Build systems that run without you.", url: "https://sarvanu.com/services/operations", images: ["/og-image.png"] },
 };
 
 const systems = [

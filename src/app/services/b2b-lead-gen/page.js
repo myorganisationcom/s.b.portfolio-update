@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "B2B Lead Generation | Sarvanu Strategies",
+    title: "B2B Lead Generation | Sarvanu",
     description: "Build a predictable B2B lead pipeline. LinkedIn outreach, cold email, referral systems, and digital lead generation for Indian businesses.",
     alternates: { canonical: "https://sarvanu.com/services/b2b-lead-gen" },
-    openGraph: { title: "B2B Lead Generation | Sarvanu Strategies", description: "Predictable B2B lead pipeline for Indian businesses.", url: "https://sarvanu.com/services/b2b-lead-gen", images: ["/og-image.png"] },
+    openGraph: { title: "B2B Lead Generation | Sarvanu", description: "Predictable B2B lead pipeline for Indian businesses.", url: "https://sarvanu.com/services/b2b-lead-gen", images: ["/og-image.png"] },
 };
 
 const channels = [

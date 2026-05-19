@@ -1,15 +1,9 @@
 import { Poppins } from 'next/font/google';
 import "./globals.css";
 import "./tailwind.css";
-import SnapBar from "@/components/SnapBar";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import BackToTop from "@/components/BackToTop";
 import OrganizationSchema from "@/components/OrganizationSchema";
+import SiteShell from "@/components/SiteShell";
 import Script from "next/script";
-import { LeadModalProvider } from "@/components/LeadModalContext";
-import ContactModal from "@/components/ContactModal";
-import DiagnosisModal from "@/components/DiagnosisModal";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -20,24 +14,24 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL("https://sarvanu.com"),
   title: {
-    default: "Sarvanu Strategies | Business Growth Consultant",
-    template: "%s | Sarvanu Strategies",
+    default: "Sarvanu | Business Growth Consultant",
+    template: "%s | Sarvanu",
   },
   description:
-    "Sarvanu Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
+    "Sarvanu helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
   keywords:
     "business consultant India, startup growth consultant, MSME consulting, Sarvanu, business strategy",
   openGraph: {
-    title: "Sarvanu Strategies | Business Growth Consultant",
-    description: "Sarvanu Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    title: "Sarvanu | Business Growth Consultant",
+    description: "Sarvanu helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
     url: "https://sarvanu.com",
-    siteName: "Sarvanu Strategies",
+    siteName: "Sarvanu",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Sarvanu Strategies",
+        alt: "Sarvanu",
       },
     ],
     locale: "en_IN",
@@ -45,8 +39,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sarvanu Strategies | Business Growth Consultant",
-    description: "Sarvanu Strategies helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    title: "Sarvanu | Business Growth Consultant",
+    description: "Sarvanu helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -68,15 +62,8 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={poppins.className}>
-        <LeadModalProvider>
-          <OrganizationSchema />
-          <SnapBar />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <BackToTop />
-          <ContactModal />
-          <DiagnosisModal />
+        <OrganizationSchema />
+        <SiteShell>{children}</SiteShell>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-B442V7QVGB"
           strategy="afterInteractive"
@@ -89,7 +76,6 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-B442V7QVGB');
           `}
         </Script>
-        </LeadModalProvider>
       </body>
     </html>
   );

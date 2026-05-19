@@ -1,18 +1,18 @@
 export const metadata = {
-    title: 'Press & Media | Sarvanu Strategies',
+    title: 'Press & Media | Sarvanu',
     description: "Media mentions, press releases, and featured articles regarding Sarvanu's business growth strategies and consulting.",
     robots: {
         index: true,
         follow: true
     },
     openGraph: {
-        title: 'Press & Media | Sarvanu Strategies',
+        title: 'Press & Media | Sarvanu',
         description: "Media mentions, press releases, and featured articles regarding Sarvanu's business growth strategies and consulting.",
         url: "https://sarvanu.com/press",
         images: ["/og-image.png"],
     },
     twitter: {
-        title: 'Press & Media | Sarvanu Strategies',
+        title: 'Press & Media | Sarvanu',
         description: "Media mentions, press releases, and featured articles regarding Sarvanu's business growth strategies.",
         images: ["/og-image.png"],
     },
@@ -78,7 +78,7 @@ export default function Press() {
                         ],
                         "worksFor": {
                             "@type": "Organization",
-                            "name": "Business Growth Blog | Sarvanu Strategies",
+                            "name": "Business Growth Blog | Sarvanu",
                             "url": "https://sarvanu.com",
                             "location": {
                                 "@type": "Place",

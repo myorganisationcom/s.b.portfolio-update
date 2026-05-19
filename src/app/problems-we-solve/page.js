@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Problems We Solve | Sarvanu Strategies",
-    description: "The most common business problems Sarvanu Strategies solves — revenue plateaus, operational chaos, poor marketing, and team dysfunction.",
+    title: "Problems We Solve | Sarvanu",
+    description: "The most common business problems Sarvanu solves — revenue plateaus, operational chaos, poor marketing, and team dysfunction.",
     alternates: { canonical: "https://sarvanu.com/problems-we-solve" },
-    openGraph: { title: "Problems We Solve | Sarvanu Strategies", description: "The business problems we solve for founders and MSMEs in India.", url: "https://sarvanu.com/problems-we-solve", images: ["/og-image.png"] },
+    openGraph: { title: "Problems We Solve | Sarvanu", description: "The business problems we solve for founders and MSMEs in India.", url: "https://sarvanu.com/problems-we-solve", images: ["/og-image.png"] },
 };
 
 const problems = [

@@ -8,8 +8,12 @@ import styles from '../blog.module.css';
 export const dynamic = 'force-dynamic';   // always SSR — read latest from DB
 
 export async function generateStaticParams() {
-    const slugs = await getAllSlugs();
-    return slugs.map((slug) => ({ slug }));
+    try {
+        const slugs = await getAllSlugs();
+        return slugs.map((slug) => ({ slug }));
+    } catch {
+        return [];   // DB unreachable at build time — routes stay dynamic
+    }
 }
 
 export async function generateMetadata({ params }) {
@@ -18,12 +22,12 @@ export async function generateMetadata({ params }) {
 
     if (!post) {
         return {
-            title: 'Post Not Found | Sarvanu Strategies',
+            title: 'Post Not Found | Sarvanu',
         };
     }
 
     return {
-        title: `${post.title} | Sarvanu Strategies`,
+        title: `${post.title} | Sarvanu`,
         description: post.description,
         keywords: `business consulting, sarvanu, ${(post.category || '').toLowerCase()}`,
         alternates: {
@@ -145,7 +149,7 @@ export default async function BlogPost({ params }) {
                         },
                         "publisher": {
                             "@type": "Organization",
-                            "name": "Sarvanu Strategies",
+                            "name": "Sarvanu",
                             "url": "https://sarvanu.com",
                             "logo": {
                                 "@type": "ImageObject",
@@ -157,7 +161,7 @@ export default async function BlogPost({ params }) {
                         "isPartOf": {
                             "@type": "Blog",
                             "@id": "https://sarvanu.com/blog",
-                            "name": "Business Growth Blog | Sarvanu Strategies"
+                            "name": "Business Growth Blog | Sarvanu"
                         }
                     })
                 }}

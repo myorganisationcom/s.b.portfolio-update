@@ -1,8 +1,8 @@
 export const metadata = {
-    title: "Consulting for Startups | Sarvanu Strategies",
+    title: "Consulting for Startups | Sarvanu",
     description: "Strategic consulting for early-stage startups. Build the right foundations — model, team, and go-to-market — before you scale.",
     alternates: { canonical: "https://sarvanu.com/startups" },
-    openGraph: { title: "Consulting for Startups | Sarvanu Strategies", description: "Build the right startup foundations before you scale.", url: "https://sarvanu.com/startups", images: ["/og-image.png"] },
+    openGraph: { title: "Consulting for Startups | Sarvanu", description: "Build the right startup foundations before you scale.", url: "https://sarvanu.com/startups", images: ["/og-image.png"] },
 };
 
 const challenges = [
