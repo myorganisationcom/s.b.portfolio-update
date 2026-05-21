@@ -22,14 +22,14 @@ export default function ServiceGrid() {
             icon: "fa-rocket",
             title: "Market Entry & Launch",
             desc: "Market research, go-to-market strategy, and launch campaign execution.",
-            price: "From ₹15,000",
+            price: "From ₹150,000",
             glow: "rgba(16, 185, 129, 0.4)"
         },
         {
             icon: "fa-hashtag",
             title: "Digital Authority",
             desc: "LinkedIn growth, thought leadership content, and media strategy.",
-            price: "From ₹15,000/month",
+            price: "From ₹150,000/month",
             glow: "rgba(16, 185, 129, 0.4)"
         },
         {

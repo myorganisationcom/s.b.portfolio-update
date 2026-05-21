@@ -4,13 +4,13 @@ export default function OrganizationSchema() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Sarvanu",
+        "name": "Sarvanu.com",
         "url": "https://sarvanu.com",
         "logo": "https://sarvanu.com/logo.png",
         "description": "Business growth consulting, SaaS implementation, and strategic systems for founders, startups, and MSMEs.",
         "founder": {
             "@type": "Person",
-            "name": "Sarvanu",
+            "name": "Sarvanu.com",
             "jobTitle": "Business Management & Operations Consultant",
             "url": "https://sarvanu.com"
         },

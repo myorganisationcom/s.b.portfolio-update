@@ -7,7 +7,7 @@ export default function PricingSlider() {
         {/* Basic Tier */}
         <div className="pricing-card">
           <div className="tier-name">Basic</div>
-          <div className="tier-price">₹15,000<span>/month</span></div>
+          <div className="tier-price">₹150,000<span>/month</span></div>
           <div className="tier-ideal">For Solopreneurs & Early Startups</div>
           <ul className="features-list">
             <li>1x Business Audit & Strategy Call</li>
@@ -24,7 +24,7 @@ export default function PricingSlider() {
         {/* Growth Tier (Featured) */}
         <div className="pricing-card featured">
           <div className="tier-name">Growth</div>
-          <div className="tier-price">₹30,000<span>/month</span></div>
+          <div className="tier-price">₹300,000<span>/month</span></div>
           <div className="tier-ideal">For Growing MSMEs & Agencies</div>
           <ul className="features-list">
             <li>1x Business Audit & Strategy Call</li>
@@ -42,7 +42,7 @@ export default function PricingSlider() {
         {/* Premium Tier */}
         <div className="pricing-card">
           <div className="tier-name">Premium</div>
-          <div className="tier-price">₹55,000<span>/month</span></div>
+          <div className="tier-price">₹550,000<span>/month</span></div>
           <div className="tier-ideal">For Multi-brand Founders & Scale Projects</div>
           <ul className="features-list">
             <li>2x Strategy Calls + On-call Support</li>

@@ -135,9 +135,9 @@ export default function FreeAuditForm({ isOpen, onClose }) {
         {currentStep === 0 && (
           <FadeIn className="quiz-content-wrapper">
             <div className="quiz-header">
-              <span className="expertise-badge" style={{ margin: '0 auto 15px auto', display: 'inline-block' }}>Sarvanu</span>
+              <span className="expertise-badge" style={{ margin: '0 auto 15px auto', display: 'inline-block' }}>Sarvanu.com</span>
               <h2>Free Business <span className="text-gold">Growth Audit</span></h2>
-              <p>This form takes 2 minutes to complete. Based on your answers, Sarvanu will personally connect with you and give tailored advice for your business — absolutely free, no obligation.</p>
+              <p>This form takes 2 minutes to complete. Based on your answers, Sarvanu.com will personally connect with you and give tailored advice for your business — absolutely free, no obligation.</p>
             </div>
 
             <div className="quiz-hero-visual" style={{ background: 'rgba(59, 130, 246, 0.05)' }}>
@@ -181,7 +181,7 @@ export default function FreeAuditForm({ isOpen, onClose }) {
               {currentStep === 2 && (
                 <div className="form-step">
                   <h3 className="quiz-question-text" style={{ textAlign: 'left', marginBottom: '10px' }}>WhatsApp number? <span className="text-gold">*</span></h3>
-                  <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.9rem', marginBottom: '20px' }}>Sarvanu will connect with you on this number.</p>
+                  <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.9rem', marginBottom: '20px' }}>Sarvanu.com will connect with you on this number.</p>
                   <input
                     type="tel"
                     value={formData.whatsapp}
@@ -329,7 +329,7 @@ export default function FreeAuditForm({ isOpen, onClose }) {
             </div>
 
             <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.8rem', marginTop: '20px', maxWidth: '500px', textAlign: 'center' }}>
-              After submitting the form, Sarvanu will personally message you on WhatsApp within 24 hours. No spam, no pressure.
+              After submitting the form, Sarvanu.com will personally message you on WhatsApp within 24 hours. No spam, no pressure.
             </p>
           </div>
         )}
@@ -344,7 +344,7 @@ export default function FreeAuditForm({ isOpen, onClose }) {
             <h2 className="result-title">Application Submitted Successfully!</h2>
 
             <p className="result-description" style={{ textAlign: 'center' }}>
-              Thank you for applying. You will be redirected to WhatsApp to send your details directly to Sarvanu.
+              Thank you for applying. You will be redirected to WhatsApp to send your details directly to Sarvanu.com.
             </p>
 
             <button className="btn-primary" onClick={() => onClose()} style={{ marginTop: '20px' }}>

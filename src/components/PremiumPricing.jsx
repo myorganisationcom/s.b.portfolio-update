@@ -23,7 +23,7 @@ export default function PremiumPricing() {
             <div style={{ ...cardBase, background: 'rgba(255,255,255,0.03)', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
               <h3 style={{ fontSize: '1.5rem', color: '#ffffff' }}>Basic Plan</h3>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>Foundation & Clarity</p>
-              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '10px' }}>₹15,000 <span style={{ fontSize: '1rem', fontWeight: '400', color: 'rgba(255,255,255,0.5)' }}>/ Month</span></div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '10px' }}>₹150,000 <span style={{ fontSize: '1rem', fontWeight: '400', color: 'rgba(255,255,255,0.5)' }}>/ Month</span></div>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px', fontStyle: 'italic' }}>Best for: Solopreneurs, early-stage founders, and new businesses</p>
               <p style={{ fontSize: '0.95rem', marginBottom: '20px', color: 'rgba(255,255,255,0.7)' }}>If your business feels unclear, unstructured, or directionless—this plan gives you control.</p>
               <h4 style={{ fontSize: '1rem', marginBottom: '10px', color: 'var(--clr-gold)' }}>What You Get:</h4>
@@ -52,7 +52,7 @@ export default function PremiumPricing() {
               <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: 'var(--clr-gold)', color: '#000000', padding: '6px 18px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>Most Popular</div>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--clr-gold)' }}>Growth Plan</h3>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>Systems & Consistency</p>
-              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '10px' }}>₹30,000 <span style={{ fontSize: '1rem', fontWeight: '400', color: 'rgba(255,255,255,0.5)' }}>/ Month</span></div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '10px' }}>₹300,000 <span style={{ fontSize: '1rem', fontWeight: '400', color: 'rgba(255,255,255,0.5)' }}>/ Month</span></div>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px', fontStyle: 'italic' }}>Best for: MSMEs, startups, agencies ready to scale</p>
               <p style={{ fontSize: '0.95rem', marginBottom: '20px', color: 'rgba(255,255,255,0.7)' }}>If your business is running but inconsistent—this plan builds systems that create predictable growth.</p>
               <h4 style={{ fontSize: '1rem', color: 'var(--clr-gold)', marginBottom: '10px' }}>What You Get:</h4>
@@ -81,7 +81,7 @@ export default function PremiumPricing() {
             <div style={{ ...cardBase, background: 'rgba(255,255,255,0.03)', boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}>
               <h3 style={{ fontSize: '1.5rem', color: '#ffffff' }}>Premium Plan</h3>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px' }}>Scale, Automation & Control</p>
-              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '10px' }}>₹55,000 <span style={{ fontSize: '1rem', fontWeight: '400', color: 'rgba(255,255,255,0.5)' }}>/ Month</span></div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '10px' }}>₹550,000 <span style={{ fontSize: '1rem', fontWeight: '400', color: 'rgba(255,255,255,0.5)' }}>/ Month</span></div>
               <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.5)', marginBottom: '20px', fontStyle: 'italic' }}>Best for: Scaling businesses, multi-brand founders, high-growth projects</p>
               <p style={{ fontSize: '0.95rem', marginBottom: '20px', color: 'rgba(255,255,255,0.7)' }}>If you're already growing but want speed, control, and dominance—this is where serious scaling happens.</p>
               <h4 style={{ fontSize: '1rem', marginBottom: '10px', color: 'var(--clr-gold)' }}>What You Get:</h4>

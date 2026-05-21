@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
+/* ── Animated Score Gauge ───────────────────────────────────────────────────── */
 function ScoreGauge({ score }) {
   const [display, setDisplay] = useState(0);
   const color = score >= 70 ? '#10b981' : score >= 50 ? '#F5C518' : '#ef4444';
@@ -16,9 +17,8 @@ function ScoreGauge({ score }) {
   }, [score]);
 
   const R = 52, cx = 70, cy = 70;
-  const pct = score / 100;
   const circ = 2 * Math.PI * R;
-  const dash = circ * pct;
+  const dash = circ * (score / 100);
 
   return (
     <svg width={140} height={140}>
@@ -33,79 +33,65 @@ function ScoreGauge({ score }) {
   );
 }
 
+/* ── Delivery Timeline Step ────────────────────────────────────────────────── */
+function TimelineStep({ icon, label, done, active }) {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 12, padding: '10px 0',
+      opacity: done || active ? 1 : 0.35,
+      transition: 'opacity 0.4s ease',
+    }}>
+      <div style={{
+        width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: '0.85rem',
+        background: done ? 'rgba(16,185,129,0.12)' : active ? 'rgba(245,197,24,0.1)' : 'rgba(255,255,255,0.04)',
+        border: `1.5px solid ${done ? 'rgba(16,185,129,0.3)' : active ? 'rgba(245,197,24,0.25)' : 'rgba(255,255,255,0.06)'}`,
+        color: done ? '#10b981' : active ? '#F5C518' : 'rgba(255,255,255,0.3)',
+      }}>
+        {done ? '✓' : active ? icon : icon}
+      </div>
+      <span style={{
+        fontSize: '0.88rem', fontWeight: done || active ? 600 : 400,
+        color: done ? 'rgba(255,255,255,0.7)' : active ? '#fff' : 'rgba(255,255,255,0.35)',
+      }}>{label}</span>
+      {active && (
+        <span style={{
+          marginLeft: 'auto', display: 'inline-block',
+          width: 6, height: 6, borderRadius: '50%',
+          background: '#F5C518',
+          animation: 'pulse-dot 1.2s ease infinite',
+        }} />
+      )}
+    </div>
+  );
+}
+
 const QC = { Hot: '#ef4444', Warm: '#F5C518', Nurture: '#6366f1', Cold: '#6b7280' };
 
 export default function SuccessScreen({ result, stage1 }) {
-  const score   = result?.leadScore   ?? 0;
-  const quality = result?.leadQuality ?? 'Nurture';
-  const bottle  = result?.bottleneck  ?? '';
-  const pdfUrl  = result?.pdfUrl      ?? '';
+  const score     = result?.leadScore   ?? 0;
+  const quality   = result?.leadQuality ?? 'Nurture';
+  const bottle    = result?.bottleneck  ?? '';
   const userEmail = stage1?.email ?? '';
-  const [seconds, setSeconds] = useState(30);
-  const [ready, setReady] = useState(false);
-  const [emailSent, setEmailSent] = useState(false);
-  const org     = stage1?.organisation ?? 'Your Business';
-  const name    = stage1?.name ?? '';
+  const org       = stage1?.organisation ?? 'Your Business';
+  const name      = stage1?.name ?? '';
 
   const qualLabel = score >= 70 ? 'Strong Growth Potential' : score >= 50 ? 'Needs Structural Improvements' : 'Critical Attention Required';
   const qColor    = QC[quality] || '#6b7280';
 
-  // Poll for PDF availability and manage countdown + email
+  /* Timeline animation — steps reveal one by one */
+  const [step, setStep] = useState(0);
   useEffect(() => {
-    if (!pdfUrl) return;
-    let mounted = true;
-
-    const checkPdf = async () => {
-      try {
-        const resp = await fetch(pdfUrl, { method: 'HEAD' });
-        if (!mounted) return;
-        if (resp.ok) {
-          setReady(true);
-        }
-      } catch (err) {
-        // ignore
-      }
-    };
-
-    // initial check
-    checkPdf();
-
-    const poll = setInterval(() => {
-      if (!mounted) return;
-      checkPdf();
-    }, 2000);
-
-    return () => { mounted = false; clearInterval(poll); };
-  }, [pdfUrl]);
-
-  useEffect(() => {
-    if (!pdfUrl) return;
-    if (ready && !emailSent) {
-      // send email once ready
-      (async () => {
-        try {
-          if (!userEmail) return;
-          await fetch('/api/reports/email', {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: userEmail, pdfUrl }),
-          });
-          setEmailSent(true);
-        } catch (err) {
-          console.error('Failed to send report email', err);
-        }
-      })();
-    }
-  }, [ready, pdfUrl, userEmail, emailSent]);
-
-  useEffect(() => {
-    if (!pdfUrl) return;
-    if (seconds <= 0) {
-      setReady(true);
-      return;
-    }
-    const t = setInterval(() => setSeconds(s => s - 1), 1000);
-    return () => clearInterval(t);
-  }, [seconds, pdfUrl]);
+    const timers = [
+      setTimeout(() => setStep(1), 500),
+      setTimeout(() => setStep(2), 1200),
+      setTimeout(() => setStep(3), 2000),
+      setTimeout(() => setStep(4), 2800),
+      setTimeout(() => setStep(5), 3600),
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   return (
     <div style={{
@@ -113,73 +99,92 @@ export default function SuccessScreen({ result, stage1 }) {
       display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
       padding: '40px 20px', fontFamily: "'Inter','Poppins',sans-serif",
     }}>
-      {/* Confetti-style sparkle */}
+
+      {/* Sparkle */}
       <div style={{ fontSize: '2.5rem', marginBottom: 16, animation: 'pop 0.5s ease' }}>✦</div>
 
       <h1 style={{ color: '#fff', fontSize: 'clamp(1.4rem,3vw,1.9rem)', fontWeight: 800, textAlign: 'center', marginBottom: 6 }}>
-        Your Audit Report is Ready
+        Analysis Complete & Report En Route
       </h1>
       <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem', marginBottom: 36, textAlign: 'center' }}>
         {org} · Prepared by Sarvanu
       </p>
 
       {/* Main result card */}
-      <div style={{ background: 'rgba(255,255,255,0.028)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 22, padding: '36px 40px', maxWidth: 560, width: '100%', textAlign: 'center' }}>
+      <div style={{
+        background: 'rgba(255,255,255,0.028)', border: '1px solid rgba(255,255,255,0.08)',
+        borderRadius: 22, padding: 'clamp(24px,4vw,40px)', maxWidth: 580, width: '100%',
+      }}>
 
         {/* Score gauge */}
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
           <ScoreGauge score={score} />
         </div>
 
-        <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Business Health Score</div>
-        <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: 16 }}>{qualLabel}</div>
+        <div style={{ textAlign: 'center', marginBottom: 24 }}>
+          <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>Business Health Score</div>
+          <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: 16 }}>{qualLabel}</div>
 
-        {/* Badges row */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 10, marginBottom: 24, flexWrap: 'wrap' }}>
-          <span style={{ padding: '5px 14px', borderRadius: 20, background: `${qColor}18`, border: `1px solid ${qColor}40`, color: qColor, fontSize: '0.78rem', fontWeight: 700 }}>
-            {quality} Lead
-          </span>
-          {bottle && (
-            <span style={{ padding: '5px 14px', borderRadius: 20, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', fontSize: '0.78rem' }}>
-              🎯 {bottle}
+          {/* Badges row */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 10, flexWrap: 'wrap' }}>
+            <span style={{ padding: '5px 14px', borderRadius: 20, background: `${qColor}18`, border: `1px solid ${qColor}40`, color: qColor, fontSize: '0.78rem', fontWeight: 700 }}>
+              {quality} Lead
             </span>
-          )}
+            {bottle && (
+              <span style={{ padding: '5px 14px', borderRadius: 20, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)', fontSize: '0.78rem' }}>
+                🎯 {bottle}
+              </span>
+            )}
+          </div>
         </div>
 
-        {/* PDF Download with 30s timer + email step */}
-        {pdfUrl ? (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-            {!ready ? (
-              <div style={{ padding: '12px 18px', borderRadius: 10, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)' }}>
-                <i className="fas fa-hourglass-half" style={{ marginRight: 8 }} /> Preparing your report — available in <strong style={{ marginLeft: 6 }}>{seconds}s</strong>
-              </div>
+        {/* Delivery divider */}
+        <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', margin: '20px 0' }} />
+
+        {/* ── Growth Blueprint Delivery Timeline ── */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            background: 'rgba(245,197,24,0.06)', border: '1px solid rgba(245,197,24,0.15)',
+            padding: '5px 14px', borderRadius: 20, fontSize: '0.72rem',
+            fontWeight: 700, color: '#F5C518', textTransform: 'uppercase',
+            letterSpacing: '0.08em', marginBottom: 16,
+          }}>
+            📋 Report Delivery Status
+          </div>
+
+          <TimelineStep icon="📝" label="Audit Answers Captured" done={step >= 1} active={step === 0} />
+          <TimelineStep icon="📊" label={`Business Health Score Calculated — ${score}/100`} done={step >= 2} active={step === 1} />
+          <TimelineStep icon="🎯" label={`Primary Bottleneck Identified — ${bottle || 'Growth Strategy'}`} done={step >= 3} active={step === 2} />
+          <TimelineStep icon="🤖" label="AI Strategic Roadmap Generated" done={step >= 4} active={step === 3} />
+          <TimelineStep icon="📧" label={`Dispatching 7-Page PDF Report to Your Email...`} done={step >= 5} active={step === 4} />
+        </div>
+
+        {/* Email delivery card */}
+        <div style={{
+          background: step >= 5 ? 'rgba(16,185,129,0.05)' : 'rgba(245,197,24,0.04)',
+          border: `1px solid ${step >= 5 ? 'rgba(16,185,129,0.15)' : 'rgba(245,197,24,0.12)'}`,
+          borderRadius: 14, padding: '20px 22px', textAlign: 'center',
+          transition: 'all 0.5s ease',
+        }}>
+          <div style={{
+            fontSize: step >= 5 ? '1rem' : '0.92rem', fontWeight: 700,
+            color: step >= 5 ? '#10b981' : '#F5C518', marginBottom: 8,
+          }}>
+            {step >= 5 ? '✓ Report Dispatched Successfully' : '⏳ Compiling Your Custom Report...'}
+          </div>
+          <div style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}>
+            {step >= 5 ? (
+              <>Your comprehensive 7-page consulting-grade PDF analysis has been sent to <strong style={{ color: '#fff' }}>{userEmail}</strong>. Please check your inbox (and spam/promotions folder) within the next 5 minutes.</>
             ) : (
-              <a href={pdfUrl} download target="_blank" rel="noreferrer" style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                padding: '14px 28px', borderRadius: 12, background: '#F5C518', color: '#000',
-                fontWeight: 700, fontSize: '1rem', textDecoration: 'none',
-                transition: 'all 0.2s'
-              }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#f0bb00'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#F5C518'; e.currentTarget.style.transform = 'translateY(0)'; }}
-              >
-                <i className="fas fa-file-pdf" style={{ fontSize: '1.1rem', color: '#7a1500' }} />
-                Download Your Audit Report (PDF)
-              </a>
+              <>Our AI engine is generating a detailed, personalised business roadmap. It will be delivered directly to <strong style={{ color: '#fff' }}>{userEmail}</strong> within 5 minutes.</>
             )}
-
-            <div style={{ fontSize: '0.86rem', color: 'rgba(255,255,255,0.7)' }}>
-              {ready ? (emailSent ? 'Report emailed to you.' : 'We will also email this report to your inbox.') : 'You can download after the timer finishes.'}
-            </div>
           </div>
-        ) : (
-          <div style={{ padding: '14px 28px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem', marginBottom: 14 }}>
-            <i className="fas fa-spinner" style={{ marginRight: 8 }} /> Report is being prepared — check your email shortly.
-          </div>
-        )}
+        </div>
 
-        <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.78rem', margin: 0 }}>
-          📱 Our strategy team will reach out on WhatsApp within 2 hours.
+        {/* WhatsApp note */}
+        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.25)', fontSize: '0.78rem', marginTop: 18, marginBottom: 0 }}>
+          📱 Our strategy team will also reach out on WhatsApp within 24 hours.
         </p>
       </div>
 
@@ -203,6 +208,7 @@ export default function SuccessScreen({ result, stage1 }) {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         @keyframes pop { 0%{transform:scale(0.5);opacity:0} 80%{transform:scale(1.15)} 100%{transform:scale(1);opacity:1} }
+        @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
       `}</style>
     </div>
   );

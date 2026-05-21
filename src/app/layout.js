@@ -14,24 +14,24 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL("https://sarvanu.com"),
   title: {
-    default: "Sarvanu | Business Growth Consultant",
-    template: "%s | Sarvanu",
+    default: "Sarvanu.com | Business Growth Consultant",
+    template: "%s | Sarvanu.com",
   },
   description:
-    "Sarvanu helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
+    "Sarvanu.com helps founders, startups, and MSMEs simplify, systematize, and scale their businesses with expert consulting.",
   keywords:
-    "business consultant India, startup growth consultant, MSME consulting, Sarvanu, business strategy",
+    "business consultant India, startup growth consultant, MSME consulting, Sarvanu.com, business strategy",
   openGraph: {
-    title: "Sarvanu | Business Growth Consultant",
-    description: "Sarvanu helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    title: "Sarvanu.com | Business Growth Consultant",
+    description: "Sarvanu.com helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
     url: "https://sarvanu.com",
-    siteName: "Sarvanu",
+    siteName: "Sarvanu.com",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Sarvanu",
+        alt: "Sarvanu.com",
       },
     ],
     locale: "en_IN",
@@ -39,8 +39,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sarvanu | Business Growth Consultant",
-    description: "Sarvanu helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
+    title: "Sarvanu.com | Business Growth Consultant",
+    description: "Sarvanu.com helps founders, startups, and MSMEs simplify, systematize, and scale their businesses.",
     images: ["/og-image.png"],
   },
   icons: {

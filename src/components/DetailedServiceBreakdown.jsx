@@ -8,7 +8,7 @@ const packages = [
     title: "Consulting Packages (Basic | Growth | Premium)",
     items: [
       { focus: "Strategy Blueprint", description: "Comprehensive roadmap for operations, marketing, and scaling.", impact: "Aligns team efforts with clear, measurable goals.", timeline: "Week 1-2" },
-      { focus: "Weekly/Monthly Advisory", description: "Direct 1-on-1 calls with Sarvanu for accountability and troubleshooting.", impact: "Maintains momentum and prevents costly strategic errors.", timeline: "Ongoing" },
+      { focus: "Weekly/Monthly Advisory", description: "Direct 1-on-1 calls with Sarvanu.com for accountability and troubleshooting.", impact: "Maintains momentum and prevents costly strategic errors.", timeline: "Ongoing" },
       { focus: "System Integration", description: "Setup of essential CRMs and operational tools.", impact: "Automates repetitive tasks, freeing up 15+ hours/week.", timeline: "Week 3-4" },
       { focus: "Performance Tracking", description: "Custom KPI dashboards built specifically for your business model.", impact: "Data-driven decision making instead of guesswork.", timeline: "Week 5-6" }
     ]
@@ -37,7 +37,7 @@ const packages = [
       { focus: "Pitch Deck Development", description: "Crafting a compelling narrative and visually stunning pitch deck.", impact: "Increases the likelihood of securing VC or Angel investment.", timeline: "Week 1-3" },
       { focus: "Financial Modeling", description: "Creating realistic 3-to-5-year financial projections and unit economics.", impact: "Provides investors with confidence in business viability and ROI.", timeline: "Week 2-4" },
       { focus: "Data Room Preparation", description: "Organizing legal, financial, and operational documents for due diligence.", impact: "Accelerates the funding process and minimizes investor friction.", timeline: "Week 3-5" },
-      { focus: "Pitch Coaching", description: "Mock presentations and Q&A preparation with Sarvanu.", impact: "Enhances founder confidence and delivery during high-stakes meetings.", timeline: "Week 5-6" }
+      { focus: "Pitch Coaching", description: "Mock presentations and Q&A preparation with Sarvanu.com.", impact: "Enhances founder confidence and delivery during high-stakes meetings.", timeline: "Week 5-6" }
     ]
   },
   {
@@ -82,7 +82,7 @@ const packages = [
       { focus: "Custom CRM Build-Out", description: "Tailored setup of HubSpot, Salesforce, or GoHighLevel.", impact: "Centralizes customer data and streamlines the sales pipeline.", timeline: "Variable" },
       { focus: "Executive Coaching", description: "Intensive leadership and mindset coaching for C-level executives.", impact: "Improves decision-making, resilience, and team management.", timeline: "Ongoing" },
       { focus: "Sales Scripting & Playbooks", description: "Developing objection handling and closing frameworks for sales teams.", impact: "Increases close rates and standardizes the sales process.", timeline: "Variable" },
-      { focus: "Fractional CMO/COO", description: "Sarvanu acting as an embedded executive to lead your teams.", impact: "Provides high-level leadership without the cost of a full-time executive.", timeline: "Minimum 3 months" }
+      { focus: "Fractional CMO/COO", description: "Sarvanu.com acting as an embedded executive to lead your teams.", impact: "Provides high-level leadership without the cost of a full-time executive.", timeline: "Minimum 3 months" }
     ]
   }
 ];

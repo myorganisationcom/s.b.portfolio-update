@@ -1,25 +1,25 @@
 export const metadata = {
     title: "Pricing & Consulting Packages | Sarvanu",
-    description: "Transparent pricing for business consulting. Basic ₹15K/month, Growth ₹30K/month, Premium ₹55K/month. No hidden fees.",
+    description: "Transparent pricing for business consulting. Basic ₹150K/month, Growth ₹300K/month, Premium ₹550K/month. No hidden fees.",
     alternates: { canonical: "https://sarvanu.com/pricing" },
     openGraph: { title: "Consulting Pricing | Sarvanu", description: "Transparent business consulting pricing for Indian founders and MSMEs.", url: "https://sarvanu.com/pricing", images: ["/og-image.png"] },
 };
 
 const plans = [
     {
-        name: "Basic", sub: "Foundation & Clarity", price: "₹15,000", per: "/month", highlight: false,
+    name: "Basic", sub: "Foundation & Clarity", price: "₹150,000", per: "/month", highlight: false,
         ideal: "Solopreneurs, early-stage founders, or businesses needing strategic clarity for the first time.",
         features: ["Strategic Business Audit (one-time at start)", "Monthly 1:1 Strategy Consultation (2 hours)", "Brand Positioning & Identity Review", "Marketing Direction & Channel Plan", "Focused Social Media Plan (1 Platform)", "Website Structure & Content Blueprint", "Operations & Workflow Diagnosis", "Monthly Progress Report & KPI Review"],
         cta: "Start with Basic",
     },
     {
-        name: "Growth", sub: "Systems & Consistency", price: "₹30,000", per: "/month", highlight: true,
+    name: "Growth", sub: "Systems & Consistency", price: "₹300,000", per: "/month", highlight: true,
         ideal: "MSMEs, agencies, and service businesses ready to build proper systems and grow consistently.",
         features: ["In-depth Business Audit + Competitor Analysis", "Monthly Strategy Sessions (4 hours)", "Complete Brand Identity & Messaging Framework", "Monthly Marketing Execution Plan", "Social Media Strategy (2 Platforms)", "Conversion-Focused Website Planning", "Business Development Strategy", "SOPs & Workflow Structuring", "CRM Setup & Configuration", "Growth Dashboard & Weekly KPIs"],
         cta: "Start with Growth",
     },
     {
-        name: "Premium", sub: "Scale, Automation & Control", price: "₹55,000", per: "/month", highlight: false,
+    name: "Premium", sub: "Scale, Automation & Control", price: "₹550,000", per: "/month", highlight: false,
         ideal: "Multi-revenue founders and scaling businesses that need comprehensive, ongoing strategic leadership.",
         features: ["2 Monthly Strategy Sessions + On-Call Advisory", "Advanced Market Positioning & Messaging", "Campaign-Level Marketing Strategy", "Social Media Expansion (3 Platforms)", "Full Funnel Design + CRM Setup + Analytics", "B2B Lead Systems & Outreach Frameworks", "Complete SOPs + Automation Tool Integration", "Org Design & Team Structure", "Hiring Framework & Role Design", "Complete Business Intelligence Dashboard"],
         cta: "Start with Premium",

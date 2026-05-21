@@ -34,8 +34,9 @@ export default function AdminLayout({ children }) {
   );
 
   const navLinks = [
-    { href: '/admin/dashboard', icon: 'fa-chart-pie',    label: 'Dashboard' },
-    { href: '/admin/leads',     icon: 'fa-users',        label: 'All Leads' },
+    { href: '/admin/dashboard',    icon: 'fa-chart-pie',  label: 'Dashboard' },
+    { href: '/admin/leads',        icon: 'fa-users',      label: 'All Leads' },
+    { href: '/admin/case-studies', icon: 'fa-briefcase',  label: 'Case Studies' },
   ];
 
   return (

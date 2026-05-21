@@ -86,18 +86,34 @@ export async function submitBulkUrls(urls: string[]) {
             urlList: urls,
         };
 
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
+
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
+                'User-Agent': 'sarvanu-indexnow/1.0 (+https://sarvanu.com)'
             },
             body: JSON.stringify(payload),
+            signal: controller.signal,
         });
+
+        clearTimeout(timeout);
+
+        // Capture response body for better diagnostics
+        let responseText = '';
+        try {
+            responseText = await response.text();
+        } catch (err) {
+            responseText = '';
+        }
 
         return {
             success: response.ok,
             status: response.status,
             statusText: response.statusText,
+            responseBody: responseText,
             submittedCount: urls.length,
         };
     } catch (error: any) {

@@ -9,7 +9,7 @@ export default function TestimonialSlider() {
 
     const testimonials = [
         {
-            text: "Working with Sarvanu transformed the way we structured our operations. His strategies gave us clarity and boosted our revenue within months.",
+            text: "Working with Sarvanu.com transformed the way we structured our operations. Their strategies gave us clarity and boosted our revenue within months.",
             name: "Pronel Mohanti",
             role: "Co-Founder, Idealcore Solution LLP",
             img: "/t1.webp"
@@ -21,7 +21,7 @@ export default function TestimonialSlider() {
             img: "/t2.png"
         },
         {
-            text: "A true partner in growth. Sarvanu doesn’t just consult—he collaborates. His structured approach helped us scale sustainably.",
+            text: "A true partner in growth. Sarvanu.com doesn’t just consult—they collaborate. Their structured approach helped us scale sustainably.",
             name: "Tarak Das",
             role: "Founder, Tarak Agro Ventures",
             img: "/t3.jpeg"
@@ -33,7 +33,7 @@ export default function TestimonialSlider() {
             img: "/t1.webp"
         },
         {
-            text: "The operational workflows introduced by Sarvanu saved us countless hours. We now have a predictable, scalable system in place.",
+            text: "The operational workflows introduced by Sarvanu.com saved us countless hours. We now have a predictable, scalable system in place.",
             name: "Sarah Jenkins",
             role: "Operations Head, Global Retail Inc.",
             img: "/t2.png"

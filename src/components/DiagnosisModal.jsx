@@ -304,7 +304,7 @@ export default function DiagnosisModal() {
                 <div style={{ marginTop: 20, padding: 20, background: 'rgba(37, 211, 102, 0.05)', border: '1px solid rgba(37, 211, 102, 0.2)', borderRadius: 12 }}>
                     <h4 style={{ color: '#25d366', fontSize: '1rem', marginBottom: 8 }}><i className="fas fa-lightbulb" /> Recommended Next Steps</h4>
                     <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-                        We have prepared a custom strategy to solve your {report.bottleneck.toLowerCase()} issues. Submit below to send these results to Sarvanu, and he will personally reach out with your exact roadmap on WhatsApp.
+                        We have prepared a custom strategy to solve your {report.bottleneck.toLowerCase()} issues. Submit below to send these results to Sarvanu.com, and we will personally reach out with your exact roadmap on WhatsApp.
                     </p>
                 </div>
             </div>
@@ -319,7 +319,7 @@ export default function DiagnosisModal() {
               </button>
             </div>
             <p style={{ textAlign:'center', color:'rgba(255,255,255,0.35)', fontSize:'0.77rem', marginTop:12 }}>
-              Sarvanu will personally message you on WhatsApp within 24 hours.
+              Sarvanu.com will personally message you on WhatsApp within 24 hours.
             </p>
           </div>
           );
@@ -331,12 +331,12 @@ export default function DiagnosisModal() {
             <div style={{ width:72, height:72, borderRadius:'50%', background:'rgba(16,185,129,0.12)', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 16px' }}>
               <i className="fas fa-check-circle" style={{ color:'#10b981', fontSize:'2rem' }} />
             </div>
-            <h2 style={{ color:'#fff', fontSize:'1.8rem', fontWeight:800, marginBottom:10 }}>Report is Being Generated!</h2>
-            <p style={{ color:'rgba(255,255,255,0.55)', maxWidth:400, margin:'0 auto 24px', lineHeight:1.7, fontSize:'0.92rem' }}>
-              Thank you, <strong style={{color:'#fff'}}>{reportData.name}</strong>. Your AI business audit report will be emailed to <strong style={{color:'var(--clr-gold)'}}>{reportData.email}</strong> shortly.
+            <h2 style={{ color:'#fff', fontSize:'1.6rem', fontWeight:800, marginBottom:10 }}>Analysis Complete!</h2>
+            <p style={{ color:'rgba(255,255,255,0.55)', maxWidth:420, margin:'0 auto 24px', lineHeight:1.7, fontSize:'0.92rem' }}>
+              Thank you, <strong style={{color:'#fff'}}>{reportData.name}</strong>. Your business has been analysed successfully.
             </p>
 
-            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, maxWidth:360, margin:'0 auto 24px', width:'100%' }}>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12, maxWidth:380, margin:'0 auto 24px', width:'100%' }}>
               <div style={{ background:'rgba(245,197,24,0.06)', border:'1px solid rgba(245,197,24,0.2)', borderRadius:12, padding:'16px 12px', textAlign:'center' }}>
                 <div style={{ fontSize:'0.7rem', color:'rgba(255,255,255,0.5)', textTransform:'uppercase', letterSpacing:1, marginBottom:6 }}>Health Score</div>
                 <div style={{ fontSize:'2.2rem', fontWeight:800, color:'var(--clr-gold)', lineHeight:1 }}>{reportData.healthScore}<span style={{fontSize:'0.9rem',color:'rgba(255,255,255,0.3)'}}>/100</span></div>
@@ -347,13 +347,26 @@ export default function DiagnosisModal() {
               </div>
             </div>
 
-            {reportData.pdfUrl && (
-              <a href={reportData.pdfUrl} download target="_blank" rel="noreferrer"
-                style={{ display:'inline-flex', alignItems:'center', gap:8, background:'var(--clr-gold)', color:'#000', fontWeight:700, padding:'12px 28px', borderRadius:10, fontSize:'0.92rem', textDecoration:'none', marginBottom:12 }}>
-                <i className="fas fa-download" /> Download PDF Report
-              </a>
-            )}
-            <p style={{ color:'rgba(255,255,255,0.3)', fontSize:'0.77rem', marginTop:8 }}>Our team will reach out within 24 hours.</p>
+            {/* ── Email Delivery Promise Card ── */}
+            <div style={{
+              background:'rgba(245,197,24,0.04)', border:'1px solid rgba(245,197,24,0.15)',
+              borderRadius:14, padding:'20px 18px', maxWidth:420, margin:'0 auto 16px',
+              textAlign:'center',
+            }}>
+              <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:8, marginBottom:10 }}>
+                <i className="fas fa-envelope" style={{ color:'#F5C518', fontSize:'1rem' }} />
+                <span style={{ fontSize:'0.88rem', fontWeight:700, color:'#F5C518' }}>Report Being Delivered</span>
+              </div>
+              <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'0.85rem', lineHeight:1.7, margin:0 }}>
+                A detailed, consulting-grade <strong style={{color:'#fff'}}>7-page PDF report</strong> with your personalised strategic roadmap is being compiled and will be dispatched directly to{' '}
+                <strong style={{color:'var(--clr-gold)'}}>{reportData.email}</strong> within <strong style={{color:'#fff'}}>5 minutes</strong>.
+              </p>
+              <p style={{ color:'rgba(255,255,255,0.3)', fontSize:'0.75rem', margin:'10px 0 0' }}>
+                Please check your inbox and spam/promotions folder.
+              </p>
+            </div>
+
+            <p style={{ color:'rgba(255,255,255,0.3)', fontSize:'0.77rem', marginTop:8 }}>📱 Our team will reach out within 24 hours.</p>
             <button onClick={closeModal} style={{ marginTop:16, background:'transparent', border:'1px solid rgba(255,255,255,0.12)', color:'rgba(255,255,255,0.4)', padding:'8px 20px', borderRadius:8, cursor:'pointer', fontSize:'0.85rem' }}>Close</button>
           </div>
         )}

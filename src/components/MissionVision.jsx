@@ -100,7 +100,7 @@ export default function MissionVision() {
         {/* Core Values */}
         <FadeIn direction="up" delay={0.3}>
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '50px' }}>
-            <h4 style={{ textAlign: 'center', color: 'var(--clr-gold)', fontSize: '1.1rem', marginBottom: '40px', textTransform: 'uppercase', letterSpacing: '3px', fontWeight: '600' }}>The Sarvanu Standard</h4>
+            <h4 style={{ textAlign: 'center', color: 'var(--clr-gold)', fontSize: '1.1rem', marginBottom: '40px', textTransform: 'uppercase', letterSpacing: '3px', fontWeight: '600' }}>The Sarvanu.com Standard</h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '25px' }}>
               {coreValues.map((value, idx) => (
                 <div 

@@ -82,17 +82,17 @@ export default function LeadCaptureModal() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...contact, quizAnswers }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setReportData({
-          healthScore: data.healthScore ?? 0,
-          bottleneck:  data.bottleneck  ?? 'Growth Strategy',
-          pdfUrl:      data.pdfUrl      ?? null,
-          leadQuality: data.leadQuality ?? 'Nurture',
-        });
-        setSubmitted(true);
-      }
+                [{
+                  name:'Basic Plan', sub:'Foundation & Clarity', price:'₹150,000', per:'/Month', highlight:false,
+                    features:['Strategic Business Audit + Monthly Consultation','Brand Positioning & Identity Review','Clear Marketing Direction','Focused Social Media Plan (1 Platform)','Website Structure & Content Blueprint','Operations & Workflow Diagnosis','Monthly Progress Report'],
+                    cta:'Start Building a Strong Foundation' },
+                  { name:'Growth Plan', sub:'Systems & Consistency', price:'₹300,000', per:'/Month', highlight:true,
+                    features:['In-depth Business Audit + Strategy Call','Complete Brand Identity','Monthly Marketing Execution Plan','Social Media Strategy (2 Platforms)','Conversion-Focused Website Planning','Business Development Strategy','SOPs & Workflow Structuring','Growth Dashboard'],
+                    cta:'Book a Strategic Growth Call' },
+                  { name:'Premium Plan', sub:'Scale, Automation & Control', price:'₹550,000', per:'/Month', highlight:false,
+                    features:['2 Strategy Sessions + Continuous Advisory','Advanced Messaging & Market Positioning','Campaign-Level Marketing Strategy','Social Media Expansion (3 Platforms)','Full Funnel + CRM Setup + Analytics','B2B Lead Systems & Outreach Frameworks','SOPs + Automation Tool Integration','Complete Business Intelligence Dashboard'],
+                    cta:'Start Scaling with Expert Guidance' },
+                ].map((plan, i) => (
     } catch (err) { console.error(err); }
     setSubmitting(false);
   };
@@ -124,14 +124,14 @@ export default function LeadCaptureModal() {
                   {i < 2 && <div className={`lcm-step-line ${done ? 'lcm-step-line-done' : ''}`} />}
                 </React.Fragment>
               );
-            })}
-          </div>
+                {
+                  { name:'Basic Plan', sub:'Foundation & Clarity', price:'₹150,000', per:'/Month', highlight:false,
         )}
 
-        <div className="lcm-body">
+                  { name:'Growth Plan', sub:'Systems & Consistency', price:'₹300,000', per:'/Month', highlight:true,
           {/* ── STEP 1: Contact Details ── */}
           {step === 1 && (
-            <div className="lcm-section">
+                  { name:'Premium Plan', sub:'Scale, Automation & Control', price:'₹550,000', per:'/Month', highlight:false,
               <div className="lcm-section-header">
                 <span className="expertise-badge" style={{ margin:'0 auto 12px', display:'inline-block' }}>Step 1 of 3</span>
                 <h2>Tell Us About <span className="text-gold">Yourself</span></h2>
@@ -220,13 +220,13 @@ export default function LeadCaptureModal() {
 
               <div className="lcm-pricing-grid">
                 {[
-                  { name:'Basic Plan', sub:'Foundation & Clarity', price:'₹15,000', per:'/Month', highlight:false,
+                  { name:'Basic Plan', sub:'Foundation & Clarity', price:'₹150,000', per:'/Month', highlight:false,
                     features:['Strategic Business Audit + Monthly Consultation','Brand Positioning & Identity Review','Clear Marketing Direction','Focused Social Media Plan (1 Platform)','Website Structure & Content Blueprint','Operations & Workflow Diagnosis','Monthly Progress Report'],
                     cta:'Start Building a Strong Foundation' },
-                  { name:'Growth Plan', sub:'Systems & Consistency', price:'₹30,000', per:'/Month', highlight:true,
+                  { name:'Growth Plan', sub:'Systems & Consistency', price:'₹300,000', per:'/Month', highlight:true,
                     features:['In-depth Business Audit + Strategy Call','Complete Brand Identity','Monthly Marketing Execution Plan','Social Media Strategy (2 Platforms)','Conversion-Focused Website Planning','Business Development Strategy','SOPs & Workflow Structuring','Growth Dashboard'],
                     cta:'Book a Strategic Growth Call' },
-                  { name:'Premium Plan', sub:'Scale, Automation & Control', price:'₹55,000', per:'/Month', highlight:false,
+                  { name:'Premium Plan', sub:'Scale, Automation & Control', price:'₹550,000', per:'/Month', highlight:false,
                     features:['2 Strategy Sessions + Continuous Advisory','Advanced Messaging & Market Positioning','Campaign-Level Marketing Strategy','Social Media Expansion (3 Platforms)','Full Funnel + CRM Setup + Analytics','B2B Lead Systems & Outreach Frameworks','SOPs + Automation Tool Integration','Complete Business Intelligence Dashboard'],
                     cta:'Start Scaling with Expert Guidance' },
                 ].map((plan, i) => (

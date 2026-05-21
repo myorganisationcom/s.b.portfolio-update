@@ -124,7 +124,7 @@ export default function BusinessDiagnosisQuiz({ isOpen, onClose }) {
 
   const handleWhatsAppAudit = () => {
     const waNumber = "918700541657";
-    const waMessage = `Hi Sarvanu, I just completed the Business Problem Diagnosis Quiz and my primary challenge is Sales & Conversion. I'd like to book my free audit.`;
+    const waMessage = `Hi Sarvanu.com, I just completed the Business Problem Diagnosis Quiz and my primary challenge is Sales & Conversion. I'd like to book my free audit.`;
     const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
     window.open(waLink, '_blank');
   };

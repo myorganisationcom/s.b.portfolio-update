@@ -1,6 +1,6 @@
 export const metadata = {
     title: "ROI of Business Consulting | Sarvanu",
-    description: "Understand the real return on investment from strategic consulting. Why ₹15K–₹55K/month is one of the highest-ROI decisions a growing business can make.",
+    description: "Understand the real return on investment from strategic consulting. Why ₹150K–₹550K/month is one of the highest-ROI decisions a growing business can make.",
     alternates: { canonical: "https://sarvanu.com/roi" },
     openGraph: { title: "ROI of Business Consulting | Sarvanu", description: "The real return on investment from strategic consulting.", url: "https://sarvanu.com/roi", images: ["/og-image.png"] },
 };
@@ -13,7 +13,7 @@ const roiPoints = [
 ];
 
 const costComparison = [
-    { item: "Monthly consulting fee (Growth Plan)", cost: "₹30,000" },
+    { item: "Monthly consulting fee (Growth Plan)", cost: "₹300,000" },
     { item: "Cost of 1 wrong senior hire", cost: "₹3,00,000+" },
     { item: "Wasted ad spend without strategy", cost: "₹50,000/month" },
     { item: "Revenue lost from poor pricing", cost: "₹1,00,000+/month" },
@@ -26,7 +26,7 @@ export default function ROIPage() {
             <section style={{ padding: "120px 20px 80px", background: "var(--grad-surface)", textAlign: "center" }}>
                 <div style={{ maxWidth: 720, margin: "0 auto" }}>
                     <span style={{ display: "inline-block", background: "rgba(245,197,24,0.1)", color: "var(--clr-gold)", border: "1px solid rgba(245,197,24,0.2)", padding: "6px 18px", borderRadius: 20, fontSize: "0.85rem", fontWeight: 600, marginBottom: 20, letterSpacing: "0.5px", textTransform: "uppercase" }}>Company — ROI Perspective</span>
-                    <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", color: "#fff", fontWeight: 800, marginBottom: 20, lineHeight: 1.2 }}>Is ₹30,000/Month Worth It? <span style={{ color: "var(--clr-gold)" }}>Let's Do the Maths.</span></h1>
+                    <h1 style={{ fontSize: "clamp(2rem,4vw,3rem)", color: "#fff", fontWeight: 800, marginBottom: 20, lineHeight: 1.2 }}>Is ₹300,000/Month Worth It? <span style={{ color: "var(--clr-gold)" }}>Let's Do the Maths.</span></h1>
                     <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7 }}>The question isn't whether you can afford strategic consulting. It's whether you can afford not to have it — and what it's currently costing you every month to keep doing things the same way.</p>
                 </div>
             </section>
@@ -66,7 +66,7 @@ export default function ROIPage() {
                             </div>
                         ))}
                     </div>
-                    <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", textAlign: "center", marginTop: 16 }}>The question isn't whether ₹30,000/month is expensive. It's expensive compared to what?</p>
+                    <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.82rem", textAlign: "center", marginTop: 16 }}>The question isn't whether ₹300,000/month is expensive. It's expensive compared to what?</p>
                 </div>
             </section>
 

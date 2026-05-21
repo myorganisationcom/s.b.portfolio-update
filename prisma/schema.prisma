@@ -25,6 +25,29 @@ model Blog {
   @@map("blogs")
 }
 
+model CaseStudy {
+  id              BigInt   @id @default(autoincrement())
+  title           String
+  seoSlug         String   @unique @map("seo_slug")
+  status          String   @default("draft")
+  industry        String
+  duration        String
+  clientName      String   @default("") @map("client_name")
+  introText       String   @map("intro_text")
+  challenges      String
+  solutions       String
+  results         String
+  quoteText       String   @default("") @map("quote_text")
+  quoteAuthor     String   @default("") @map("quote_author")
+  featuredImage   String   @default("") @map("featured_image")
+  tags            String   @default("")
+  views           BigInt   @default(0)
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("case_studies")
+}
+
 model Lead {
   id           BigInt   @id @default(autoincrement())
   name         String

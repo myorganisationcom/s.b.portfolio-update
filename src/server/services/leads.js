@@ -16,6 +16,8 @@ import {
 
 import { generateBusinessAnalysis } from './ai-analysis.js';
 import { generateReportPDF }        from './pdf-generator.js';
+import { sendGrowthReportEmail, sendAdminNotification } from './email-service.js';
+import path from 'path';
 
 // ─── Lead Quality Scoring ────────────────────────────────────────────────────
 
@@ -95,6 +97,42 @@ async function triggerReportGeneration(leadId, payload) {
     });
 
     console.log(`[Report] Generated for lead #${leadId}: ${pdfPath}`);
+
+    // ── Send email with the REAL PDF attached (file is guaranteed to exist) ──
+    const pdfAbsPath = path.join(process.cwd(), 'public', pdfPath.replace(/^\//, ''));
+    const score      = aiAnalysis.auditScore ?? 0;
+    const bottleneck = aiAnalysis.bottleneck ?? 'Growth Strategy';
+    const orgName    = contactData.organisation || 'Your Business';
+
+    try {
+      await sendGrowthReportEmail({
+        toEmail:     contactData.email,
+        toName:      contactData.name,
+        orgName,
+        pdfFilePath: pdfAbsPath,
+        score,
+        bottleneck,
+      });
+      console.log(`[Report] Email sent to ${contactData.email} for lead #${leadId}`);
+    } catch (emailErr) {
+      console.error(`[Report] Email failed for lead #${leadId}:`, emailErr.message);
+    }
+
+    // ── Notify admin team ──
+    try {
+      await sendAdminNotification({
+        name:        contactData.name,
+        email:       contactData.email,
+        phone:       contactData.phone,
+        orgName,
+        score,
+        bottleneck,
+        pdfFilePath: pdfAbsPath,
+      });
+    } catch (adminErr) {
+      console.error(`[Report] Admin notification failed for lead #${leadId}:`, adminErr.message);
+    }
+
   } catch (err) {
     console.error(`[Report] Failed for lead #${leadId}:`, err.message);
   }

@@ -45,20 +45,32 @@ function setFont(doc, size, color = C.dark, bold = false) {
 
 function rect(doc, x, y, w, h, color) { setFill(doc, color); doc.rect(x, y, w, h, 'F'); }
 
-function txt(doc, s, x, y, { size = 10, color = C.dark, bold = false, align = 'left', maxW, lineH } = {}) {
+function txt(doc, s, x, y, { size = 10, color = C.dark, bold = false, align = 'left', maxW, lineH, paragraphGap = 3 } = {}) {
   setFont(doc, size, color, bold);
-  const str = String(s || '').replace(/[\r\n]+/g, ' ').trim();
+  const str = String(s || '').trim();
   if (!str) return 0;
   const lh = lineH || size * 0.42;
+
+  // Split by newline to preserve paragraphs from AI-generated content
+  const paragraphs = str.split(/\n+/).map(p => p.replace(/\r/g, '').trim()).filter(Boolean);
+
   if (maxW) {
-    const lines = doc.splitTextToSize(str, maxW);
-    // Render each line individually to prevent jsPDF justified text stretching
-    for (let i = 0; i < lines.length; i++) {
-      doc.text(lines[i], x, y + i * lh, { align, charSpace: 0 });
-    }
-    return lines.length * lh;
+    let totalH = 0;
+    paragraphs.forEach((para, pIdx) => {
+      const lines = doc.splitTextToSize(para, maxW);
+      for (let i = 0; i < lines.length; i++) {
+        doc.text(lines[i], x, y + totalH + i * lh, { align, charSpace: 0 });
+      }
+      totalH += lines.length * lh;
+      // Add paragraph gap between paragraphs (not after the last one)
+      if (pIdx < paragraphs.length - 1) totalH += paragraphGap;
+    });
+    return totalH;
   }
-  doc.text(str, x, y, { align, charSpace: 0 });
+
+  // Single-line (no maxW) — join paragraphs back with space
+  const joined = paragraphs.join(' ');
+  doc.text(joined, x, y, { align, charSpace: 0 });
   return lh;
 }
 

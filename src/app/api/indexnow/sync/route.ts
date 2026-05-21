@@ -37,7 +37,11 @@ export async function POST(request: NextRequest) {
             success: result.success,
             message: `Attempted to synchronize ${allUrls.length} total URLs.`,
             submittedCount: result.submittedCount,
-            indexNowResponse: `${result.status} ${result.statusText}`,
+            indexNowResponse: {
+                status: result.status,
+                statusText: result.statusText,
+                body: result.responseBody || null,
+            },
             error: result.error || null,
         }, { status: result.success ? 200 : 502 });
 

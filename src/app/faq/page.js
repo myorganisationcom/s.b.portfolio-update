@@ -35,7 +35,7 @@ export default function FAQ() {
 
                 <FaqAccordion
                     question="How much does business consulting cost in India?"
-                    answer="Business consulting costs vary based on the scope of work. I offer three packages: <strong>Basic at ₹15,000/month</strong> for solopreneurs and early startups, <strong>Growth at ₹30,000/month</strong> for MSMEs and agencies needing comprehensive support, and <strong>Premium at ₹55,000/month</strong> for multi-brand founders requiring full-scale transformation including on-call support."
+                    answer="Business consulting costs vary based on the scope of work. I offer three packages: <strong>Basic at ₹150,000/month</strong> for solopreneurs and early startups, <strong>Growth at ₹300,000/month</strong> for MSMEs and agencies needing comprehensive support, and <strong>Premium at ₹550,000/month</strong> for multi-brand founders requiring full-scale transformation including on-call support."
                 />
 
                 <FaqAccordion
@@ -110,7 +110,7 @@ export default function FAQ() {
                                 "name": "How much does business consulting cost in India?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Business consulting costs vary based on the scope. Sarvanu offers three packages: Basic at ₹15,000/month for solopreneurs, Growth at ₹30,000/month for MSMEs and agencies, and Premium at ₹55,000/month for multi-brand founders requiring comprehensive support."
+                                    "text": "Business consulting costs vary based on the scope. Sarvanu offers three packages: Basic at ₹150,000/month for solopreneurs, Growth at ₹300,000/month for MSMEs and agencies, and Premium at ₹550,000/month for multi-brand founders requiring comprehensive support."
                                 }
                             },
                             {

@@ -46,7 +46,7 @@ export default function Footer() {
                     <h4>Company</h4>
                     <ul>
                         <li>
-                            <Link href="/#about">About Sarvanu</Link>
+                            <Link href="/#about">About Sarvanu.com</Link>
                         </li>
                         <li>
                             <Link href="/case-studies">Case Studies</Link>
@@ -97,7 +97,7 @@ export default function Footer() {
 
             <div className="footer-bottom">
                 <div className="footer-bottom-content">
-                    <p>&copy; {new Date().getFullYear()} Sarvanu. All Rights Reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Sarvanu.com. All Rights Reserved.</p>
                     <div className="footer-legal">
                         <Link href="/privacy-policy">Privacy Policy</Link>
                         <span className="separator">|</span>

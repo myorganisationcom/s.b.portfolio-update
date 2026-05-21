@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import IntroScreen         from './IntroScreen';
 import Stage1Contact       from './Stage1Contact';
 import Stage2BusinessAudit from './Stage2BusinessAudit';
 import Stage3Diagnosis     from './Stage3Diagnosis';
@@ -10,7 +11,7 @@ import AuditProgressBar    from './AuditProgressBar';
 const STAGES = ['Contact Details', 'Business Audit', 'Diagnosis', 'Analysis'];
 
 export default function AuditFunnel({ onClose, insideModal = false }) {
-  const [stage, setStage]     = useState(1); // 1-3 + processing + success
+  const [stage, setStage]     = useState(0); // 0 = intro, 1-3 + processing + success
   const [phase, setPhase]     = useState('form'); // 'form' | 'processing' | 'success'
   const [stage1, setStage1]   = useState({});
   const [stage2, setStage2]   = useState({});
@@ -47,12 +48,17 @@ export default function AuditFunnel({ onClose, insideModal = false }) {
   if (insideModal) {
     return (
       <div style={{ fontFamily: "'Inter','Poppins',sans-serif" }}>
-        <AuditProgressBar currentStage={stage} stages={STAGES} />
-        <div style={{ padding: '28px 24px 36px', display: 'flex', justifyContent: 'center' }}>
-          {stage === 1 && <Stage1Contact onDone={handleStage1Done} />}
-          {stage === 2 && <Stage2BusinessAudit onDone={handleStage2Done} onBack={() => setStage(1)} initialData={stage2} />}
-          {stage === 3 && <Stage3Diagnosis onDone={handleStage3Done} onBack={() => setStage(2)} />}
-        </div>
+        {stage === 0 && <IntroScreen onStart={() => setStage(1)} />}
+        {stage >= 1 && (
+          <>
+            <AuditProgressBar currentStage={stage} stages={STAGES} />
+            <div style={{ padding: '28px 24px 36px', display: 'flex', justifyContent: 'center' }}>
+              {stage === 1 && <Stage1Contact onDone={handleStage1Done} />}
+              {stage === 2 && <Stage2BusinessAudit onDone={handleStage2Done} onBack={() => setStage(1)} initialData={stage2} />}
+              {stage === 3 && <Stage3Diagnosis onDone={handleStage3Done} onBack={() => setStage(2)} />}
+            </div>
+          </>
+        )}
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
           * { box-sizing: border-box; }
@@ -143,15 +149,25 @@ export default function AuditFunnel({ onClose, insideModal = false }) {
         <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)' }}>🔒 Confidential &amp; Secure</div>
       </div>
 
-      {/* Progress bar */}
-      <AuditProgressBar currentStage={stage} stages={STAGES} />
+      {stage === 0 && (
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <IntroScreen onStart={() => setStage(1)} />
+        </div>
+      )}
 
-      {/* Stage content */}
-      <div style={{ flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '32px 16px 60px' }}>
-        {stage === 1 && <Stage1Contact onDone={handleStage1Done} />}
-        {stage === 2 && <Stage2BusinessAudit onDone={handleStage2Done} onBack={() => setStage(1)} initialData={stage2} />}
-        {stage === 3 && <Stage3Diagnosis onDone={handleStage3Done} onBack={() => setStage(2)} />}
-      </div>
+      {stage >= 1 && (
+        <>
+          {/* Progress bar */}
+          <AuditProgressBar currentStage={stage} stages={STAGES} />
+
+          {/* Stage content */}
+          <div style={{ flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '32px 16px 60px' }}>
+            {stage === 1 && <Stage1Contact onDone={handleStage1Done} />}
+            {stage === 2 && <Stage2BusinessAudit onDone={handleStage2Done} onBack={() => setStage(1)} initialData={stage2} />}
+            {stage === 3 && <Stage3Diagnosis onDone={handleStage3Done} onBack={() => setStage(2)} />}
+          </div>
+        </>
+      )}
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');

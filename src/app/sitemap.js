@@ -1,9 +1,11 @@
 import { getAllPublishedPosts } from '@/server/repositories/blogs';
+import { getAllPublishedCaseStudies } from '@/server/repositories/case-studies';
 
 /** @type {import('next').MetadataRoute.Sitemap} */
 export default async function sitemap() {
     const baseUrl = 'https://sarvanu.com';
     const blogPosts = await getAllPublishedPosts();
+    const caseStudies = await getAllPublishedCaseStudies();
 
     // High-priority service/landing pages
     const highPriorityRoutes = [
@@ -49,10 +51,19 @@ export default async function sitemap() {
         priority: 0.6,
     }));
 
+    // Dynamic case study routes
+    const caseStudyRoutes = caseStudies.map((cs) => ({
+        url: `${baseUrl}/case-studies/${cs.slug}`,
+        lastModified: cs.updatedAt ? new Date(cs.updatedAt) : new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+    }));
+
     return [
         ...highPriorityRoutes,
         ...mediumPriorityRoutes,
         ...lowPriorityRoutes,
         ...blogRoutes,
+        ...caseStudyRoutes,
     ];
 }

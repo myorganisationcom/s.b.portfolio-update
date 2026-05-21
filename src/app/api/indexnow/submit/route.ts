@@ -43,7 +43,11 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
             success: result.success,
             submittedCount: result.submittedCount,
-            indexNowResponse: `${result.status} ${result.statusText}`,
+            indexNowResponse: {
+                status: result.status,
+                statusText: result.statusText,
+                body: result.responseBody || null,
+            },
             error: result.error || null,
         }, { status: result.success ? 200 : 502 });
 
