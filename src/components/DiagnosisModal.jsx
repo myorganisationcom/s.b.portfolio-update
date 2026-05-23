@@ -362,7 +362,7 @@ export default function DiagnosisModal() {
                 <strong style={{color:'var(--clr-gold)'}}>{reportData.email}</strong> within <strong style={{color:'#fff'}}>5 minutes</strong>.
               </p>
               <p style={{ color:'rgba(255,255,255,0.3)', fontSize:'0.75rem', margin:'10px 0 0' }}>
-                Please check your inbox and spam/promotions folder.
+                Please check your inbox and promotions folder.
               </p>
             </div>
 

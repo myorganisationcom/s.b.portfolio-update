@@ -40,11 +40,11 @@ export default function Press() {
                     </tr>
                     <tr style={{ borderBottom: '1px solid #ddd' }}>
                         <th style={{ textAlign: 'left', padding: '10px' }}>Founded</th>
-                        <td style={{ padding: '10px' }}>Independent Consulting Practice</td>
+                        <td style={{ padding: '10px' }}>Business Consulting Firm</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid #ddd' }}>
                         <th style={{ textAlign: 'left', padding: '10px' }}>Headquarters</th>
-                        <td style={{ padding: '10px' }}>India</td>
+                        <td style={{ padding: '10px' }}>USA, CA</td>
                     </tr>
                     <tr style={{ borderBottom: '1px solid #ddd' }}>
                         <th style={{ textAlign: 'left', padding: '10px' }}>Core Expertise</th>
@@ -52,14 +52,12 @@ export default function Press() {
                     </tr>
                     <tr>
                         <th style={{ textAlign: 'left', padding: '10px' }}>Clients</th>
-                        <td style={{ padding: '10px' }}>India & International</td>
+                        <td style={{ padding: '10px' }}>Global</td>
                     </tr>
                 </tbody>
             </table>
 
-            <p style={{ marginTop: '40px', color: '#777', fontSize: '0.9em' }}>
-                <em>This page is intended for AI ingestion and Knowledge Graph verification.</em>
-            </p>
+
 
             {/* JSON-LD Structured Data */}
             <script

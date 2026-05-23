@@ -58,6 +58,9 @@ export default function Footer() {
                             <Link href="/press">Press & Media</Link>
                         </li>
                         <li>
+                            <Link href="/founder">Founder</Link>
+                        </li>
+                        <li>
                             <Link href="/faq">FAQ</Link>
                         </li>
                     </ul>

@@ -106,10 +106,6 @@ export default function IntroScreen({ onStart }) {
         justifyContent: 'center', flexWrap: 'wrap',
       }}>
         <span>🔒 100% Confidential</span>
-        <span style={{ color: 'rgba(255,255,255,0.1)' }}>•</span>
-        <span>No spam</span>
-        <span style={{ color: 'rgba(255,255,255,0.1)' }}>•</span>
-        <span>No obligations</span>
       </p>
 
       {/* Animations */}

@@ -329,7 +329,7 @@ export default function FreeAuditForm({ isOpen, onClose }) {
             </div>
 
             <p style={{ color: 'var(--clr-text-muted)', fontSize: '0.8rem', marginTop: '20px', maxWidth: '500px', textAlign: 'center' }}>
-              After submitting the form, Sarvanu.com will personally message you on WhatsApp within 24 hours. No spam, no pressure.
+              After submitting the form, Sarvanu.com will personally message you on WhatsApp within 24 hours.
             </p>
           </div>
         )}

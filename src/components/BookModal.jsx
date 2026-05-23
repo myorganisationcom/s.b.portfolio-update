@@ -171,7 +171,7 @@ export default function BookModal() {
               </h2>
 
               <p style={{ color:'rgba(255,255,255,0.6)', fontSize:'0.97rem', lineHeight:1.75, marginBottom:28 }}>
-                A focused, no-obligation 15-minute call where we diagnose your
+                A focused 15-minute call where we diagnose your
                 biggest growth bottleneck and give you a clear path forward —
                 before you spend a single rupee.
               </p>

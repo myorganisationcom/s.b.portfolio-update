@@ -129,6 +129,7 @@ export default function Header() {
                             <li><Link href="/case-studies" onClick={closeMenu}>Case Studies & Proof</Link></li>
                             <li><Link href="/roi" onClick={closeMenu}>ROI Perspective</Link></li>
                             <li><Link href="/faq" onClick={closeMenu}>FAQ</Link></li>
+                            <li><Link href="/founder" onClick={closeMenu}>Founder</Link></li>
                         </ul>
                     </li>
 

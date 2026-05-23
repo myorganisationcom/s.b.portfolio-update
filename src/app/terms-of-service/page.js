@@ -263,7 +263,7 @@ export default function TermsOfService() {
                         <ul style={listStyle}>
                             <li style={listItemStyle}>Use the Website for any unlawful purpose or in violation of any applicable laws</li>
                             <li style={listItemStyle}>Attempt to gain unauthorized access to any part of the Website or its systems</li>
-                            <li style={listItemStyle}>Submit false, misleading, or spam information through any forms on the Website</li>
+                            <li style={listItemStyle}>Submit false, misleading, or junk information through any forms on the Website</li>
                             <li style={listItemStyle}>Scrape, copy, or extract content from the Website using automated tools</li>
                             <li style={listItemStyle}>Interfere with the Website&apos;s functionality or security measures</li>
                         </ul>

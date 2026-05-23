@@ -58,7 +58,7 @@ export default function CtaSection() {
                   <i className="fas fa-check" style={{ color: 'var(--clr-gold)' }}></i> Tailored advice for your business stage
                 </li>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <i className="fas fa-check" style={{ color: 'var(--clr-gold)' }}></i> No hidden costs, zero obligations
+                  <i className="fas fa-check" style={{ color: 'var(--clr-gold)' }}></i> No hidden costs, completely transparent
                 </li>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <i className="fas fa-check" style={{ color: 'var(--clr-gold)' }}></i> Direct consultation with Sarvanu.com

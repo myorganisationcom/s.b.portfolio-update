@@ -175,7 +175,7 @@ export default function SuccessScreen({ result, stage1 }) {
           </div>
           <div style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}>
             {step >= 5 ? (
-              <>Your comprehensive 7-page consulting-grade PDF analysis has been sent to <strong style={{ color: '#fff' }}>{userEmail}</strong>. Please check your inbox (and spam/promotions folder) within the next 5 minutes.</>
+              <>Your comprehensive 7-page consulting-grade PDF analysis has been sent to <strong style={{ color: '#fff' }}>{userEmail}</strong>. Please check your inbox (and promotions folder) within the next 5 minutes.</>
             ) : (
               <>Our AI engine is generating a detailed, personalised business roadmap. It will be delivered directly to <strong style={{ color: '#fff' }}>{userEmail}</strong> within 5 minutes.</>
             )}

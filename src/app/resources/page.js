@@ -109,7 +109,7 @@ export default function Resources() {
                                     📧 Request via WhatsApp
                                 </button>
                             </form>
-                            <p className="privacy">🔒 No spam. Unsubscribe anytime.</p>
+                            <p className="privacy">🔒 Secure. Unsubscribe anytime.</p>
                         </div>
                     </div>
                 </div>

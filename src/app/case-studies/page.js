@@ -37,17 +37,17 @@ export default async function CaseStudies() {
                     </p>
                     <div className="cs-hero-stats">
                         <div className="cs-stat">
-                            <span className="cs-stat-num">40+</span>
+                            <span className="cs-stat-num">109+</span>
                             <span className="cs-stat-label">Founders Worked With</span>
                         </div>
                         <div className="cs-stat-divider" />
                         <div className="cs-stat">
-                            <span className="cs-stat-num">₹3Cr+</span>
+                            <span className="cs-stat-num">₹334Cr+</span>
                             <span className="cs-stat-label">Revenue Unlocked</span>
                         </div>
                         <div className="cs-stat-divider" />
                         <div className="cs-stat">
-                            <span className="cs-stat-num">6</span>
+                            <span className="cs-stat-num">12</span>
                             <span className="cs-stat-label">Industries Served</span>
                         </div>
                     </div>
