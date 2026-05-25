@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import IntroScreen         from './IntroScreen';
 import Stage1Contact       from './Stage1Contact';
 import Stage2BusinessAudit from './Stage2BusinessAudit';
@@ -11,14 +11,46 @@ import AuditProgressBar    from './AuditProgressBar';
 const STAGES = ['Contact Details', 'Business Audit', 'Diagnosis', 'Analysis'];
 
 export default function AuditFunnel({ onClose, insideModal = false }) {
-  const [stage, setStage]     = useState(0); // 0 = intro, 1-3 + processing + success
-  const [phase, setPhase]     = useState('form'); // 'form' | 'processing' | 'success'
-  const [stage1, setStage1]   = useState({});
-  const [stage2, setStage2]   = useState({});
-  const [stage3, setStage3]   = useState({});
-  const [result, setResult]   = useState(null);
+  const [stage, setStage]                     = useState(0); // 0 = intro, 1-3 + processing + success
+  const [phase, setPhase]                     = useState('form'); // 'form' | 'processing' | 'success'
+  const [stage1, setStage1]                   = useState({});
+  const [stage2, setStage2]                   = useState({});
+  const [stage3, setStage3]                   = useState({});
+  const [result, setResult]                   = useState(null);
+  // Stage 1 early-save ke IDs — final submit pe duplicate nahi banega
+  const [auditSubmissionId, setAuditSubmissionId] = useState(null);
+  const [savedLeadId, setSavedLeadId]             = useState(null);
+  const [stage1Saving, setStage1Saving]           = useState(false);  // loading state for Stage1 button
 
-  const handleStage1Done = (data) => { setStage1(data); setStage(2); };
+
+  // Stage 1 done: pehle DB mein save karo, phir Stage 2 kholna
+  const handleStage1Done = useCallback(async (data) => {
+    setStage1(data);
+    setStage1Saving(true);
+    try {
+      const res  = await fetch('/api/audit/save-contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(data),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setAuditSubmissionId(json.auditSubmissionId);
+        setSavedLeadId(json.leadId);
+        console.log(`[AuditFunnel] Stage 1 saved — Audit #${json.auditSubmissionId}`);
+      } else {
+        // API ne error diya — graceful degradation: aage jao phir bhi
+        console.warn('[AuditFunnel] save-contact API error:', json.error);
+      }
+    } catch (err) {
+      // Network error — graceful degradation: aage jao phir bhi
+      console.warn('[AuditFunnel] save-contact network error:', err.message);
+    } finally {
+      setStage1Saving(false);
+      setStage(2);
+    }
+  }, []);
+
   const handleStage2Done = (data) => { setStage2(data); setStage(3); };
 
   const handleStage3Done = async (data) => {
@@ -28,7 +60,14 @@ export default function AuditFunnel({ onClose, insideModal = false }) {
       const res  = await fetch('/api/audit/submit', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ stage1, stage2, stage3: data }),
+        // auditSubmissionId pass karo taake existing record UPDATE ho (duplicate nahi banega)
+        body:    JSON.stringify({
+          stage1,
+          stage2,
+          stage3: data,
+          ...(auditSubmissionId && { auditSubmissionId }),
+          ...(savedLeadId       && { leadId: savedLeadId }),
+        }),
       });
       const json = await res.json();
       if (json.success) {
@@ -53,7 +92,7 @@ export default function AuditFunnel({ onClose, insideModal = false }) {
           <>
             <AuditProgressBar currentStage={stage} stages={STAGES} />
             <div style={{ padding: '28px 24px 36px', display: 'flex', justifyContent: 'center' }}>
-              {stage === 1 && <Stage1Contact onDone={handleStage1Done} />}
+              {stage === 1 && <Stage1Contact onDone={handleStage1Done} saving={stage1Saving} />}
               {stage === 2 && <Stage2BusinessAudit onDone={handleStage2Done} onBack={() => setStage(1)} initialData={stage2} />}
               {stage === 3 && <Stage3Diagnosis onDone={handleStage3Done} onBack={() => setStage(2)} />}
             </div>
@@ -162,7 +201,7 @@ export default function AuditFunnel({ onClose, insideModal = false }) {
 
           {/* Stage content */}
           <div style={{ flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '32px 16px 60px' }}>
-            {stage === 1 && <Stage1Contact onDone={handleStage1Done} />}
+            {stage === 1 && <Stage1Contact onDone={handleStage1Done} saving={stage1Saving} />}
             {stage === 2 && <Stage2BusinessAudit onDone={handleStage2Done} onBack={() => setStage(1)} initialData={stage2} />}
             {stage === 3 && <Stage3Diagnosis onDone={handleStage3Done} onBack={() => setStage(2)} />}
           </div>

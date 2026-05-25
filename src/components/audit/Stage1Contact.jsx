@@ -13,7 +13,7 @@ function Field({ label, children, error }) {
   );
 }
 
-export default function Stage1Contact({ onDone }) {
+export default function Stage1Contact({ onDone, saving = false }) {
   const [form, setForm] = useState({ name:'', designation:'', organisation:'', email:'', phone:'', whatsapp:'', city:'', website:'' });
   const [errors, setErrors] = useState({});
 
@@ -31,7 +31,7 @@ export default function Stage1Contact({ onDone }) {
     return Object.keys(e).length === 0;
   };
 
-  const handleNext = () => { if (validate()) onDone(form); };
+  const handleNext = () => { if (!saving && validate()) onDone(form); };
 
   const inputStyle = { className: 'audit-input' };
 
@@ -82,10 +82,28 @@ export default function Stage1Contact({ onDone }) {
       </Field>
 
       <div style={{ marginTop: 8, display: 'flex', justifyContent: 'flex-end' }}>
-        <button className="audit-btn-primary" onClick={handleNext}>
-          Continue to Business Audit <i className="fas fa-arrow-right" style={{ fontSize: '0.85rem' }} />
+        <button
+          className="audit-btn-primary"
+          onClick={handleNext}
+          disabled={saving}
+          style={saving ? { opacity: 0.7, cursor: 'not-allowed' } : {}}
+        >
+          {saving ? (
+            <>
+              <span style={{
+                display: 'inline-block', width: 14, height: 14, border: '2px solid rgba(0,0,0,0.3)',
+                borderTop: '2px solid #000', borderRadius: '50%',
+                animation: 'spin 0.7s linear infinite'
+              }} />
+              Saving...
+            </>
+          ) : (
+            <>Continue to Business Audit <i className="fas fa-arrow-right" style={{ fontSize: '0.85rem' }} /></>
+          )}
         </button>
       </div>
+
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
 
       <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.2)', fontSize: '0.72rem', marginTop: 16 }}>
         🔒 Your information is encrypted and never shared with third parties

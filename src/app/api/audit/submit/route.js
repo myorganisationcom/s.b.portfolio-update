@@ -1,7 +1,10 @@
 /**
  * POST /api/audit/submit
- * Saves full 3-stage audit, computes score, triggers AI+PDF async
- * Also saves a corresponding Lead record so data appears in Admin panel
+ * Saves full 3-stage audit, computes score, triggers AI+PDF async.
+ * Also saves/updates a corresponding Lead record so data appears in Admin panel.
+ *
+ * Agar body mein auditSubmissionId ho (Stage 1 already save ho chuka hai)
+ * toh CREATE nahi, wohi record UPDATE hoga — duplicate nahi banega.
  */
 
 import { NextResponse }             from 'next/server';
@@ -48,7 +51,7 @@ async function triggerReport(auditId, leadId, contactData, auditData, diagnosisD
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { stage1, stage2, stage3 } = body;
+    const { stage1, stage2, stage3, auditSubmissionId, leadId: existingLeadId } = body;
 
     // Basic validation
     if (!stage1?.name || !stage1?.email || !stage1?.phone) {
@@ -56,53 +59,96 @@ export async function POST(request) {
     }
 
     const { leadScore, leadQuality, bottleneck } = computeAuditScore(stage2 || {}, stage3 || {});
-
+    const combinedAnswers = { stage2: stage2 || {}, stage3: stage3 || {} };
     const prisma = getPrisma();
 
-    // 1) Save to AuditSubmission table (full detailed data)
-    const auditRow = await prisma.auditSubmission.create({
-      data: {
-        name:         stage1.name.trim(),
-        designation:  (stage1.designation  || '').trim(),
-        organisation: (stage1.organisation || '').trim(),
-        email:        stage1.email.trim().toLowerCase(),
-        phone:        stage1.phone.trim(),
-        whatsapp:     (stage1.whatsapp || '').trim(),
-        city:         (stage1.city     || '').trim(),
-        website:      (stage1.website  || '').trim(),
-        auditData:    JSON.stringify(stage2 || {}),
-        diagnosisData: JSON.stringify(stage3 || {}),
-        leadScore,
-        leadQuality,
-        bottleneck,
-      },
-    });
+    let auditId, leadId;
 
-    // 2) Also save to Lead table so Admin panel shows the data
-    //    Store stage2 + stage3 combined as quizAnswers JSON
-    const combinedAnswers = {
-      stage2: stage2 || {},
-      stage3: stage3 || {},
-    };
+    if (auditSubmissionId) {
+      // ── Stage 1 pehle se save ho chuka tha — sirf UPDATE karo ──
+      await prisma.auditSubmission.update({
+        where: { id: BigInt(auditSubmissionId) },
+        data: {
+          // Stage 1 contact info bhi refresh karo (user ne change kiya ho sakta hai)
+          name:          stage1.name.trim(),
+          designation:   (stage1.designation  || '').trim(),
+          organisation:  (stage1.organisation || '').trim(),
+          email:         stage1.email.trim().toLowerCase(),
+          phone:         stage1.phone.trim(),
+          whatsapp:      (stage1.whatsapp || '').trim(),
+          city:          (stage1.city     || '').trim(),
+          website:       (stage1.website  || '').trim(),
+          auditData:     JSON.stringify(stage2 || {}),
+          diagnosisData: JSON.stringify(stage3 || {}),
+          leadScore,
+          leadQuality,
+          bottleneck,
+        },
+      });
+      auditId = Number(auditSubmissionId);
 
-    const leadRow = await prisma.lead.create({
-      data: {
-        name:         stage1.name.trim(),
-        designation:  (stage1.designation  || '').trim(),
-        organisation: (stage1.organisation || '').trim(),
-        email:        stage1.email.trim().toLowerCase(),
-        phone:        stage1.phone.trim(),
-        quizAnswers:  JSON.stringify(combinedAnswers),
-        leadQuality,
-        healthScore:  leadScore,
-        bottleneck,
-        source:       'audit',
-      },
-    });
+      // Lead bhi update karo
+      if (existingLeadId) {
+        await prisma.lead.update({
+          where: { id: BigInt(existingLeadId) },
+          data: {
+            name:         stage1.name.trim(),
+            designation:  (stage1.designation  || '').trim(),
+            organisation: (stage1.organisation || '').trim(),
+            email:        stage1.email.trim().toLowerCase(),
+            phone:        stage1.phone.trim(),
+            quizAnswers:  JSON.stringify(combinedAnswers),
+            leadQuality,
+            healthScore:  leadScore,
+            bottleneck,
+            source:       'audit', // pura audit complete kiya
+          },
+        });
+        leadId = Number(existingLeadId);
+      }
 
-    const auditId = Number(auditRow.id);
-    const leadId  = Number(leadRow.id);
-    const pdfUrl  = `/reports/audit-${auditId}-report.pdf`;
+      console.log(`[Audit Submit] Updated existing record — Audit #${auditId}, Lead #${leadId}`);
+    } else {
+      // ── Pehla path: koi save-contact call nahi hua tha — fresh CREATE ──
+      const auditRow = await prisma.auditSubmission.create({
+        data: {
+          name:          stage1.name.trim(),
+          designation:   (stage1.designation  || '').trim(),
+          organisation:  (stage1.organisation || '').trim(),
+          email:         stage1.email.trim().toLowerCase(),
+          phone:         stage1.phone.trim(),
+          whatsapp:      (stage1.whatsapp || '').trim(),
+          city:          (stage1.city     || '').trim(),
+          website:       (stage1.website  || '').trim(),
+          auditData:     JSON.stringify(stage2 || {}),
+          diagnosisData: JSON.stringify(stage3 || {}),
+          leadScore,
+          leadQuality,
+          bottleneck,
+        },
+      });
+
+      const leadRow = await prisma.lead.create({
+        data: {
+          name:         stage1.name.trim(),
+          designation:  (stage1.designation  || '').trim(),
+          organisation: (stage1.organisation || '').trim(),
+          email:        stage1.email.trim().toLowerCase(),
+          phone:        stage1.phone.trim(),
+          quizAnswers:  JSON.stringify(combinedAnswers),
+          leadQuality,
+          healthScore:  leadScore,
+          bottleneck,
+          source:       'audit',
+        },
+      });
+
+      auditId = Number(auditRow.id);
+      leadId  = Number(leadRow.id);
+      console.log(`[Audit Submit] Fresh record created — Audit #${auditId}, Lead #${leadId}`);
+    }
+
+    const pdfUrl = `/reports/audit-${auditId}-report.pdf`;
 
     // Fire-and-forget AI + PDF (updates both tables)
     triggerReport(auditId, leadId, stage1, stage2 || {}, stage3 || {});
